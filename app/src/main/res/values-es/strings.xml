@@ -36,6 +36,8 @@
     <string name="settings_formatting_precision">Cantidad de decimales</string>
     <string name="settings_history_size">Resultados guardados en el historial</string>
     <string name="settings_general_scientific_mode_desc">Activar el modo científico por defecto</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Desactivar el modo científico</string>
+    <string name="settings_general_scientific_mode_hide_desc">Ocultar modo científico</string>
     <string name="about_help_donate">Donar</string>
     <string name="about_help_rate">Valora esta aplicación</string>
     <string name="settings_general_language">Idioma</string>

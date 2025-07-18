@@ -36,6 +36,8 @@
     <string name="settings_category_general">Opće</string>
     <string name="settings_advanced_prevent_sleep_desc">Spriječi isključivanje ekrana dok se aplikacija nalazi u prvom planu</string>
     <string name="settings_general_scientific_mode_desc">Standardno aktiviraj znanstveni način rada</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Deaktiviraj znanstveni način rada</string>
+    <string name="settings_general_scientific_mode_hide_desc">Sakrij znanstveni način rada</string>
     <string name="settings_general_radians_desc">Koristi radijane umjesto stupnjeva prema zadanim postavkama</string>
     <string name="about_other_version">Verzija</string>
     <string name="about_easter_egg">Hvala što koristite OpenCalc ❤️</string>

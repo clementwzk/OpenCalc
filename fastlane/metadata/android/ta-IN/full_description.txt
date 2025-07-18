@@ -1,1 +1,11 @@
-கணிப்பான்
+Android க்கான எளிய மற்றும் அழகான கணிப்பான்
+
+📖 Features
+	* Lightweight (APK ~2MB)
+	* No unnecessary permissions
+	* Dark, Light, Amoled and Material You theme
+	* Scientific mode
+	* History
+	* Portrait and landscape orientation
+	* Quick Settings Tile
+	* More...

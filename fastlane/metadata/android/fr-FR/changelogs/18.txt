@@ -1,7 +1,7 @@
-Nouveautés :
+Nouveautés :
 - Clique long pour copier une valeur
 - Traduction en indonésien
 
-Corrections :
+Corrections :
 - Défilement en format paysage
 - Problème de focus

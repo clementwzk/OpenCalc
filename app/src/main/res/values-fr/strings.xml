@@ -24,6 +24,8 @@
     <string name="settings_advanced_prevent_sleep">Empêcher le téléphone de se mettre en veille</string>
     <string name="settings_category_advanced">AVANCÉ</string>
     <string name="settings_general_scientific_mode_desc">Activer le mode scientifique par défaut</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Désactiver le mode scientifique</string>
+    <string name="settings_general_scientific_mode_hide_desc">Masquer le mode scientifique</string>
     <string name="settings_general_scientific_mode">Mode scientifique</string>
     <string name="settings_general_radians">Radians</string>
     <string name="settings_general_radians_desc">Utiliser les radians à la place des degrés par défaut</string>
@@ -55,23 +57,23 @@
     <string name="copied_history_result">Historique des résultats copié</string>
     <string name="settings_delete_history_element_on_swipe_desc">Supprimer un élément spécifique de l\'historique au balayage</string>
     <string name="settings_delete_history_element_on_swipe">Autoriser la suppression sélective de l\'historique</string>
-    <string name="eDesc">expodentiel</string>
+    <string name="eDesc">exponentielle</string>
     <string name="invertDesc">inverse</string>
     <string name="factorialDesc">factoriel</string>
     <string name="parenthesesDesc">parenthèses</string>
-    <string name="clearDesc">effacer</string>
+    <string name="clearDesc">effacer le calcul</string>
     <string name="logarithmDesc">logarithme</string>
     <string name="naturalLogarithmDesc">logarithme Népérien</string>
     <string name="tangentDesc">tangente</string>
     <string name="cosineDesc">cosinus</string>
     <string name="sineDesc">sinus</string>
-    <string name="degreeDesc">degrée</string>
+    <string name="degreeDesc">degré</string>
     <string name="scientificModeSwitchDesc">passage au mode scientifique</string>
     <string name="exponentDesc">exposant</string>
     <string name="piDesc">pi</string>
     <string name="squareDesc">rond</string>
     <string name="percentDesc">pourcent</string>
-    <string name="backspaceDesc">effacer</string>
+    <string name="backspaceDesc">supprimer le dernier caractère</string>
     <string name="pointDesc">point</string>
     <string name="settings_auto_save_calculation_without_equal_button_desc">Sauvegarder automatiquement les calculs dans l\'historique sans devoir cliquer sur le bouton égal</string>
     <string name="settings_auto_save_calculation_without_equal_button">Sauvegarder automatiquement les calculs</string>
@@ -79,4 +81,5 @@
     <string name="log2Desc">Logarithme base 2</string>
     <string name="about_dialog_donation_title">Nous soutenir</string>
     <string name="about_dialog_donation_close">Fermer</string>
+    <string name="no_history_available">Pas d\'historique disponible</string>
 </resources>

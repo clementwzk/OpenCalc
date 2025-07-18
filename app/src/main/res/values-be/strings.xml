@@ -31,6 +31,8 @@
     <string name="settings_general_theme">Тэма</string>
     <string name="menu_clear_history">Ачысціць гісторыю</string>
     <string name="settings_general_scientific_mode_desc">Выкарыстоўваць інжынерны рэжым па змаўчанні</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Дэактываваць навуковы рэжым</string>
+    <string name="settings_general_scientific_mode_hide_desc">Схаваць навуковы рэжым</string>
     <string name="settings_advanced_prevent_sleep_desc">Не дазваляйце тэлефону пераходзіць у рэжым сну, калі праграма працуе на пярэднім плане</string>
     <string name="settings_general_scientific_mode">Інжынерны рэжым</string>
     <string name="settings_general_vibration_desc">Выдаваць вібрацыю пры націску кнопкі</string>

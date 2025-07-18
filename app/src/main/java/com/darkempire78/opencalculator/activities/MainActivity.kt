@@ -24,6 +24,7 @@ import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,6 +48,8 @@ import com.darkempire78.opencalculator.databinding.ActivityMainBinding
 import com.darkempire78.opencalculator.dialogs.DonationDialog
 import com.darkempire78.opencalculator.history.History
 import com.darkempire78.opencalculator.history.HistoryAdapter
+import com.darkempire78.opencalculator.util.ScientificMode
+import com.darkempire78.opencalculator.util.ScientificModeTypes
 import com.sothree.slidinguppanel.PanelSlideListener
 import com.sothree.slidinguppanel.PanelState
 import kotlinx.coroutines.Dispatchers
@@ -71,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         DecimalFormatSymbols.getInstance().groupingSeparator.toString()
 
     private var numberingSystem = NumberingSystem.INTERNATIONAL
+    private var scientificModeType = ScientificModeTypes.NOT_ACTIVE
 
     private var isInvButtonClicked = false
     private var isEqualLastAction = false
@@ -92,12 +96,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Enable the possibility to show the activity on the lock screen
+        //keeping screen on
         window.addFlags(
-            WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
-                    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD or
-                    WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
-                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
+            WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
         )
 
         // Themes
@@ -213,13 +215,6 @@ class MainActivity : AppCompatActivity() {
             view.keepScreenOn = true
         }
 
-        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
-            // scientific mode enabled by default in portrait mode (if option enabled)
-            if (MyPreferences(this).scientificMode) {
-                enableOrDisableScientistMode()
-            }
-        }
-
         // use radians instead of degrees by default (if option enabled)
         if (MyPreferences(this).useRadiansByDefault) {
             toggleDegreeMode()
@@ -320,6 +315,30 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun handleOnLockScreenAppStatus(canShow: Boolean) {
+        if (canShow) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                setShowWhenLocked(true)
+                setTurnScreenOn(true)
+            } else {
+                window.addFlags(
+                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                )
+            }
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                setShowWhenLocked(false)
+                setTurnScreenOn(false)
+            }else {
+                window.clearFlags(
+                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                )
+            }
+        }
     }
 
     // Displays a popup menu with options to insert double zeros ("00") or triple zeros ("000") into the specified EditText when the zero button is long-pressed.
@@ -1256,6 +1275,14 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            // scientific mode enabled by default in portrait mode (if option enabled)
+            val storedType = MyPreferences(this).scientificMode
+            scientificModeType = ScientificMode.getScientificModeType(storedType)
+            manageScientificMode(scientificModeType)
+        }
+
+
         val fromPrefs = MyPreferences(this).numberingSystem
         numberingSystem = fromPrefs.toNumberingSystem()
 
@@ -1332,6 +1359,11 @@ class MainActivity : AppCompatActivity() {
 
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
+
+        // Enable the possibility to show the activity on the lock screen
+        val canShowOnLockScreen = MyPreferences(this).showOnLockScreen
+        handleOnLockScreenAppStatus(canShowOnLockScreen)
+
     }
 
     fun checkEmptyHistoryForNoHistoryLabel() {
@@ -1342,5 +1374,39 @@ class MainActivity : AppCompatActivity() {
             binding.noHistoryText.visibility = View.GONE
             binding.historyRecylcleView.visibility = View.VISIBLE
         }
+    }
+
+    private fun manageScientificMode(scientificModeTypes: ScientificModeTypes) {
+        when (scientificModeTypes) {
+            ScientificModeTypes.OFF -> hideScientificMode()
+            ScientificModeTypes.ACTIVE -> enableOrDisableScientistMode(true)
+            ScientificModeTypes.NOT_ACTIVE -> enableOrDisableScientistMode(false)
+        }
+    }
+
+
+    private fun enableOrDisableScientistMode(isEnabled: Boolean) {
+        val imageId = if (isEnabled) R.drawable.ic_baseline_keyboard_arrow_up_24 else R.drawable.ic_baseline_keyboard_arrow_down_24
+        binding.scientistModeRow1?.isVisible = true
+        binding.scientistModeRow2.isVisible = isEnabled
+        binding.scientistModeRow3.isVisible = isEnabled
+        binding.degreeTextView.visibility = View.VISIBLE
+        binding.scientistModeSwitchButton?.setImageResource(imageId)
+
+        if (isDegreeModeActivated) {
+            binding.degreeButton.text = getString(R.string.radian)
+            binding.degreeTextView.text = getString(R.string.degree)
+        } else {
+            binding.degreeButton.text = getString(R.string.degree)
+            binding.degreeTextView.text = getString(R.string.radian)
+        }
+
+    }
+
+    private fun hideScientificMode() {
+        binding.scientistModeRow1?.visibility = View.GONE
+        binding.scientistModeRow2.visibility = View.GONE
+        binding.scientistModeRow3.visibility = View.GONE
+        binding.degreeTextView.visibility = View.GONE
     }
 }

@@ -81,4 +81,5 @@
     <string name="menu_donate">Поддержите нас</string>
     <string name="about_dialog_donation_close">Закрыть</string>
     <string name="log2Desc">логарифм по основанию 2</string>
+    <string name="no_history_available">История отсутствует</string>
 </resources>

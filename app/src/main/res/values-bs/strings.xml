@@ -36,6 +36,8 @@
     <string name="settings_general_vibration">Vibracije</string>
     <string name="settings_general_radians_desc">Podrazumevano koristi radijane umjesto stupnjeva</string>
     <string name="settings_general_scientific_mode_desc">Podrazumevano aktiviraj napredni režim</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Deaktiviraj znanstveni način</string>
+    <string name="settings_general_scientific_mode_hide_desc">Skrij znanstveni način</string>
     <string name="settings_formatting_precision">Broj decimalnih mjesta</string>
     <string name="settings_general_language">Jezik</string>
     <string name="about_other_privacy_policy">Politika privatnosti</string>

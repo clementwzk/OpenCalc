@@ -17,6 +17,7 @@ import com.darkempire78.opencalculator.MyPreferences
 import com.darkempire78.opencalculator.R
 import com.darkempire78.opencalculator.Themes
 import com.darkempire78.opencalculator.calculator.parser.NumberingSystem
+import com.darkempire78.opencalculator.util.ScientificMode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.Locale
 
@@ -98,6 +99,21 @@ class SettingsActivity : AppCompatActivity() {
                 openDialogNumberingSystemSelector(this.requireContext())
                 true
             }
+
+
+            // Numbering System button  settings_select_scientificMode_system
+            val scientificModeTypesSystemPreference =
+                findPreference<Preference>("darkempire78.opencalculator.SCIENTIFIC_MODE_ENABLED_BY_DEFAULT")
+
+            val storedType = MyPreferences(requireContext()).scientificMode
+           val scientificModeType = ScientificMode.getScientificModeType(storedType)
+            val typeDescription=ScientificMode.getScientificModeTypeDescription(requireContext(),scientificModeType)
+            scientificModeTypesSystemPreference?.summary = typeDescription
+            scientificModeTypesSystemPreference?.setOnPreferenceClickListener {
+                openDialogScientificModeSelector(this.requireContext())
+                true
+            }
+
         }
 
         private fun openDialogNumberingSystemSelector(context: Context) {
@@ -156,6 +172,45 @@ class SettingsActivity : AppCompatActivity() {
                     println(e)
                 }
             }
+        }
+        private fun openDialogScientificModeSelector(context: Context) {
+
+            val preferences = MyPreferences(context)
+
+            val builder = MaterialAlertDialogBuilder(context)
+            builder.background = ContextCompat.getDrawable(context, R.drawable.rounded)
+
+            val scientificMode = hashMapOf(
+                0 to context.getString(R.string.settings_general_scientific_mode_deactivate_desc),
+                1 to context.getString(R.string.settings_general_scientific_mode_desc),
+                2 to context.getString(R.string.settings_general_scientific_mode_hide_desc)
+            )
+
+            val checkedItem = preferences.scientificMode
+
+            builder.setSingleChoiceItems(
+                scientificMode.values.toTypedArray(),
+                checkedItem
+            ) { dialog, which ->
+                when (which) {
+                    0 -> {
+                        preferences.scientificMode = 0
+                    }
+
+                    1 -> {
+                        preferences.scientificMode = 1
+                    }
+
+                    2-> {
+                        preferences.scientificMode = 2
+                    }
+
+                }
+                dialog.dismiss()
+                reloadActivity(requireContext())
+            }
+            val dialog = builder.create()
+            dialog.show()
         }
     }
 }

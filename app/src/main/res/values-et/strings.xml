@@ -25,6 +25,8 @@
     <string name="settings_general_radians_desc">Vaikimisi kasuta kraadide asemel radiaane</string>
     <string name="settings_general_scientific_mode">Teadusarvutus</string>
     <string name="settings_general_scientific_mode_desc">Vaikimisi lülita sisse teadusarvutuse vaade</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Teadusrežiimi deaktiveerimine</string>
+    <string name="settings_general_scientific_mode_hide_desc">Peida teadusrežiim</string>
     <string name="settings_general_split_parenthesis_button_desc">Eemalda „AC“ nupp ja jaga ümarsulgude nupp kaheks nupuks</string>
     <string name="settings_general_add_modulo">Lisa mooduli nupp</string>
     <string name="settings_formatting_precision">Komakohtade arv</string>
@@ -52,7 +54,7 @@
     <string name="about_help_translate">Tõlgi</string>
     <string name="about_help_rate">Hinda seda rakendust</string>
     <string name="about_other_license">GPL 3.0 litsents</string>
-    <string name="about_other_privacy_policy">Privaatsuspoliitika</string>
+    <string name="about_other_privacy_policy">Andmekaitsepõhimõtted</string>
     <string name="about_other_version">Versioon</string>
     <string name="about_easter_egg">Täname, et kasutad rakendust OpenCalc ❤️</string>
     <string name="about_made_in_france">Tehtud Prantsusmaal suure ❤️ga</string>

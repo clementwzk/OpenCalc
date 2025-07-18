@@ -35,6 +35,8 @@
     <string name="value_too_large">मान बहुत बड़ा है</string>
     <string name="settings_general_vibration">कंपन</string>
     <string name="settings_general_scientific_mode_desc">तयशुदा रूप से वैज्ञानिक मोड सक्रिय करें</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">वैज्ञानिक मोड निष्क्रिय करें</string>
+    <string name="settings_general_scientific_mode_hide_desc">वैज्ञानिक मोड छिपाएँ</string>
     <string name="settings_general_split_parenthesis_button">कोष्ठक बटन को दो बटनों में विभाजित करें</string>
     <string name="settings_formatting_scientific_notation">वैज्ञानिक संकेतन में संख्या</string>
     <string name="settings_formatting_scientific_notation_desc">सभी परिणामों को वैज्ञानिक संकेतन में परिवर्तित करें</string>

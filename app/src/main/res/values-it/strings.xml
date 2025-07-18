@@ -36,7 +36,7 @@
     <string name="settings_history_size">Numero di risultati salvati nella cronologia</string>
     <string name="settings_general_scientific_mode_desc">Attiva la modalità scientifica per impostazione predefinita</string>
     <string name="settings_advanced_prevent_sleep">Evita che lo schermo si spenga</string>
-    <string name="settings_category_history">STORIA</string>
+    <string name="settings_category_history">CRONOLOGIA</string>
     <string name="settings_advanced_prevent_sleep_desc">Evita che lo schermo si spenga mentre l\'app è in primo piano</string>
     <string name="settings_general_radians_desc">Usa i radianti invece dei gradi per impostazione predefinita</string>
     <string name="settings_general_split_parenthesis_button">Dividi il pulsante delle parentesi in due pulsanti</string>
@@ -79,4 +79,5 @@
     <string name="clearDesc">cancella</string>
     <string name="percentDesc">percentuale</string>
     <string name="settings_auto_save_calculation_without_equal_button">Salva automaticamente i calcoli</string>
+    <string name="no_history_available">Cronologia non disponibile</string>
 </resources>

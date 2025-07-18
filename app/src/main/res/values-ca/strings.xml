@@ -29,6 +29,8 @@
     <string name="settings_general_radians">Radians</string>
     <string name="settings_general_radians_desc">Usa radians en lloc de graus per defecte</string>
     <string name="settings_general_scientific_mode_desc">Activa el mode científic per defecte</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Desactiva el mode científic</string>
+    <string name="settings_general_scientific_mode_hide_desc">Amaga el mode científic</string>
     <string name="settings_formatting_scientific_notation">Número en notació científica</string>
     <string name="settings_formatting_scientific_notation_desc">Converteix tots els resultats en notació científica</string>
     <string name="settings_general_split_parenthesis_button">Divideix el botó dels parèntesis en dos botons</string>

@@ -22,6 +22,8 @@
     <string name="settings_general_language">Bahasa</string>
     <string name="settings_general_vibration">Vibrasi</string>
     <string name="settings_general_scientific_mode_desc">Secara bawaan, gunakan mode ilmiah</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Nonaktifkan mode ilmiah</string>
+    <string name="settings_general_scientific_mode_hide_desc">Sembunyikan mode ilmiah</string>
     <string name="settings_category_general">UMUM</string>
     <string name="settings_general_add_modulo">Tambahkan tombol modulo</string>
     <string name="settings_general_vibration_desc">Bergetar ketika tombol ditekan</string>

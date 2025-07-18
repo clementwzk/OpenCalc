@@ -20,6 +20,8 @@
     <string name="settings_advanced_prevent_sleep">Udržovat zařízení vzhůru</string>
     <string name="settings_category_advanced">POKROČILÉ</string>
     <string name="settings_general_scientific_mode_desc">Používat vědecký režim jako výchozí</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Deaktivovat vědecký režim</string>
+    <string name="settings_general_scientific_mode_hide_desc">Skrýt vědecký režim</string>
     <string name="settings_general_radians">Radiány</string>
     <string name="settings_general_radians_desc">Používat radiány místo stupňů</string>
     <string name="about_category_help">POMOZTE NÁM</string>
@@ -79,4 +81,5 @@
     <string name="about_dialog_donation_title">Podpořte nás</string>
     <string name="menu_donate">Podpořte nás</string>
     <string name="about_dialog_donation_close">Zavřít</string>
+    <string name="no_history_available">Historie není k dispozici</string>
 </resources>

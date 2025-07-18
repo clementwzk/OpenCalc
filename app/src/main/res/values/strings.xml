@@ -97,7 +97,9 @@
     <string name="settings_general_radians_desc">Use radians instead of degrees by default</string>
 
     <string name="settings_general_scientific_mode">Scientific mode</string>
-    <string name="settings_general_scientific_mode_desc">Activate scientific mode by default</string>
+    <string name="settings_general_scientific_mode_desc">Activate scientific mode</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">DeActivate scientific mode</string>
+    <string name="settings_general_scientific_mode_hide_desc">Hide scientific mode</string>
 
     <string name="settings_general_split_parenthesis_button">Split the parentheses button into two buttons</string>
     <string name="settings_general_split_parenthesis_button_desc">Remove the \"AC\" button to split the parentheses button into two buttons</string>
@@ -174,4 +176,6 @@
     <string name="menu_donate">Support us</string>
     <string name="about_dialog_donation_close">Close</string>
     <string name="no_history_available">No History Available</string>
+    <string name="show_on_lock_screen">Show on Lock Screen</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Keep the calculator visible on your lock screen for quick and easy access. Disable to hide it when your screen is locked.</string>
 </resources>
