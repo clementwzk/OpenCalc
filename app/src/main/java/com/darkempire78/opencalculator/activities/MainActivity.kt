@@ -14,6 +14,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
@@ -122,6 +123,44 @@ class MainActivity : AppCompatActivity() {
             isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption = false
             true
         }
+//   keyVibration on press
+        applyVibrationToKey(binding.squareButton)
+        applyVibrationToKey(binding.piButton)
+        applyVibrationToKey(binding.exponentButton)
+        applyVibrationToKey(binding.factorialButton)
+        applyVibrationToKey(binding.degreeButton)
+        applyVibrationToKey(binding.sineButton)
+        applyVibrationToKey(binding.cosineButton)
+        applyVibrationToKey(binding.tangentButton)
+        applyVibrationToKey(binding.invButton)
+        applyVibrationToKey(binding.eButton)
+        applyVibrationToKey(binding.naturalLogarithmButton)
+        applyVibrationToKey(binding.logarithmButton)
+        applyVibrationToKey(binding.clearButton)
+        applyVibrationToKey(binding.leftParenthesisButton)
+        applyVibrationToKey(binding.rightParenthesisButton)
+        applyVibrationToKey(binding.parenthesesButton)
+        applyVibrationToKey(binding.divideBy100Button)
+        applyVibrationToKey(binding.divideButton)
+        applyVibrationToKey(binding.sevenButton)
+        applyVibrationToKey(binding.eightButton)
+        applyVibrationToKey(binding.nineButton)
+        applyVibrationToKey(binding.multiplyButton)
+        applyVibrationToKey(binding.fourButton)
+        applyVibrationToKey(binding.fiveButton)
+        applyVibrationToKey(binding.sixButton)
+        applyVibrationToKey(binding.subtractButton)
+        applyVibrationToKey(binding.oneButton)
+        applyVibrationToKey(binding.twoButton)
+        applyVibrationToKey(binding.threeButton)
+        applyVibrationToKey(binding.addButton)
+        applyVibrationToKey(binding.zeroButton)
+        applyVibrationToKey(binding.pointButton)
+        applyVibrationToKey(binding.backspaceButton)
+        applyVibrationToKey(binding.equalsButton)
+
+
+
 
         // Long click to view popup options for double and triple zeroes
         binding.zeroButton.setOnLongClickListener {
@@ -1327,4 +1366,20 @@ class MainActivity : AppCompatActivity() {
             binding.historyRecylcleView.visibility = View.VISIBLE
         }
     }
+
+
+//    the issues is in the completion of the onclick event { touches , stays, lifting up  } after that feedback is provied
+//    so , what i did is setting on touchListener there making an touch event { only touch event is completed } , so feedback is provied on feedback
+
+    private fun applyVibrationToKey(view : View) {
+        view.setOnTouchListener { view , event ->
+            if (event.action == MotionEvent.ACTION_DOWN){
+                keyVibration(view)
+                return@setOnTouchListener false
+            }
+            return@setOnTouchListener false
+        }
+
+    }
+
 }
