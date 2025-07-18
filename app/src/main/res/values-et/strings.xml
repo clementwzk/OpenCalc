@@ -25,6 +25,8 @@
     <string name="settings_general_radians_desc">Vaikimisi kasuta kraadide asemel radiaane</string>
     <string name="settings_general_scientific_mode">Teadusarvutus</string>
     <string name="settings_general_scientific_mode_desc">Vaikimisi lülita sisse teadusarvutuse vaade</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Teadusrežiimi deaktiveerimine</string>
+    <string name="settings_general_scientific_mode_hide_desc">Peida teadusrežiim</string>
     <string name="settings_general_split_parenthesis_button_desc">Eemalda „AC“ nupp ja jaga ümarsulgude nupp kaheks nupuks</string>
     <string name="settings_general_add_modulo">Lisa mooduli nupp</string>
     <string name="settings_formatting_precision">Komakohtade arv</string>

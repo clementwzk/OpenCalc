@@ -24,6 +24,8 @@
     <string name="syntax_error">Szintaxishiba</string>
     <string name="theme_system">Rendszer</string>
     <string name="settings_general_scientific_mode_desc">Tudományos mód használata alapértelmezés szerint</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Tudományos mód kikapcsolása</string>
+    <string name="settings_general_scientific_mode_hide_desc">Tudományos mód elrejtése</string>
     <string name="about_easter_egg">Köszönjük, hogy az OpenCalc-ot használja ❤️</string>
     <string name="menu_about">Névjegy</string>
     <string name="infinity">Végtelen</string>

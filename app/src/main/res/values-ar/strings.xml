@@ -23,6 +23,8 @@
     <string name="settings_general_radians_desc">استخدام الراديان بدلا من الدرجات</string>
     <string name="settings_general_scientific_mode">الوضع العلمي</string>
     <string name="settings_general_scientific_mode_desc">تفعيل الوضع العلمي تلقائيا</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">إلغاء تنشيط الوضع العلمي</string>
+    <string name="settings_general_scientific_mode_hide_desc">إخفاء الوضع العلمي</string>
     <string name="settings_general_split_parenthesis_button">فصل زر الاقواس ليصبح زرين</string>
     <string name="settings_general_split_parenthesis_button_desc">ازالة زر المسح \"AC\" ليتم فصل زر الاقواس الى زرين</string>
     <string name="settings_history_size">النتائج المحفوظة في السجل</string>

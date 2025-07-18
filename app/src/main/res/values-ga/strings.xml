@@ -51,6 +51,8 @@
     <string name="settings_general_radians_desc">Bain úsáid as radians in ionad céimeanna de réir réamhshocraithe</string>
     <string name="settings_general_scientific_mode">Modh eolaíoch</string>
     <string name="settings_general_scientific_mode_desc">Gníomhachtaigh mód eolaíoch de réir réamhshocraithe</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Díghníomhachtaigh an mód eolaíoch</string>
+    <string name="settings_general_scientific_mode_hide_desc">Folaigh modh eolaíoch</string>
     <string name="settings_general_split_parenthesis_button">Roinn an cnaipe lúibíní ina dhá chnaipe</string>
     <string name="settings_general_split_parenthesis_button_desc">Bain an cnaipe \"AC\" chun an cnaipe lúibíní a roinnt ina dhá chnaipe</string>
     <string name="settings_general_add_modulo">Cuir cnaipe modulo leis</string>

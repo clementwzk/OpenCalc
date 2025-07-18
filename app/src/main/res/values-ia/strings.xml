@@ -21,6 +21,8 @@
     <string name="syntax_error">Error de syntaxe</string>
     <string name="theme_system">Systema</string>
     <string name="settings_general_scientific_mode_desc">Activar modo scientific per predefinition</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Desactivar el modo científico</string>
+    <string name="settings_general_scientific_mode_hide_desc">Ocultar modo científico</string>
     <string name="about_easter_egg">Gratias per usar OpenCalc ❤️</string>
     <string name="about_category_info">INFORMATION DEL APPLICATION</string>
     <string name="menu_about">A proposito de</string>

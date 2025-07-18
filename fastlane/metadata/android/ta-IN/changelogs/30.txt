@@ -5,4 +5,4 @@
  - உள்ளீட்டில் நகல் கணித சின்னங்களை அனுமதிக்க வேண்டாம்
 
  புதுப்பிக்கப்பட்டது:
- .
+ - arccos, arcsin and arctan are now displayed as cos⁻¹, sin⁻¹ and tan⁻¹

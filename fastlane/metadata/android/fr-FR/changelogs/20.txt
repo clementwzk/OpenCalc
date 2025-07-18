@@ -1,0 +1,4 @@
+Corrections :
+- Fermeture automatique des parenthèses
+- Multiplier les factorielles sans *
+- Ajout automatique de 0 lorsque le nombre commence par un séparateur décimal

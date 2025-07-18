@@ -1,0 +1,8 @@
+Nouveau :
+- Toast lors de la copie d'une valeur
+
+Corrections :
+- Le thème du système de suivi prend en charge Material You
+- Amélioration de la prise en charge des tablettes
+- Amélioration de la prise en charge des écrans de petite taille
+- Icône non affichée pour Android inférieur à 8

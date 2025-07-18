@@ -24,6 +24,8 @@
     <string name="settings_advanced_prevent_sleep">Bildschirm ausschalten verhindern</string>
     <string name="settings_category_advanced">ERWEITERT</string>
     <string name="settings_general_scientific_mode_desc">Wissenschaftlichen Modus standardmäßig aktivieren</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Wissenschaftlichen Modus deaktivieren</string>
+    <string name="settings_general_scientific_mode_hide_desc">Wissenschaftlichen Modus ausblenden</string>
     <string name="settings_general_scientific_mode">Wissenschaftlicher Modus</string>
     <string name="settings_general_radians">Radiant</string>
     <string name="settings_general_radians_desc">Radiant (RAD) statt Grad (DEG) standardmäßig verwenden</string>

@@ -1,0 +1,8 @@
+Nouveau :
+- Traduction en espagnol
+
+Corrections :
+- Le clavier ne répond plus lors de l'interaction avec de grands factoriels.
+- Chargement incorrect des valeurs de l'historique
+- Le chargement des résultats avec le point décimal depuis l'historique supprime les opérateurs ou fait planter l'application.
+- Précision

@@ -79,4 +79,5 @@
     <string name="menu_donate">எங்களுக்கு ஆதரவளிக்கவும்</string>
     <string name="about_dialog_donation_close">மூடு</string>
     <string name="pointDesc">புள்ளியம்</string>
+    <string name="no_history_available">வரலாறு எதுவும் கிடைக்கவில்லை</string>
 </resources>

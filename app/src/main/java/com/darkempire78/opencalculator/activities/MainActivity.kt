@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
 import android.view.MotionEvent
+
 import android.view.View
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
@@ -91,12 +92,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Enable the possibility to show the activity on the lock screen
+        //keeping screen on
         window.addFlags(
-            WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
-                    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD or
-                    WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
-                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
+            WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
         )
 
 
@@ -216,13 +215,6 @@ class MainActivity : AppCompatActivity() {
             view.keepScreenOn = true
         }
 
-        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
-            // scientific mode enabled by default in portrait mode (if option enabled)
-            if (MyPreferences(this).scientificMode) {
-                enableOrDisableScientistMode()
-            }
-        }
-
         // use radians instead of degrees by default (if option enabled)
         if (MyPreferences(this).useRadiansByDefault) {
             toggleDegreeMode()
@@ -323,6 +315,30 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun handleOnLockScreenAppStatus(canShow: Boolean) {
+        if (canShow) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                setShowWhenLocked(true)
+                setTurnScreenOn(true)
+            } else {
+                window.addFlags(
+                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                )
+            }
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                setShowWhenLocked(false)
+                setTurnScreenOn(false)
+            }else {
+                window.clearFlags(
+                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                )
+            }
+        }
     }
 
     private fun setOnBottontouchlistener() {
@@ -902,8 +918,8 @@ class MainActivity : AppCompatActivity() {
                     && (binding.input.text[endPosition].isDigit()
                             || binding.input.text[endPosition].toString() == decimalSeparatorSymbol
                             || binding.input.text[endPosition].toString() == groupingSeparatorSymbol)) {
-                    endPosition += 1
-                }
+                        endPosition += 1
+                    }
             }
             currentNumber = binding.input.text.substring(startPosition, endPosition)
         }
