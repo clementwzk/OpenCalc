@@ -11,14 +11,18 @@ import kotlin.math.floor
 fun decimalToFraction(calculation: String, precision: Double, textView: TextView) {
 
     val decimalPosition = calculation.indexOf('.')
-    val base = calculation.substring(0, decimalPosition)
-    var dec = calculation.substring(decimalPosition).toDouble()
+    var decimal = calculation.substring(decimalPosition).toDouble()
+    val whole = if (decimalPosition > 0) calculation.substring(0, decimalPosition).toInt() else 0
 
     var n1 = 1
     var n2 = 0
     var d1 = 0
     var d2 = 1
-    val dec2 = dec
+
+    var b = decimal
+    val base = floor(b).toInt()
+    var dec = decimal // - base.toDouble()
+    val dec2 = decimal
 
     do {
         val a = floor(dec).toInt()
@@ -31,14 +35,28 @@ fun decimalToFraction(calculation: String, precision: Double, textView: TextView
         dec = 1 / (dec - a)
     } while (abs(dec2 - n1.toDouble() / d1) > dec2 * precision)
 
-    if (base != "0") {
-        val tempString = "$base $n1/$d1"
-        val stringSpan = SpannableStringBuilder(tempString)
-        val spaceLoc = stringSpan.indexOf(' ')
-        val stringLen = stringSpan.length
-        stringSpan.setSpan(SuperscriptSpan(),spaceLoc, stringLen, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        stringSpan.setSpan(RelativeSizeSpan(0.6f),spaceLoc, stringLen, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        textView.text = stringSpan
+    if (whole != 0) {
+        if (n1 == 0) {
+            textView.text = whole.toString()
+        } else {
+            val tempString = "$whole $n1/$d1"
+            val stringSpan = SpannableStringBuilder(tempString)
+            val spaceLoc = stringSpan.indexOf(' ')
+            val stringLen = stringSpan.length
+            stringSpan.setSpan(
+                SuperscriptSpan(),
+                spaceLoc,
+                stringLen,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            stringSpan.setSpan(
+                RelativeSizeSpan(0.6f),
+                spaceLoc,
+                stringLen,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            textView.text = stringSpan
+        }
     } else {
         val tempString = "$n1/$d1"
         val stringSpan = SpannableStringBuilder(tempString)
