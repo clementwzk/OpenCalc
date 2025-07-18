@@ -93,6 +93,12 @@
             app:singleLineTitle="false"
             app:defaultValue="true"
             app:widgetLayout="@drawable/material_switch" />
+        <SwitchPreferenceCompat
+            app:key="darkempire78.opencalculator.MOVE_BACK_BUTTON_LEFT"
+            app:title="@string/settings_general_backspace"
+            app:icon="@drawable/backspace"
+            app:summary="@string/settings_general_backspace_desc"
+            app:widgetLayout="@drawable/material_switch"/>
 
 
         <!-- <ListPreference

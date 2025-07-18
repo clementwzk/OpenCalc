@@ -561,6 +561,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/delRow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="3">
@@ -578,19 +579,19 @@
                     <ImageButton
                         android:id="@+id/pointButton"
                         style="@style/CalculatorButton"
-                        android:contentDescription="@string/pointDesc"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:contentDescription="@string/pointDesc"
                         android:onClick="pointButton" />
 
                     <ImageButton
                         android:id="@+id/backspaceButton"
                         style="@style/CalculatorButton"
-                        android:contentDescription="@string/backspaceDesc"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:contentDescription="@string/backspaceDesc"
                         android:onClick="backspaceButton"
                         android:paddingEnd="5dp"
                         app:srcCompat="@drawable/backspace" />
