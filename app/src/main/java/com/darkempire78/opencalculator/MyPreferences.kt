@@ -28,6 +28,8 @@ class MyPreferences(context: Context) {
         private const val KEY_SPLIT_PARENTHESIS_BUTTON = "darkempire78.opencalculator.SPLIT_PARENTHESIS_BUTTON"
         private const val KEY_DELETE_HISTORY_ON_SWIPE = "darkempire78.opencalculator.DELETE_HISTORY_ELEMENT_ON_SWIPE"
         private const val KEY_AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON = "darkempire78.opencalculator.AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON"
+        private const val KEY_SHOW_FRACTION = "darkempire78.opencalculator.SHOW_FRACTION"
+        private const val KEY_FRACTION_PRECISION = "darkempire78.opencalculator.FRACTION_PRECISION"
         private const val KEY_NUMBERING_SYSTEM = "darkempire78.opencalculator.NUMBERING_SYSTEM"
         private const val KEY_SHOW_ON_LOCK_SCREEN = "darkempire78.opencalculator.KEY_SHOW_ON_LOCK_SCREEN"
     }
@@ -68,6 +70,10 @@ class MyPreferences(context: Context) {
     var autoSaveCalculationWithoutEqualButton = preferences.getBoolean(KEY_AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON, true)
         set(value) = preferences.edit().putBoolean(KEY_AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON, value).apply()
 
+    var showResultFraction = preferences.getBoolean(KEY_SHOW_FRACTION, false)
+        set(value) = preferences.edit().putBoolean(KEY_SHOW_FRACTION, value).apply()
+    var fractionPrecision = preferences.getString(KEY_FRACTION_PRECISION, "4")
+        set(value) = preferences.edit().putString(KEY_FRACTION_PRECISION, value).apply()
     var numberingSystem = preferences.getInt(KEY_NUMBERING_SYSTEM, 0)
         set(value) = preferences.edit().putInt(KEY_NUMBERING_SYSTEM, value).apply()
 
