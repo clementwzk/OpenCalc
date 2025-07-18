@@ -19,8 +19,6 @@ fun decimalToFraction(calculation: String, precision: Double, textView: TextView
     var d1 = 0
     var d2 = 1
 
-    var b = decimal
-    val base = floor(b).toInt()
     var dec = decimal // - base.toDouble()
     val dec2 = decimal
 
