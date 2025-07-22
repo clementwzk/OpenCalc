@@ -169,6 +169,8 @@
     <string name="settings_auto_save_calculation_without_equal_button_desc">Automatically save calculations in history without needing to click the equal button</string>
     <string name="menu_donate">Support us</string>
     <string name="about_dialog_donation_close">Close</string>
+    <string name="settings_general_backspace">Move Backspace to Left</string>
+    <string name="settings_general_backspace_desc">Move the backspace button to far left in portrait mode. Zero and decimal slide to right.</string>
     <string name="no_history_available">No History Available</string>
     <string name="show_on_lock_screen">Show on Lock Screen</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Keep the calculator visible on your lock screen for quick and easy access. Disable to hide it when your screen is locked.</string>
