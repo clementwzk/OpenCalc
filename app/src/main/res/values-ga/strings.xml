@@ -50,7 +50,7 @@
     <string name="settings_general_radians">Radaigh</string>
     <string name="settings_general_radians_desc">Bain úsáid as radians in ionad céimeanna de réir réamhshocraithe</string>
     <string name="settings_general_scientific_mode">Modh eolaíoch</string>
-    <string name="settings_general_scientific_mode_desc">Gníomhachtaigh mód eolaíoch de réir réamhshocraithe</string>
+    <string name="settings_general_scientific_mode_desc">Gníomhachtaigh mód eolaíoch</string>
     <string name="settings_general_scientific_mode_deactivate_desc">Díghníomhachtaigh an mód eolaíoch</string>
     <string name="settings_general_scientific_mode_hide_desc">Folaigh modh eolaíoch</string>
     <string name="settings_general_split_parenthesis_button">Roinn an cnaipe lúibíní ina dhá chnaipe</string>
@@ -82,4 +82,6 @@
     <string name="menu_donate">Tacaigh linn</string>
     <string name="about_dialog_donation_close">Dún</string>
     <string name="no_history_available">Gan Stair ar Fáil</string>
+    <string name="show_on_lock_screen">Taispeáin ar an Scáileán Glasála</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Coinnigh an t-áireamhán le feiceáil ar do scáileán glasála le haghaidh rochtain thapa agus éasca. Díchumasaigh chun é a cheilt nuair a bhíonn do scáileán faoi ghlas.</string>
 </resources>
