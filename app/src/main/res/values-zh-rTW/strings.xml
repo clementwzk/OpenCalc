@@ -13,7 +13,7 @@
     <!-- Others -->
     <string name="value_copied">已複製</string>
     <string name="infinity">無限</string>
-    <string name="division_by_0">無法除以 0</string>
+    <string name="division_by_0">不能除以0</string>
     <string name="domain_error">定義錯誤</string>
     <string name="syntax_error">語法錯誤</string>
     <string name="menu_settings">設定</string>
@@ -28,7 +28,7 @@
     <string name="settings_general_vibration">震動</string>
     <string name="settings_advanced_prevent_sleep">保持裝置喚醒</string>
     <string name="settings_category_advanced">進階</string>
-    <string name="settings_general_scientific_mode_desc">預設啟用科學模式</string>
+    <string name="settings_general_scientific_mode_desc">啟用科學計算模式</string>
     <string name="settings_general_scientific_mode">科學模式</string>
     <string name="settings_general_radians">弧度</string>
     <string name="settings_general_radians_desc">預設使用弧度代替度數</string>
@@ -83,4 +83,10 @@
     <string name="about_dialog_donation_close">關閉</string>
     <string name="log2Desc">以2為底的對數</string>
     <string name="menu_donate">支持我們</string>
+    <string name="pointDesc">點</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">停用科學計算模式</string>
+    <string name="settings_general_scientific_mode_hide_desc">隱藏科學計算模式</string>
+    <string name="no_history_available">無歷史紀錄</string>
+    <string name="show_on_lock_screen">在鎖定畫面上顯示</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">讓計算機顯示在鎖定螢幕上，以便快速輕鬆存取。停用後，螢幕鎖定時會隱藏計算器。</string>
 </resources>

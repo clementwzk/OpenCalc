@@ -79,4 +79,5 @@
     <string name="backspaceDesc">מחק</string>
     <string name="pointDesc">נקודה</string>
     <string name="menu_donate">תמכו בנו</string>
+    <string name="no_history_available">היסטוריה לא זמינה</string>
 </resources>

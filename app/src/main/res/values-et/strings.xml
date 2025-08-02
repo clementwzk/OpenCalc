@@ -24,7 +24,7 @@
     <string name="settings_general_radians">Radiaanid</string>
     <string name="settings_general_radians_desc">Vaikimisi kasuta kraadide asemel radiaane</string>
     <string name="settings_general_scientific_mode">Teadusarvutus</string>
-    <string name="settings_general_scientific_mode_desc">Vaikimisi lülita sisse teadusarvutuse vaade</string>
+    <string name="settings_general_scientific_mode_desc">Lülita sisse teadusarvutuse vaade</string>
     <string name="settings_general_scientific_mode_deactivate_desc">Teadusrežiimi deaktiveerimine</string>
     <string name="settings_general_scientific_mode_hide_desc">Peida teadusrežiim</string>
     <string name="settings_general_split_parenthesis_button_desc">Eemalda „AC“ nupp ja jaga ümarsulgude nupp kaheks nupuks</string>
@@ -82,4 +82,6 @@
     <string name="menu_donate">Toeta meid</string>
     <string name="about_dialog_donation_title">Toeta meid</string>
     <string name="no_history_available">Ajalugu pole saadaval</string>
+    <string name="show_on_lock_screen">Näita lukustusvaates</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Lihtsama ja kiirema ligipääsu nimel jäta kalkulaator oma lukustusvaates nähtavaks. Peitmiseks lülita see eelistus välja.</string>
 </resources>

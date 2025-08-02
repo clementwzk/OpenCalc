@@ -3,7 +3,7 @@
     <string name="division_by_0">不能除以0</string>
     <string name="domain_error">域错误</string>
     <string name="settings_category_advanced">高级</string>
-    <string name="settings_general_scientific_mode_desc">默认启动科学计算器</string>
+    <string name="settings_general_scientific_mode_desc">激活科学计算模式</string>
     <string name="settings_general_scientific_mode">科学计算器模式</string>
     <string name="about_category_help">帮助我们</string>
     <string name="about_help_donate">赞助</string>
@@ -80,4 +80,8 @@
     <string name="about_dialog_donation_title">支持我们</string>
     <string name="about_dialog_donation_close">关闭</string>
     <string name="no_history_available">没有历史记录</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">停用科学计算模式</string>
+    <string name="settings_general_scientific_mode_hide_desc">隐藏科学计算模式</string>
+    <string name="show_on_lock_screen">在锁屏上显示</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">在锁屏上保持计算器可见以快捷访问。停用会在屏幕锁定时隐藏计算器。</string>
 </resources>
