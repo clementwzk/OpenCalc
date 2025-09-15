@@ -5,14 +5,22 @@ import android.text.SpannableStringBuilder
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
 import android.widget.TextView
+import com.darkempire78.opencalculator.calculator.parser.NumberFormatter
 import kotlin.math.abs
 import kotlin.math.floor
 
 fun decimalToFraction(calculation: String, precision: Double, textView: TextView) {
 
     val decimalPosition = calculation.indexOf('.')
-    var decimal = calculation.substring(decimalPosition).toDouble()
-    val whole = if (decimalPosition > 0) calculation.substring(0, decimalPosition).toInt() else 0
+    val decimal = calculation.substring(decimalPosition).toDouble()
+    val whole = if (decimalPosition > 0) {
+        NumberFormatter.format(
+            calculation.substring(0, decimalPosition),
+            ".",
+            ","
+        )
+
+    } else ""
 
     var n1 = 1
     var n2 = 0
@@ -33,7 +41,7 @@ fun decimalToFraction(calculation: String, precision: Double, textView: TextView
         dec = 1 / (dec - a)
     } while (abs(dec2 - n1.toDouble() / d1) > dec2 * precision)
 
-    if (whole != 0) {
+    if (whole != "") {
         if (n1 == 0) {
             textView.text = whole.toString()
         } else {

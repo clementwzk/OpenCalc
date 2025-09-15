@@ -72,7 +72,7 @@ class MyPreferences(context: Context) {
 
     var showResultFraction = preferences.getBoolean(KEY_SHOW_FRACTION, false)
         set(value) = preferences.edit().putBoolean(KEY_SHOW_FRACTION, value).apply()
-    var fractionPrecision = preferences.getString(KEY_FRACTION_PRECISION, "4")
+    var fractionPrecision = preferences.getString(KEY_FRACTION_PRECISION, "1.0E-4")
         set(value) = preferences.edit().putString(KEY_FRACTION_PRECISION, value).apply()
     var numberingSystem = preferences.getInt(KEY_NUMBERING_SYSTEM, 0)
         set(value) = preferences.edit().putInt(KEY_NUMBERING_SYSTEM, value).apply()

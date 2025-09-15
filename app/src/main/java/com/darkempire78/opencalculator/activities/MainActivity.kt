@@ -1045,7 +1045,7 @@ class MainActivity : AppCompatActivity() {
                         if (showFraction && '.' in formattedResult) {
                             val tView = findViewById<TextView>(R.id.resultDisplay)
                             val precision = getFractionPrecision().toDouble()
-                            decimalToFraction(formattedResult, precision, tView)
+                            decimalToFraction(resultString, precision, tView)
                         }
                     }
 
@@ -1304,11 +1304,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Show result fractions if enabled
-        if (MyPreferences(this).showResultFraction) {
-            showFraction = true
-        } else {
-            showFraction = false
-        }
+        showFraction = MyPreferences(this).showResultFraction
 
 
         // Split the parentheses button (if option is enabled)
