@@ -1,0 +1,6 @@
+O'zgarishlar:
+- Ekran hozir qorong'i
+
+Tuzatishlar:
+- klaviatura muammosi
+- klaviatura hali ham aylanyapti

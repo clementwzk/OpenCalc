@@ -1,0 +1,8 @@
+Yangi:
+- Qiymatni nusxalashda tushdi
+
+Tuzatishlar:
+- Follow tizimi mavzusi Material You-ni qo'llab-quvvatlaydi\
+- Planshet uchun qo'llab-quvvatlashni yaxshilash
+- Kichik ekran o'lchamini qo'llab-quvvatlashni yaxshilang
+- 8 dan pastroq Android uchun belgi ko'rsatilmaydi

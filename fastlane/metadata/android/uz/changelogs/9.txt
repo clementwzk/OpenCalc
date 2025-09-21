@@ -1,0 +1,7 @@
+O'zgarishlar:
+- Sahifa haqida yangi
+- Amoled mavzu uchun ajratuvchi qo'shing
+
+Tuzatishlar:
+- Tasdiqlash qutisi rangi
+- Ilova nomi (EN va FR tillariga tarjima qilingan)

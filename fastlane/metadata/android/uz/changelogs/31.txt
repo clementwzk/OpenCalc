@@ -1,0 +1,9 @@
+Yangilangan:
+- Xatoda matn rangini o'zgartiring
+- Chiqarish hajmini kamaytiring
+- Agar natija hisob-kitobga teng bo'lsa, tarixda saqlamang
+- Agar hisob oxirgi bilan bir xil bo'lsa, tarixda saqlamang
+
+Tuzatishlar:
+- Factoriel 0 1 ni qaytaradi
+- Teng bosilgandan keyin matematik belgini qo'shing

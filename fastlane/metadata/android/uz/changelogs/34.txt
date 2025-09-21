@@ -1,0 +1,7 @@
+Yangilangan:
+- "Cheksizlik" o'rniga "qiymat juda katta" ni ko'rsatish
+
+Tuzatishlar:
+- Manfiy sonlarga bo'lish
+- Faktorial funksiya bilan bog'liq muammo
+- sin(x!) & cos(x!) noto'g'ri natijalar beradi

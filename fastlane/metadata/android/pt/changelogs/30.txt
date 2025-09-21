@@ -1,0 +1,8 @@
+Novo:
+- Erros de licença
+- Redesenho da história
+- Adicione timestamps aos resultados do histórico
+- Não. Não permitir símbolos matemáticos duplicados na entrada
+
+Atualizado:
+- os arcos, arcsina e arctan são agora exibidos como cos−1, sin−1 e tan−1

@@ -1,0 +1,5 @@
+Tuzatishlar:
+- tan() to'g'ri ishlamayapti
+- Ming ajratgichni o'chirish kursorning sakrashiga olib keladi
+- Qavslarni mavjud hisob-kitoblar ichiga joylashtirish
+- 10 dyuymdan ortiq planshetlar uchun landshaft rejimida grafik muammosi

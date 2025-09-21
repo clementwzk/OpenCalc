@@ -4,7 +4,7 @@
     <string name="infinity">Tak terhingga</string>
     <!-- App Menu -->
     <string name="settings_general_theme">Tema</string>
-    <string name="menu_clear_history">Hapus Riwayat</string>
+    <string name="menu_clear_history">Hapus riwayat</string>
     <string name="menu_about">Tentang</string>
     <!-- Theme choices -->
     <string name="theme_system">Sistem</string>
@@ -21,7 +21,7 @@
     <string name="menu_settings">Pengaturan</string>
     <string name="settings_general_language">Bahasa</string>
     <string name="settings_general_vibration">Vibrasi</string>
-    <string name="settings_general_scientific_mode_desc">Secara bawaan, gunakan mode ilmiah</string>
+    <string name="settings_general_scientific_mode_desc">Aktifkan mode ilmiah</string>
     <string name="settings_general_scientific_mode_deactivate_desc">Nonaktifkan mode ilmiah</string>
     <string name="settings_general_scientific_mode_hide_desc">Sembunyikan mode ilmiah</string>
     <string name="settings_category_general">UMUM</string>
@@ -81,4 +81,10 @@
     <string name="pointDesc">titik</string>
     <string name="backspaceDesc">spasi mundur</string>
     <string name="log2Desc">basis 2 logaritma</string>
+    <string name="about_dialog_donation_title">Dukung Kami</string>
+    <string name="menu_donate">Dukung kami</string>
+    <string name="about_dialog_donation_close">Tutup</string>
+    <string name="no_history_available">Riwayat Tidak Tersedia</string>
+    <string name="show_on_lock_screen">Tampilkan pada Layar Kunci</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Tetap tampilkan kalkulator pada layar penguncian Anda untuk akses cepat dan mudah. Nonaktifkan untuk menyembunyikannya dari layar penguncian Anda.</string>
 </resources>

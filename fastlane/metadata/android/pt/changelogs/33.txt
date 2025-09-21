@@ -1,0 +1,13 @@
+Atualizado:
+- A área de entrada ocupa ao ecrã inteiro
+- Sistema de parênteses
+
+Corrigido:
+- Duplo aviso ao copiar valor
+- Domínio da definição da tangente
+- Mostrar resultado ao colar um cálculo
+- Divisão indireta por zero é indefinida
+- Divisão por funções
+- Problemas com percentagem
+- Funções trigonométricas retornam resultados incorretos se forem negativos
+- Várias outras correções

@@ -1,0 +1,8 @@
+Yangi:
+- Aniq xatolar
+- Tarixni qayta ko'rib chiqish
+- Tarix natijalariga vaqt belgilarini qo'shing
+- Kirishda matematik belgilarning takrorlanishiga ruxsat bermang
+
+Yangilangan:
+- arccos, arcsin va arctan endi cos⁻¹, sin⁻¹ va tan⁻¹ sifatida koʻrsatiladi

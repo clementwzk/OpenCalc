@@ -1,0 +1,14 @@
+Yangi:
+- ichki hisoblash tizimi
+- O'nlik faktoriallar
+- Bir xil sonda ikkita o'nlik ajratgich mavjudligini oldini olish
+
+Tuzatishlar:
+- Tarix varaqasi (@MahmoudRH)
+- Natija aniqligi
+- Guruhlash ajratgichlari bilan Backspace
+- 10 dyuymli planshet uchun landshaft rejimi
+- Teng tugmadan keyin orqaga qaytish
+- Tarix natijasini bosish paytida halokat
+- Ba'zi iboralarni formatlash muammolari
+- Bir nechta boshqa tuzatishlar

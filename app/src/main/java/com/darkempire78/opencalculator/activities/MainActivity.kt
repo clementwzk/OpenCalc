@@ -19,6 +19,7 @@ import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
 import android.widget.HorizontalScrollView
 import android.widget.TextView
+import android.widget.TableRow
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -219,6 +220,9 @@ class MainActivity : AppCompatActivity() {
         if (MyPreferences(this).useRadiansByDefault) {
             toggleDegreeMode()
         }
+
+        // Check backspace location preference
+        checkBackspacePosition()
 
         // Focus by default
         binding.input.requestFocus()
@@ -1257,6 +1261,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Check to see if the location of the backspace button should be to the left or default
+    private fun checkBackspacePosition() {
+        if (MyPreferences(this).moveBackButtonLeft
+            && resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            val row = findViewById<TableRow>(R.id.delRow)
+            val backButton = row.getChildAt(2)
+            if (backButton.id == R.id.backspaceButton) {
+                row.removeViewAt(2)
+                row.addView(backButton, 0)
+            }
+        } else if (!MyPreferences(this).moveBackButtonLeft
+            && resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            val row = findViewById<TableRow>(R.id.delRow)
+            val backButton = row.getChildAt(0)
+            // Only move if backspace is in position zero in row.
+            if (backButton.id == R.id.backspaceButton) {
+                row.removeViewAt(0)
+                row.addView(backButton, 2)
+            }
+        }
+    }
+
     fun scientistModeSwitchButton(view: View) {
         enableOrDisableScientistMode()
     }
@@ -1353,14 +1379,16 @@ class MainActivity : AppCompatActivity() {
             checkEmptyHistoryForNoHistoryLabel()
         }
 
+        // Check backspace location preference
+        checkBackspacePosition()
+
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
 
         // Enable the possibility to show the activity on the lock screen
         val canShowOnLockScreen = MyPreferences(this).showOnLockScreen
         handleOnLockScreenAppStatus(canShowOnLockScreen)
-
-    }
+}
 
     fun checkEmptyHistoryForNoHistoryLabel() {
         if (historyAdapter.itemCount==0) {

@@ -80,4 +80,8 @@
     <string name="percentDesc">percentuale</string>
     <string name="settings_auto_save_calculation_without_equal_button">Salva automaticamente i calcoli</string>
     <string name="no_history_available">Cronologia non disponibile</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Disattiva la modalità scientifica</string>
+    <string name="settings_general_scientific_mode_hide_desc">Nascondi la modalità scientifica</string>
+    <string name="show_on_lock_screen">Mostra nella schermata di blocco</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Mantieni la calcolatrice visibile sulla schermata di blocco per un accesso rapido e semplice. Disattivala per nasconderla quando lo schermo è bloccato.</string>
 </resources>

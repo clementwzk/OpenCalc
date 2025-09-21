@@ -17,10 +17,7 @@ class Expression {
         if (cleanCalculation.contains('!')) {
             cleanCalculation = formatFactorial(cleanCalculation)
         }
-
-
         cleanCalculation = addParenthesis(cleanCalculation)
-
         return cleanCalculation
     }
 
@@ -33,7 +30,7 @@ class Expression {
         calculation2 = calculation2.replace("E", "*10^")
         // To avoid that "exp" is interpreted as "e", exp -> xp
         calculation2 = calculation2.replace("exp", "xp")
-        // To avoid missmatch with cos, sin, tan -> arcco, arcsi, arcta
+        // To avoid mismatch with cos, sin, tan -> arcco, arcsi, arcta
         calculation2 = calculation2.replace("cos⁻¹", "arcco")
         calculation2 = calculation2.replace("sin⁻¹", "arcsi")
         calculation2 = calculation2.replace("tan⁻¹", "arcta")
@@ -42,65 +39,146 @@ class Expression {
         return calculation2
     }
 
-    /* Transform any calculation string containing %
-     * to respect the user friend (non-mathematical) way (see issue #35)
-     */
     private fun getPercentString(calculation: String): String {
-        val percentPos = calculation.lastIndexOf('%')
-        if (percentPos < 1) {
-            return calculation
-        }
-        // find the last operator before the last %
-        val operatorBeforePercentPos = calculation.subSequence(0, percentPos).lastIndexOfAny(charArrayOf('-', '+', '*', '/', '(', ')'))
-
-        if (operatorBeforePercentPos < 1) {
-            return calculation
-        }
-
-        if (calculation[operatorBeforePercentPos] == '*') {
-            return calculation
-        }
-
-        if(calculation[operatorBeforePercentPos] == '/') {
-            // insert brackets into percentage. Fixes 900/10% -> 900/(10/100), not 900/10/100 which evals differently.
-            // also prevents it from doing the rest of this function, which screws the calculation up
-            val stringFirst = calculation.substring(0, operatorBeforePercentPos+1)
-            val stringMiddle = calculation.substring(operatorBeforePercentPos+1, percentPos+1)
-            val stringLast = calculation.substring(percentPos+1, calculation.length)
-            return "$stringFirst($stringMiddle)$stringLast"
-        }
-
-        // extract the first part of the calculation
-        var calculationStringFirst = calculation.subSequence(0, operatorBeforePercentPos).toString()
-
-        // recursively parse it
-        if (calculationStringFirst.contains('%')) {
-            calculationStringFirst = getPercentString(calculationStringFirst)
-        }
-        // check if there are already some parenthesis, so we skip formatting
-        if (calculation[operatorBeforePercentPos] == '(') {
-            return calculationStringFirst + calculation.subSequence(operatorBeforePercentPos, calculation.length)
-        }
-        if (calculation[operatorBeforePercentPos] == ')') {
-            val openParenPos = calculation.subSequence(0, operatorBeforePercentPos).lastIndexOfAny(
-                charArrayOf('('))
-            if (openParenPos == 0){
-                return calculationStringFirst + calculation.subSequence(operatorBeforePercentPos, calculation.length)
+        var result = calculation
+        var i = 0
+        var parenthesisLevel = 0
+        var subexpressionStart = -1
+        // Track processed % indices to prevent repeated loops
+        val processedIndices = mutableSetOf<Int>()
+        /*
+        New loop to handle nested %. We can probably simply this if we evaluate factorials first as
+        it's a unary operator.
+         */
+        loop@ while (i < result.length) {
+            // Check for nested % (Parenthesis first and then %)
+            when (result[i]) {
+                '(' -> {
+                    if (parenthesisLevel == 0) {
+                        subexpressionStart = i
+                    }
+                    parenthesisLevel += 1
+                }
+                ')' -> {
+                    parenthesisLevel -= 1
+                    if (parenthesisLevel == 0 && subexpressionStart >= 0) {
+                        val subexpression = result.substring(subexpressionStart + 1, i)
+                        if (subexpression.contains('%')) {
+                            val processedSubexpression = getPercentString(subexpression)
+                            result = result.substring(0, subexpressionStart + 1) + processedSubexpression + result.substring(i)
+                            i = 0 // Restart to process modified expression
+                            processedIndices.clear() // Reset processed indices for new expression
+                            continue@loop
+                        }
+                        subexpressionStart = -1
+                    } else if (parenthesisLevel < 0) {
+                        syntax_error = true
+                        return result
+                    }
+                }
+                '%' -> {
+                    if (parenthesisLevel == 0 && !processedIndices.contains(i)) {
+                        processedIndices.add(i) // Mark this % as processed
+                        // Check if % follows a factorial or closing parenthesis
+                        if (i > 0 && result[i - 1] == '!') {
+                            // Factorial handler. Find the base before !
+                            var j = i - 2
+                            while (j >= 0 && (result[j].isDigit() || result[j] == '.')) {
+                                j -= 1
+                            }
+                            val factorialBase = result.substring(j + 1, i - 1)
+                            if (factorialBase.isEmpty()) {
+                                syntax_error = true
+                                return result
+                            }
+                            val operatorPos = result.substring(0, j + 1).lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
+                            if (operatorPos < 0) {
+                                // Standalone factorial percentage, e.g., 5!%
+                                result = result.substring(0, j + 1) + "(($factorialBase!)/100)" + result.substring(i + 1)
+                            } else if (result[operatorPos] == '*' || result[operatorPos] == '/') {
+                                // For * or /, wrap the percentage part
+                                result = result.substring(0, operatorPos + 1) + "(($factorialBase!)/100)" + result.substring(i + 1)
+                            } else {
+                                // For + or -, apply percentage relative to the base
+                                val base = result.substring(0, operatorPos).trim()
+                                if (base.isEmpty()) {
+                                    syntax_error = true
+                                    return result
+                                }
+                                result = "$base${result[operatorPos]}$base*(($factorialBase!)/100)" + result.substring(i + 1)
+                            }
+                        } else if (i > 0 && result[i - 1] == ')') {
+                            // Find the matching opening parenthesis
+                            var j = i - 2
+                            var level = 1
+                            while (j >= 0) {
+                                if (result[j] == ')') level += 1
+                                else if (result[j] == '(') level -= 1
+                                if (level == 0) break
+                                j -= 1
+                            }
+                            if (level != 0 || j <= 0) {
+                                syntax_error = true
+                                return result
+                            }
+                            val subexpression = result.substring(j + 1, i - 1)
+                            val operatorPos = result.substring(0, j).lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
+                            if (operatorPos < 0) {
+                                result = result.substring(0, j) + "(($subexpression)/100)" + result.substring(i + 1)
+                            } else if (result[operatorPos] == '*' || result[operatorPos] == '/') {
+                                result = result.substring(0, operatorPos + 1) + "(($subexpression)/100)" + result.substring(i + 1)
+                            } else {
+                                val base = result.substring(0, operatorPos).trim()
+                                if (base.isEmpty()) {
+                                    syntax_error = true
+                                    return result
+                                }
+                                result = "$base${result[operatorPos]}$base*(($subexpression)/100)" + result.substring(i + 1)
+                            }
+                        } else {
+                            // Handle regular number before %
+                            var start = i - 1
+                            while (start >= 0 && (result[start].isDigit() || result[start] == '.')) {
+                                start -= 1
+                            }
+                            val operatorPos = result.substring(0, start + 1).lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
+                            if (operatorPos < 0) {
+                                val number = result.substring(start + 1, i)
+                                if (number.isEmpty()) {
+                                    syntax_error = true
+                                    return result
+                                }
+                                result = result.substring(0, start + 1) + "($number/100)" + result.substring(i + 1)
+                            } else if (result[operatorPos] == '*' || result[operatorPos] == '/') {
+                                val number = result.substring(operatorPos + 1, i)
+                                if (number.isEmpty()) {
+                                    syntax_error = true
+                                    return result
+                                }
+                                result = result.substring(0, operatorPos + 1) + "($number/100)" + result.substring(i + 1)
+                            } else {
+                                val base = result.substring(0, operatorPos).trim()
+                                val number = result.substring(operatorPos + 1, i)
+                                if (base.isEmpty() || number.isEmpty()) {
+                                    syntax_error = true
+                                    return result
+                                }
+                                result = "$base${result[operatorPos]}$base*($number/100)" + result.substring(i + 1)
+                            }
+                        }
+                        i = 0
+                        continue@loop
+                    }
+                }
             }
-            if (openParenPos > 0) {
-                val operatorBeforeParen = calculation.subSequence(0, openParenPos).lastIndexOfAny(
-                    charArrayOf('+', '-', '*', '/')
-                )
-                calculationStringFirst = calculation.substring(0, operatorBeforeParen)
-                return calculationStringFirst + calculation[operatorBeforeParen] + calculationStringFirst + "*(" + calculation.subSequence(openParenPos + 1, percentPos - 1) + ")" + calculation.subSequence(percentPos, calculation.length)
-            }
-
+            i += 1
         }
-        calculationStringFirst = "($calculationStringFirst)"
 
-        // modify the calculation to have something like (X)+(Y%*X)
-        return calculationStringFirst + calculation[operatorBeforePercentPos] + calculationStringFirst + "*(" + calculation.subSequence(operatorBeforePercentPos + 1, percentPos) + ")" + calculation.subSequence(percentPos, calculation.length)
+        if (parenthesisLevel != 0) {
+            syntax_error = true
+        }
 
+        return result
     }
 
     fun addParenthesis(calculation: String): String {
@@ -136,67 +214,66 @@ class Expression {
         var cleanCalculationLength = cleanCalculation.length
         var i = 0
         while (i < cleanCalculationLength) {
-
             if (cleanCalculation[i] == '(') {
                 if (i != 0 && (cleanCalculation[i-1] in ".e0123456789)")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i)
-                    cleanCalculationLength ++
+                    cleanCalculationLength++
                 }
             } else if (cleanCalculation[i] == ')') {
-                if (i+1 < cleanCalculation.length && (cleanCalculation[i+1] in "0123456789(.")) {
-                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i+1)
-                    cleanCalculationLength ++
-                }
+                if (i + 1 < cleanCalculation.length && cleanCalculation[i + 1] in "0123456789(.") {
+                        cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
+                        cleanCalculationLength++
+                    }
             } else if (cleanCalculation[i] == '!') {
-                if (i+1 < cleanCalculation.length && (cleanCalculation[i+1] in "0123456789π(")) {
-                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i+1)
-                    cleanCalculationLength ++
+                if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "0123456789π(")) {
+                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
+                    cleanCalculationLength++
                 }
             } else if (cleanCalculation[i] == '%') {
-                if (i+1 < cleanCalculation.length && (cleanCalculation[i+1] in "0123456789π(")) {
-                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i+1)
-                    cleanCalculationLength ++
+                if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "0123456789π(")) {
+                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
+                    cleanCalculationLength++
                 }
-            } else if (i-1 >= 0 && cleanCalculation[i] == '√') {
-                if (cleanCalculation[i-1] !in "+-/*(") {
+            } else if (i - 1 >= 0 && cleanCalculation[i] == '√') {
+                if (cleanCalculation[i - 1] !in "+-/*(") {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i)
-                    cleanCalculationLength ++
+                    cleanCalculationLength++
                 }
             } else if (cleanCalculation[i] == 'π') {
-                if (i+1 < cleanCalculation.length && (cleanCalculation[i+1] in "0123456789(")) {
-                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i+1)
-                    cleanCalculationLength ++
+                if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "0123456789(")) {
+                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
+                    cleanCalculationLength++
                 }
-                if (i-1 >= 0 && (cleanCalculation[i-1] in ".%πe0123456789)")) {
+                if (i - 1 >= 0 && (cleanCalculation[i - 1] in ".%πe0123456789)")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i)
-                    cleanCalculationLength ++
+                    cleanCalculationLength++
                 }
             } else if (cleanCalculation[i] == 'e') {
-                if (i+1 < cleanCalculation.length && (cleanCalculation[i+1] in "π0123456789(")) {
-                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i+1)
-                    cleanCalculationLength ++
+                if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "π0123456789(")) {
+                    cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
+                    cleanCalculationLength++
                 }
-                if (i-1 >= 0 && (cleanCalculation[i-1] in ".%πe0123456789)")) {
+                if (i - 1 >= 0 && (cleanCalculation[i - 1] in ".%πe0123456789)")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i)
-                    cleanCalculationLength ++
+                    cleanCalculationLength++
                 }
             } else {
-                if (i+1<cleanCalculation.length) {
+                if (i + 1 < cleanCalculation.length) {
                     val functionsList = listOf("arcco", "arcsi", "arcta", "cos", "sin", "tan", "ln", "log", "xp")
                     for (function in functionsList) {
-                        val text = cleanCalculation.subSequence(0, i+1).toString()
+                        val text = cleanCalculation.subSequence(0, i + 1).toString()
                         if (text.endsWith(function) && text.length != function.length) {
                             if (text[text.length - function.length - 1] !in "+-/*(^") {
                                 cleanCalculation = cleanCalculation.subSequence(0, i - function.length + 1).toString() +
-                                        "*" + function + cleanCalculation.subSequence(i+1, cleanCalculation.length).toString()
-                                cleanCalculationLength ++
+                                        "*" + function + cleanCalculation.subSequence(i + 1, cleanCalculation.length).toString()
+                                cleanCalculationLength++
                                 break
                             }
                         }
                     }
                 }
             }
-            i ++
+            i++
         }
         return cleanCalculation
     }

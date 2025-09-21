@@ -1,0 +1,4 @@
+Correções:
+- Fecha parênteses automaticamente
+- Multiplica fatoriais sem *
+- Adiciona 0 automaticamente quando o número começa com um separador decimal

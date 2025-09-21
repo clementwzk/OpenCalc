@@ -1,0 +1,6 @@
+Yangi:
+- Tematik belgi
+
+O'zgarishlar:
+- Tarjimalarni yangilandi
+- Agar raqam teng bo'lgandan keyin bosilsa, kiritishni o'chirish

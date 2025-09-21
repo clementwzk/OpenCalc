@@ -1,0 +1,24 @@
+Yangi:
+- Double o'rniga BigDecimal dan foydalaning
+- Natijalarni ilmiy belgilarga aylantirish uchun sozlash
+- Moduldan foydalanish variantini qo'shing
+- Qiymatni nusxalash o'rniga uni tanlash imkoniyatini qo'shing
+- Qavslar tugmachasini ajratish variantini qo'shing
+- Tarixni o'chirish uchun variantni qo'shing
+- Haqida bo'limiga litsenziya qo'shing
+
+Yaxshilanishlar:
+- Kalkulyatorni optimallashtirish
+- Muhim bo'lmagan EditTextni TextView bilan almashtiring
+- Kasrdan oldin belgini yoqish
+- Orqaga tugmasi hitboxini kattalashtiring
+- Bir nechta tarjimalarni yangilang
+
+Tuzatishlar:
+- Kursor joylashuvi
+- Mavzuni amoled rejimi bilan qo'llash muammosi
+- o'nlik faktorial natija
+- Landshaft rejimi ba'zi tugma piktogrammalarini yashiradi
+- Sozlamalar yonidagi kulrang to'rtburchak
+- Shakllantirish masalalari
+- Boshqa ko'plab tuzatishlar ...

@@ -23,7 +23,7 @@
     <string name="settings_advanced_prevent_sleep_desc">Ausschalten des Bildschirms verhindern, während die App im Vordergrund ist</string>
     <string name="settings_advanced_prevent_sleep">Bildschirm ausschalten verhindern</string>
     <string name="settings_category_advanced">ERWEITERT</string>
-    <string name="settings_general_scientific_mode_desc">Wissenschaftlichen Modus standardmäßig aktivieren</string>
+    <string name="settings_general_scientific_mode_desc">Wissenschaftlichen Modus aktivieren</string>
     <string name="settings_general_scientific_mode_deactivate_desc">Wissenschaftlichen Modus deaktivieren</string>
     <string name="settings_general_scientific_mode_hide_desc">Wissenschaftlichen Modus ausblenden</string>
     <string name="settings_general_scientific_mode">Wissenschaftlicher Modus</string>
@@ -84,4 +84,6 @@
     <string name="menu_donate">Unterstütze uns</string>
     <string name="about_dialog_donation_close">Schließen</string>
     <string name="no_history_available">Kein Verlauf verfügbar</string>
+    <string name="show_on_lock_screen">Auf Sperrbildschirm anzeigen</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Den Taschenrechner auf dem Sperrbildschirm sichtbar lassen, um schnell und einfach darauf zugreifen zu können. Diese Option deaktivieren, um ihn bei gesperrtem Bildschirm auszublenden.</string>
 </resources>

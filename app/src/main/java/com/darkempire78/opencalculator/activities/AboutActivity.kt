@@ -69,9 +69,9 @@ class AboutActivity : AppCompatActivity() {
         }
 
         // Donation
-        binding.aboutDonate.setOnClickListener {
+        /*binding.aboutDonate.setOnClickListener {
             DonationDialog(this, layoutInflater).openDonationDialog()
-        }
+        }*/
 
         // Github
         binding.aboutGithub.setOnClickListener {

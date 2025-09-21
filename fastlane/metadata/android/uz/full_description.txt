@@ -1,0 +1,11 @@
+Android uchun oddiy va chiroyli kalkulyator
+
+📖 Xususiyatlari
+* Yengil vazn (APK ~2MB) 
+* Keraksiz ruxsatlar yo'q 
+* To'q, yorug'lik, amoled va material mavzusi 
+* Ilmiy rejim 
+* Tarix 
+* Portret va landshaft yo'nalishi 
+* Tezkor sozlamalar kafel 
+* Ko'proq...

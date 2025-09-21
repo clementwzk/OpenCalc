@@ -1,0 +1,8 @@
+Melhorias:
+* Atualizações de traduções
+* Implementação do BroadcastReceiver para iniciar a atividade do TileService
+
+Correções:
+* Problema de formatação com zeros após a vírgula
+* Correção de falha no registo quando x < 0
+* Falha ao pressionar raiz quadrada após erro de sintaxe

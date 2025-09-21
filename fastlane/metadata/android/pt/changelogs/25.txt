@@ -1,0 +1,8 @@
+Novo:
+- Tradução para o Espanhol
+
+Correções:
+- O teclado deixa de responder ao interagir com grandes fatoriais
+- Carregamento incorreto de valores do histórico
+- O carregamento de resultados com ponto decimal do histórico remove operadores ou trava a aplicação
+- Precisão

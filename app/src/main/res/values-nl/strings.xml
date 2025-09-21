@@ -2,7 +2,7 @@
 <resources>
     <string name="settings_general_radians_desc">Gebruik standaard radialen in de plaats van graden</string>
     <string name="settings_general_scientific_mode">Wetenschappelijke modus</string>
-    <string name="settings_general_scientific_mode_desc">Gebruik standaard wetenschappelijke modus</string>
+    <string name="settings_general_scientific_mode_desc">Wetenschappelijke modus inschakelen</string>
     <string name="settings_general_split_parenthesis_button">Haakjes toets splitsen in twee toetsen</string>
     <string name="settings_general_split_parenthesis_button_desc">Verwijder de \"AC\" toets om de haakjes toets te splitsen in twee toetsen</string>
     <string name="settings_general_add_modulo">Modulo-toets toevoegen</string>
@@ -80,4 +80,8 @@
     <string name="menu_donate">Steun ons</string>
     <string name="about_dialog_donation_close">Sluiten</string>
     <string name="no_history_available">Geen geschiedenis beschikbaar</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Wetenschappelijke modus uitschakelen</string>
+    <string name="settings_general_scientific_mode_hide_desc">Wetenschappelijke modus verbergen</string>
+    <string name="show_on_lock_screen">Weergeven op vergrendelingsscherm</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Laat de rekenmachine zichtbaar op het vergrendelingsscherm voor snelle en gemakkelijke toegang. Schakel deze optie uit om deze te verbergen wanneer het scherm is vergrendeld.</string>
 </resources>

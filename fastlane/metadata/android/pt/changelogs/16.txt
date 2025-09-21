@@ -1,0 +1,4 @@
+Correções:
+- Inserida barra de rolagem no campo de entrada
+- Necessário rolar para ver o resultado
+- A entrada é limpa quando um número é pressionado após pressionar igual

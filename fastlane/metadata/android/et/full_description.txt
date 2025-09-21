@@ -1,0 +1,11 @@
+Lihtne ja ilus kalkulaator Androidile
+
+📖 Omadused
+	* Kerge (APK ~2MB)
+	* Ei mingeid ebavajalikke õigusi
+	* Tume, hele, AMOLED ja Material You teema
+	* Teaduslik režiim
+	* Ajalugu
+	* Portree- ja maastiku orientatsioon
+	* Kiirseadete plaat
+	* Rohkem...

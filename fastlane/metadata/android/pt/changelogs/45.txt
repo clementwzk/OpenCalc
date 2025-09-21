@@ -1,0 +1,24 @@
+Novo:
+- Usar BigDecimal em vez de Double
+- Configuração para converter os resultados em notação científica
+- Adicionar uma opção para usar o módulo
+- Adicionar uma opção para selecionar um valor em vez de copiá-lo
+- Adicionar uma opção para dividir o botão de parênteses
+- Adicionar uma opção para desativar o histórico
+- Adicionar licença à secção sobre
+
+Aprimoramentos:
+- Otimizar a calculadora
+- Substituir EditText não essencial por TextView
+- Ativar o símbolo antes do decimal 
+- Aumentar a escala do hitbox do botão Voltar
+- Atualizar várias traduções
+
+Correções:
+- Localização do cursor
+- Problema de aplicação de tema no modo amoled
+- Resultado do fatorial decimal
+- O modo paisagem oculta alguns ícones de botões
+- Retângulo cinzento ao lado de Configurações
+- Problemas de formatação
+- Muitas outras correções...

@@ -1,0 +1,5 @@
+Novo:
+- Bloco de configurações rápidas
+
+Correções:
+- Notificações incômodas
