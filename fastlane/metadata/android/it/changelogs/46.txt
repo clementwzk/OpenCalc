@@ -1,0 +1,8 @@
+Miglioramenti:
+* Aggiornamenti delle traduzioni
+* Implementa BroadcastReceiver per avviare l'attività da TileService
+
+Correzioni:
+* Problema di formattazione con zeri dopo la virgola
+* Correggi crash del log quando x < 0
+* Crash quando si preme radice quadrata dopo errore di sintassi

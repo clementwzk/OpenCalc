@@ -1,0 +1,13 @@
+Novo:
+- Adicionar licença à secção sobre
+
+Aprimoramentos:
+- Atualizar várias traduções
+- Ativar o símbolo antes do decimal
+
+Correções:
+- Localização do cursor
+- Falha ao fazer a raiz de uma base negativa
+- Falha ao fazer log ou ln de um número negativo
+- Falha ao recriar a atividade principal da paisagem
+- Tudo após ').' num cálculo é ignorado

@@ -1,0 +1,14 @@
+Novo:
+- Sistema de cálculo interno
+- Fatoriais decimais
+- Impedir a presença de dois separadores decimais no mesmo número
+
+Correções:
+- Rolagem do histórico (@MahmoudRH)
+- Precisão dos resultados
+- Backspace com separadores de agrupamento
+- Modo paisagem para tablet de 10 polegadas
+- Backspace após o botão igual
+- Falha ao tocar no resultado do histórico
+- Alguns problemas de expressão de formatação
+- Várias outras correções

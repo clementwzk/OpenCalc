@@ -15,8 +15,8 @@
         android:title="@string/menu_about"
         android:onClick="openAbout" />
 
-    <item
+    <!--<item
         android:id="@+id/app_menu_donate_button"
         android:title="@string/menu_donate"
-        android:onClick="openDonation" />
+        android:onClick="openDonation" />-->
 </menu>

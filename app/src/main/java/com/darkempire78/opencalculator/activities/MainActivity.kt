@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -21,11 +20,16 @@ import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
 import android.widget.HorizontalScrollView
+import android.widget.TableRow
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,6 +52,8 @@ import com.darkempire78.opencalculator.databinding.ActivityMainBinding
 import com.darkempire78.opencalculator.dialogs.DonationDialog
 import com.darkempire78.opencalculator.history.History
 import com.darkempire78.opencalculator.history.HistoryAdapter
+import com.darkempire78.opencalculator.util.ScientificMode
+import com.darkempire78.opencalculator.util.ScientificModeTypes
 import com.sothree.slidinguppanel.PanelSlideListener
 import com.sothree.slidinguppanel.PanelState
 import kotlinx.coroutines.Dispatchers
@@ -72,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         DecimalFormatSymbols.getInstance().groupingSeparator.toString()
 
     private var numberingSystem = NumberingSystem.INTERNATIONAL
+    private var scientificModeType = ScientificModeTypes.NOT_ACTIVE
 
     private var isInvButtonClicked = false
     private var isEqualLastAction = false
@@ -111,6 +118,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         view = binding.root
+
+        // Fix view for SDK 35
+        fixView()
+
         setContentView(view)
 
         // set buttons on touch listener to get feedback vibration on touch
@@ -219,6 +230,9 @@ class MainActivity : AppCompatActivity() {
         if (MyPreferences(this).useRadiansByDefault) {
             toggleDegreeMode()
         }
+
+        // Check backspace location preference
+        checkBackspacePosition()
 
         // Focus by default
         binding.input.requestFocus()
@@ -1300,6 +1314,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Check to see if the location of the backspace button should be to the left or default
+    private fun checkBackspacePosition() {
+        if (MyPreferences(this).moveBackButtonLeft
+            && resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            val row = findViewById<TableRow>(R.id.delRow)
+            val backButton = row.getChildAt(2)
+            if (backButton.id == R.id.backspaceButton) {
+                row.removeViewAt(2)
+                row.addView(backButton, 0)
+            }
+        } else if (!MyPreferences(this).moveBackButtonLeft
+            && resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            val row = findViewById<TableRow>(R.id.delRow)
+            val backButton = row.getChildAt(0)
+            // Only move if backspace is in position zero in row.
+            if (backButton.id == R.id.backspaceButton) {
+                row.removeViewAt(0)
+                row.addView(backButton, 2)
+            }
+        }
+    }
+
     fun scientistModeSwitchButton(view: View) {
         enableOrDisableScientistMode()
     }
@@ -1317,6 +1353,15 @@ class MainActivity : AppCompatActivity() {
     // Update settings
     override fun onResume() {
         super.onResume()
+
+        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            // scientific mode enabled by default in portrait mode (if option enabled)
+            val storedType = MyPreferences(this).scientificMode
+            scientificModeType = ScientificMode.getScientificModeType(storedType)
+            manageScientificMode(scientificModeType)
+        }
+
+        fixView()
 
         val fromPrefs = MyPreferences(this).numberingSystem
         numberingSystem = fromPrefs.toNumberingSystem()
@@ -1384,8 +1429,16 @@ class MainActivity : AppCompatActivity() {
             checkEmptyHistoryForNoHistoryLabel()
         }
 
+        // Check backspace location preference
+        checkBackspacePosition()
+
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
+
+        // Enable the possibility to show the activity on the lock screen
+        val canShowOnLockScreen = MyPreferences(this).showOnLockScreen
+        handleOnLockScreenAppStatus(canShowOnLockScreen)
+}
     }
 
     fun checkEmptyHistoryForNoHistoryLabel() {
@@ -1395,6 +1448,57 @@ class MainActivity : AppCompatActivity() {
         }else {
             binding.noHistoryText.visibility = View.GONE
             binding.historyRecylcleView.visibility = View.VISIBLE
+        }
+    }
+
+    private fun manageScientificMode(scientificModeTypes: ScientificModeTypes) {
+        when (scientificModeTypes) {
+            ScientificModeTypes.OFF -> hideScientificMode()
+            ScientificModeTypes.ACTIVE -> enableOrDisableScientistMode(true)
+            ScientificModeTypes.NOT_ACTIVE -> enableOrDisableScientistMode(false)
+        }
+    }
+
+
+    private fun enableOrDisableScientistMode(isEnabled: Boolean) {
+        val imageId = if (isEnabled) R.drawable.ic_baseline_keyboard_arrow_up_24 else R.drawable.ic_baseline_keyboard_arrow_down_24
+        binding.scientistModeRow1?.isVisible = true
+        binding.scientistModeRow2.isVisible = isEnabled
+        binding.scientistModeRow3.isVisible = isEnabled
+        binding.degreeTextView.visibility = View.VISIBLE
+        binding.scientistModeSwitchButton?.setImageResource(imageId)
+
+        if (isDegreeModeActivated) {
+            binding.degreeButton.text = getString(R.string.radian)
+            binding.degreeTextView.text = getString(R.string.degree)
+        } else {
+            binding.degreeButton.text = getString(R.string.degree)
+            binding.degreeTextView.text = getString(R.string.radian)
+        }
+
+    }
+
+    private fun hideScientificMode() {
+        binding.scientistModeRow1?.visibility = View.GONE
+        binding.scientistModeRow2.visibility = View.GONE
+        binding.scientistModeRow3.visibility = View.GONE
+        binding.degreeTextView.visibility = View.GONE
+    }
+
+    // Method to add padding to app window to accommodate system bars
+    fun fixView() {
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.updatePadding(
+                left = systemBars.left,
+                top = systemBars.top,
+                right = systemBars.right,
+                bottom = systemBars.bottom
+            )
+
+            // Return the insets to allow other listeners to consume them
+            insets
         }
     }
 }

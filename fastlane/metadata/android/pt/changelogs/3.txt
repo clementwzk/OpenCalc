@@ -1,0 +1,8 @@
+Novo:
+- Sistema de vibração
+
+Mudança:
+- Melhoria do código
+
+Fixes:
+- Siga o tema do sistema no primeiro lançamento

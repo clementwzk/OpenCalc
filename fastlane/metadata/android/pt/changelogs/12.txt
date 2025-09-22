@@ -1,0 +1,8 @@
+Novo:
+- Histórico
+
+Mudança:
+- Otimização
+
+Correção:
+- Problemas de exibição de resultados

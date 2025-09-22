@@ -1,0 +1,13 @@
+Yangilangan:
+- Kirish maydoni toʻliq ekran oʻlchamini oladi
+- Qavs tizimi
+
+Tuzatishlar:
+- Android 13 uchun qiymat nusxalanganda ikki marta tushdi
+- Tangensning ta'rif sohasi
+- Hisobni qo'yganingizda natijani ko'rsatish
+- Bilvosita nolga bo'linish aniqlanmagan
+- Funktsiyalar bo'yicha bo'linish
+- Foizli masalalar
+- Trigonometrik funktsiyalar, agar natija salbiy bo'lsa, noto'g'ri natijalar beradi
+- Bir nechta boshqa tuzatishlar

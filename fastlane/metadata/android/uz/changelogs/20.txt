@@ -1,0 +1,4 @@
+Tuzatishlar:
+- Qavsni avtomatik yopish
+- Faktoriallarni *siz ko'paytirish
+- Raqam o'nlik ajratgich bilan boshlanganda avtomatik 0 qo'shing

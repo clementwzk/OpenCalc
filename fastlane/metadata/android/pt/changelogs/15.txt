@@ -1,0 +1,6 @@
+Mudança:
+- A splash screen agora está escura
+
+Correção:
+- problema de teclado
+- rolagem pelo teclado

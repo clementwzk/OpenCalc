@@ -1,0 +1,5 @@
+Correções:
+- tan() não funciona corretamente
+- A exclusão de um separador de milhar faz com que o cursor salte
+- Colocação de parênteses em cálculos existentes
+- Problema gráfico no modo paisagem para tablets com mais que 10 polegadas

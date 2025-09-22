@@ -56,6 +56,28 @@ class ExpressionUnitTest {
 
         result = calculate("(50+2)+(1+2)%", false).toDouble()
         assertEquals(53.56, result, 0.0)
+
+        result = calculate("164+(265-20%)", isDegreeModeActivated = false).toDouble()
+        assertEquals(376.0, result, 0.0)
+
+        result = calculate("(265-20%)+164", isDegreeModeActivated = false).toDouble()
+        assertEquals(376.0, result, 0.0)
+
+        result = calculate("164+(265-20%)%", isDegreeModeActivated = false).toDouble()
+        assertEquals(511.68, result, 0.0)
+
+        result = calculate("(164+(265-20%)%)+345%", isDegreeModeActivated = false).toDouble()
+        assertEquals(2276.976, result, 0.0)
+
+        /*
+        Samsung Calculator has a result of 22.76976 here and Google Calculator yields 16.732.
+        OpenCalc yields 18.75176. 4Investigating the correct answer.
+         We typically would not do something so ambiguous. Are we adding percentages or adding a
+         a percentage of the previous number? An answer of 7.21 is also possible. How far down
+         this rabbit hole do we want to go? Everyday calculations should be correct now.
+         */
+        result = calculate("164%+(265-20%)%+345%", isDegreeModeActivated = false).toDouble()
+        assertEquals(18.75176, result, 0.0)
     }
 
     @Test
@@ -252,6 +274,18 @@ class ExpressionUnitTest {
 
         result = calculate("log₂(5)+5*log(5)", false).toDouble()
         assertEquals(5.816778116567456, result, 0.0)
+    }
+
+    @Test
+    fun factorial_square_isCorrect() {
+        var result = calculate("(√16)!", false).toDouble()
+        assertEquals(24.0, result, 0.0)
+
+        result = calculate("(√16)!+(√16)!", false).toDouble()
+        assertEquals(48.0, result, 0.0)
+
+        result = calculate("(√16)!+(√16)!+(√16)!", false).toDouble()
+        assertEquals(72.0, result, 0.0)
     }
 
     private fun calculate(input: String, isDegreeModeActivated : Boolean) = calculator.evaluate(expression.getCleanExpression(input, decimalSeparatorSymbol, groupingSeparatorSymbol), isDegreeModeActivated)

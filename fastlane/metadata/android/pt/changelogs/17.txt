@@ -1,0 +1,2 @@
+Novo:
+- Limpar histórico

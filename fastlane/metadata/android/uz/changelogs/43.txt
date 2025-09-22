@@ -1,0 +1,13 @@
+Yangi:
+- Haqida bo'limiga litsenziya qo'shing
+
+Yaxshilanishlar:
+- Bir nechta tarjimalarni yangilang
+- Kasrdan oldin belgini yoqish
+
+Tuzatishlar:
+- Kursor joylashuvi
+- Salbiy bazaning ildizi bo'lganda halokat
+- Manfiy sonni log yoki ln bajarayotganda ishdan chiqish
+- Landshaftning asosiy faoliyatini qayta yaratishda halokat
+- Hammasi ')' dan keyin. hisoblashda hisobga olinmaydi

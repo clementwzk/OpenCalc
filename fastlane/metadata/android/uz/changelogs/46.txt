@@ -1,0 +1,8 @@
+Yaxshilanishlar:
+* Tarjima yangilanishlari
+* TileService-dan faoliyatni boshlash uchun BroadcastReceiver-ni qo'llang
+
+Tuzatishlar:
+* Verguldan keyin nol bilan formatlash muammosi
+* x < 0 bo'lganda jurnalning buzilishini tuzatish
+* Sintaksis xatosidan so'ng kvadrat ildizni bosishda nosozlik

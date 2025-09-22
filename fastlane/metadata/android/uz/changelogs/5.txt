@@ -1,0 +1,5 @@
+O'zgarishlar:
+- SDK 21+ (Android 5.0) uchun mavjud
+
+Tuzatishlar:
+- Vibratsiyani tuzatish

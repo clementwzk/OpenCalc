@@ -1,0 +1,8 @@
+Yangi:
+- Ispancha tarjima
+
+Tuzatishlar:
+- Katta faktoriallar bilan ishlashda klaviatura javob bermay qoladi
+- Tarixdan qiymatlarni noto'g'ri yuklash
+- Natijalarni tarixdan kasrli nuqta bilan yuklash operatorlarni olib tashlaydi yoki ilovani ishdan chiqaradi
+- Aniqlik

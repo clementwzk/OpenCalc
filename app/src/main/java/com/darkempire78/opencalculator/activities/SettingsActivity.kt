@@ -11,6 +11,9 @@ import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.darkempire78.opencalculator.MyPreferences
@@ -31,7 +34,23 @@ class SettingsActivity : AppCompatActivity() {
         themes.applyDayNightOverride()
         setTheme(themes.getTheme())
 
+        // Fix view for SDK 35
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.updatePadding(
+                left = systemBars.left,
+                top = systemBars.top,
+                right = systemBars.right,
+                bottom = systemBars.bottom
+            )
+
+            // Return the insets to allow other listeners to consume them
+            insets
+        }
+
         setContentView(R.layout.settings_activity)
+
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()

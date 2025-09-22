@@ -1,0 +1,9 @@
+Atualizado:
+- Alterar a cor do texto em caso de erro
+- Reduzir o tamanho da versão
+- Não gravar um resultado no histórico se ele for igual ao cálculo
+- Não gravar o cálculo no histórico se ele for igual ao mais recente
+
+Correções:
+- O fatorial 0 retorna 1
+- Adicionar o símbolo matemático depois que o botão “igual” for pressionado

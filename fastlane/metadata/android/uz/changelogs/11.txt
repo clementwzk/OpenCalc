@@ -1,0 +1,9 @@
+O'zgarishlar:
+- Nemis tarjimasi
+- Rus tiliga tarjima
+- Yunoncha tarjima
+- Hind tarjimasi
+- Ozarbayjoncha tarjimasi
+
+Tuzatishlar:
+- Matematik bo'lmagan foiz

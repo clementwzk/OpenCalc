@@ -1,0 +1,8 @@
+Yangi:
+- Tarix
+
+O'zgartirishlar:
+- Optimizatsiya
+
+Tuzatishlar:
+- Natijalarni ko'rsatish bilan bog'liq muammolar

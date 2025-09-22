@@ -33,7 +33,7 @@
     <string name="about_other_privacy_policy">Політика конфіденційності</string>
     <string name="settings_general_vibration_desc">Вібрувати при натисканні на кнопки</string>
     <string name="settings_history_size">Результатів зберігаються в історії</string>
-    <string name="settings_general_scientific_mode_desc">Активувати науковий режим за замовчуванням</string>
+    <string name="settings_general_scientific_mode_desc">Активувати науковий режим</string>
     <string name="settings_general_language">Мова</string>
     <string name="settings_advanced_prevent_sleep_desc">Запобігає перехід телефону в сплячий режим, коли застосунок на передньому плані</string>
     <string name="settings_category_advanced">РОЗШИРЕНІ</string>
@@ -81,4 +81,8 @@
     <string name="about_dialog_donation_close">Закрити</string>
     <string name="menu_donate">Підтримати нас</string>
     <string name="no_history_available">Історія відсутня</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Деактивувати науковий режим</string>
+    <string name="settings_general_scientific_mode_hide_desc">Приховати науковий режим</string>
+    <string name="show_on_lock_screen">Показувати на екрані блокування</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Зберігайте калькулятор на екрані блокування, щоби мати до нього швидкий і легкий доступ. Вимкніть цю функцію, аби приховати калькулятор, коли екран заблоковано.</string>
 </resources>

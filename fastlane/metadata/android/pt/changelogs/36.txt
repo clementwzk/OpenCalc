@@ -1,0 +1,5 @@
+Novo:
+- Página de configurações
+
+Atualizado:
+- Página "Sobre"
