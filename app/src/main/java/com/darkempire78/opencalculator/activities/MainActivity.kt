@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         // set buttons on touch listener to get feedback vibration on touch
-        setOnBottontouchlistener()
+        setupButtonTouchListeners()
 
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
@@ -341,11 +341,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setOnBottontouchlistener() {
-        applyVibrationToKey(binding.squareButton)
-        applyVibrationToKey(binding.piButton)
-        applyVibrationToKey(binding.exponentButton)
-        applyVibrationToKey(binding.factorialButton)
+    private fun setupButtonTouchListeners() {
         applyVibrationToKey(binding.squareButton)
         applyVibrationToKey(binding.piButton)
         applyVibrationToKey(binding.exponentButton)
@@ -381,8 +377,6 @@ class MainActivity : AppCompatActivity() {
         applyVibrationToKey(binding.pointButton)
         applyVibrationToKey(binding.backspaceButton)
         applyVibrationToKey(binding.equalsButton)
-
-
 
     }
 
