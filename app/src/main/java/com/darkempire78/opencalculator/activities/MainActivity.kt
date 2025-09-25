@@ -668,6 +668,8 @@ class MainActivity : AppCompatActivity() {
                             if (showFraction && '.' in formattedResult) {
                                 val precision = getFractionPrecision().toDouble()
                                 decimalToFraction(formattedResult, precision, tView)
+                            } else {
+                                binding.resultDisplay.text = formattedResult
                             }
                         } else if (!showFraction && !isEqualLastAction){
                             binding.resultDisplay.text = ""
