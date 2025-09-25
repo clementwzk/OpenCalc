@@ -285,10 +285,15 @@ class Expression {
 
         val cleanCalculationLength = cleanCalculation.length
         var i = 0
-        while (i < cleanCalculationLength) {
+
+        /*
+        Changed while (i < cleanCalculationLength)
+        as we are modifying the string so length varies
+         */
+        while (i < cleanCalculation.length) {
             if (i < cleanCalculation.length - 1) {
                 if (parenthesisOpened > 0) {
-                    if (cleanCalculation[i+1] in "(*-/+^") {
+                    if (cleanCalculation[i+1] in "(*-/+^)") {
                         cleanCalculation = cleanCalculation.addCharAtIndex(')', i+1)
                         parenthesisOpened -= 1
                     }
@@ -300,6 +305,7 @@ class Expression {
             }
             i++
         }
+
         cleanCalculation = cleanCalculation.replace("√", "sqrt")
         return cleanCalculation
     }
@@ -329,11 +335,11 @@ class Expression {
                             if (cleanCalculation[j-1] in "*/+^" && parenthesisOpened == 0) {
                                 break
                             }
+                            if (cleanCalculation[j-1] == ')') parenthesisOpened += 1
                             // If the previous character isn't a parenthesis
                             if (cleanCalculation[j-1] != ')') {
                                 // Count open parentheses
-                                if (cleanCalculation[j] == ')') parenthesisOpened +=1
-                                else if (cleanCalculation[j-1] == '(') parenthesisOpened -= 1
+                                if (cleanCalculation[j-1] == '(') parenthesisOpened -= 1
 
                                 // If there are no open parentheses, add an F in front of the 1st parenthesis
                                 if (parenthesisOpened == 0) {

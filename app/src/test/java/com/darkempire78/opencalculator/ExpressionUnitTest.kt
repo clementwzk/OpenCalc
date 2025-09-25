@@ -276,6 +276,18 @@ class ExpressionUnitTest {
         assertEquals(5.816778116567456, result, 0.0)
     }
 
+    @Test
+    fun factorial_square_isCorrect() {
+        var result = calculate("(√16)!", false).toDouble()
+        assertEquals(24.0, result, 0.0)
+
+        result = calculate("(√16)!+(√16)!", false).toDouble()
+        assertEquals(48.0, result, 0.0)
+
+        result = calculate("(√16)!+(√16)!+(√16)!", false).toDouble()
+        assertEquals(72.0, result, 0.0)
+    }
+
     private fun calculate(input: String, isDegreeModeActivated : Boolean) = calculator.evaluate(expression.getCleanExpression(input, decimalSeparatorSymbol, groupingSeparatorSymbol), isDegreeModeActivated)
 
     companion object {

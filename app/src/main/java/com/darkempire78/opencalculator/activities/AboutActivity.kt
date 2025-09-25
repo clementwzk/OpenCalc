@@ -95,7 +95,7 @@ class AboutActivity : AppCompatActivity() {
         binding.aboutPrivacyPolicy.setOnClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://gist.githubusercontent.com/Darkempire78/1688314e8b75d5d32ac0503a97ec77a0/raw/2dcc4cf13f9755405e486e51e4658626c289986a/OpenCalc%2520Privacy%2520Policy.md")
+                Uri.parse("https://gist.githubusercontent.com/clementwzk/1688314e8b75d5d32ac0503a97ec77a0/raw/2dcc4cf13f9755405e486e51e4658626c289986a/OpenCalc%2520Privacy%2520Policy.md")
             )
             startActivity(browserIntent)
         }
