@@ -43,7 +43,7 @@ fun decimalToFraction(calculation: String, precision: Double, textView: TextView
 
     if (whole !in " 0") {
         if (n1 == 0) {
-            textView.text = whole.toString()
+            textView.text = whole
         } else {
             val tempString = "$whole $n1/$d1"
             val stringSpan = SpannableStringBuilder(tempString)

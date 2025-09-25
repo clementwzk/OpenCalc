@@ -664,7 +664,11 @@ class MainActivity : AppCompatActivity() {
 
                     withContext(Dispatchers.Main) {
                         if (formattedResult != calculation) {
-                            binding.resultDisplay.text = formattedResult
+                            val tView = findViewById<TextView>(R.id.resultDisplay)
+                            if (showFraction && '.' in formattedResult) {
+                                val precision = getFractionPrecision().toDouble()
+                                decimalToFraction(formattedResult, precision, tView)
+                            }
                         } else if (!showFraction && !isEqualLastAction){
                             binding.resultDisplay.text = ""
                         }
