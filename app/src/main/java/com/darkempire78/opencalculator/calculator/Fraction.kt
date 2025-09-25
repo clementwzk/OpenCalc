@@ -41,7 +41,7 @@ fun decimalToFraction(calculation: String, precision: Double, textView: TextView
         dec = 1 / (dec - a)
     } while (abs(dec2 - n1.toDouble() / d1) > dec2 * precision)
 
-    if (whole != "") {
+    if (whole !in " 0") {
         if (n1 == 0) {
             textView.text = whole.toString()
         } else {

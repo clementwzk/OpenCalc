@@ -18,8 +18,8 @@ import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
 import android.widget.HorizontalScrollView
-import android.widget.TextView
 import android.widget.TableRow
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -652,6 +652,14 @@ class MainActivity : AppCompatActivity() {
                                 groupingSeparatorSymbol,
                                 numberingSystem
                             )
+                        }
+                    }
+
+                    withContext(Dispatchers.Main) {
+                        if (formattedResult != calculation) {
+                            binding.resultDisplay.text = formattedResult
+                        } else if (!showFraction && !isEqualLastAction){
+                            binding.resultDisplay.text = ""
                         }
                     }
 
