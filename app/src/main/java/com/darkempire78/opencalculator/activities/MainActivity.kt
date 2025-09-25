@@ -13,6 +13,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
+import android.view.MotionEvent
+
 import android.view.View
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
@@ -103,6 +105,7 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
         )
 
+
         // Themes
         val themes = Themes(this)
         themes.applyDayNightOverride()
@@ -120,6 +123,9 @@ class MainActivity : AppCompatActivity() {
         fixView()
 
         setContentView(view)
+
+        // set buttons on touch listener to get feedback vibration on touch
+        setupButtonTouchListeners()
 
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
@@ -348,6 +354,55 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun setupButtonTouchListeners() {
+        applyVibrationToKey(binding.squareButton)
+        applyVibrationToKey(binding.piButton)
+        applyVibrationToKey(binding.exponentButton)
+        applyVibrationToKey(binding.factorialButton)
+        applyVibrationToKey(binding.degreeButton)
+        applyVibrationToKey(binding.sineButton)
+        applyVibrationToKey(binding.cosineButton)
+        applyVibrationToKey(binding.tangentButton)
+        applyVibrationToKey(binding.invButton)
+        applyVibrationToKey(binding.eButton)
+        applyVibrationToKey(binding.naturalLogarithmButton)
+        applyVibrationToKey(binding.logarithmButton)
+        binding.log2Button?.let { applyVibrationToKey(it) }
+        applyVibrationToKey(binding.clearButton)
+        applyVibrationToKey(binding.leftParenthesisButton)
+        applyVibrationToKey(binding.rightParenthesisButton)
+        applyVibrationToKey(binding.parenthesesButton)
+        applyVibrationToKey(binding.divideBy100Button)
+        applyVibrationToKey(binding.divideButton)
+        applyVibrationToKey(binding.sevenButton)
+        applyVibrationToKey(binding.eightButton)
+        applyVibrationToKey(binding.nineButton)
+        applyVibrationToKey(binding.multiplyButton)
+        applyVibrationToKey(binding.fourButton)
+        applyVibrationToKey(binding.fiveButton)
+        applyVibrationToKey(binding.sixButton)
+        applyVibrationToKey(binding.subtractButton)
+        applyVibrationToKey(binding.oneButton)
+        applyVibrationToKey(binding.twoButton)
+        applyVibrationToKey(binding.threeButton)
+        applyVibrationToKey(binding.addButton)
+        applyVibrationToKey(binding.zeroButton)
+        applyVibrationToKey(binding.pointButton)
+        applyVibrationToKey(binding.backspaceButton)
+        applyVibrationToKey(binding.equalsButton)
+
+    }
+
+    private fun applyVibrationToKey(button: View) {
+        button.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                keyVibration(v)
+            }
+            false // return false to allow normal click to continue
+        }
+    }
+
 
     // Displays a popup menu with options to insert double zeros ("00") or triple zeros ("000") into the specified EditText when the zero button is long-pressed.
     private fun showPopupMenu(zeroButton: Button) {
@@ -1384,6 +1439,7 @@ class MainActivity : AppCompatActivity() {
         val canShowOnLockScreen = MyPreferences(this).showOnLockScreen
         handleOnLockScreenAppStatus(canShowOnLockScreen)
 }
+    }
 
     fun checkEmptyHistoryForNoHistoryLabel() {
         if (historyAdapter.itemCount==0) {
