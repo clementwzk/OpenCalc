@@ -10,6 +10,9 @@
 <a href="https://github.com/Darkempire78/OpenCalc/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/Darkempire78/OpenCalc.svg?logo=github&style=for-the-badge">
 </a>
+<a href="https://shields.rbtlog.dev/com.darkempire78.opencalculator">
+      <img alt="RB Status" src="https://shields.rbtlog.dev/simple/com.darkempire78.opencalculator?style=for-the-badge">
+</a>
 <a href="https://github.com/Darkempire78/OpenCalc/releases">
       <img alt="Releases" src="https://img.shields.io/github/downloads/Darkempire78/OpenCalc/total?color=blue&label=downloads&style=for-the-badge">
 </a>
@@ -23,13 +26,16 @@
 <br>
 
 <a href="https://play.google.com/store/apps/details?id=com.darkempire78.opencalculator">
-      <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="100">
+      <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80">
 </a>
 <a href="https://f-droid.org/en/packages/com.darkempire78.opencalculator">
-      <img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="100">
+      <img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80">
+</a>
+<a href="https://apt.izzysoft.de/packages/com.darkempire78.opencalculator">
+      <img alt="Get it on IzzyOnDroid" src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" height="80">
 </a>
 <a href="https://github.com/Darkempire78/OpenCalc/releases/latest">
-      <img alt="Get it on GitHub" src="https://raw.githubusercontent.com/deckerst/common/main/assets/get-it-on-github.png" height="100">
+      <img alt="Get it on GitHub" src="https://raw.githubusercontent.com/deckerst/common/main/assets/get-it-on-github.png" height="80">
 </a>
 
 <br>
