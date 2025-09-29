@@ -84,4 +84,6 @@
     <string name="settings_general_scientific_mode_hide_desc">隐藏科学计算模式</string>
     <string name="show_on_lock_screen">在锁屏上显示</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">在锁屏上保持计算器可见以快捷访问。停用会在屏幕锁定时隐藏计算器。</string>
+    <string name="settings_general_backspace">将回退键移到左边</string>
+    <string name="settings_general_backspace_desc">竖屏模式下将回退按钮移到最左边。“0”和“.\"移到右边。</string>
 </resources>
