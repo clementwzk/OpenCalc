@@ -85,4 +85,6 @@
     <string name="settings_general_scientific_mode_hide_desc">Приховати науковий режим</string>
     <string name="show_on_lock_screen">Показувати на екрані блокування</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Зберігайте калькулятор на екрані блокування, щоби мати до нього швидкий і легкий доступ. Вимкніть цю функцію, аби приховати калькулятор, коли екран заблоковано.</string>
+    <string name="settings_general_backspace">Перемістити Backspace вліво</string>
+    <string name="settings_general_backspace_desc">Перемістіть кнопку Backspace в крайній лівий кут у портретному режимі. Нуль і десяткова кома зміщуються вправо.</string>
 </resources>

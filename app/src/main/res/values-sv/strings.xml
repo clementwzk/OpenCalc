@@ -22,7 +22,7 @@
     <string name="about_category_info">ÖVRIGT</string>
     <string name="syntax_error">Syntaxfel</string>
     <string name="theme_system">System</string>
-    <string name="settings_general_scientific_mode_desc">Aktivera vetenskapligt läge som standard</string>
+    <string name="settings_general_scientific_mode_desc">Aktivera vetenskapligt läge</string>
     <string name="about_easter_egg">Tack för att du använder OpenCalc ❤️</string>
     <string name="menu_about">Om</string>
     <string name="infinity">Oändlighet</string>
@@ -47,7 +47,7 @@
     <string name="settings_category_history">HISTORIK</string>
     <string name="settings_general_radians">Radianer</string>
     <string name="settings_advanced_prevent_sleep_desc">Förhindra att enheten somnar medan appen är i förgrunden</string>
-    <string name="settings_general_split_parenthesis_button">Dela upp parenteser-knappen i två knappar</string>
+    <string name="settings_general_split_parenthesis_button">Dela parenteser-knapp i två knappar</string>
     <string name="about_category_social">SOCIALT</string>
     <string name="about_other_license">Licens GPL 3.0</string>
     <string name="copied_result">Kopierade resultat</string>
@@ -79,4 +79,9 @@
     <string name="about_dialog_donation_title">Stöd oss</string>
     <string name="menu_donate">Stöd oss</string>
     <string name="about_dialog_donation_close">Stäng</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Inaktivera vetenskapligt läge</string>
+    <string name="settings_general_scientific_mode_hide_desc">Dölj vetenskapligt läge</string>
+    <string name="no_history_available">Ingen historik tillgänglig</string>
+    <string name="show_on_lock_screen">Visa på låsskärm</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Håll kalkylatorn synlig på din låsskärm för snabb och enkel åtkomst. Inaktivera för att dölja den när din skärm är låst.</string>
 </resources>

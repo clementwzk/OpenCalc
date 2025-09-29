@@ -67,7 +67,7 @@
     <string name="naturalLogarithmDesc">Natürlicher Logarithmus</string>
     <string name="parenthesesDesc">Klammer</string>
     <string name="percentDesc">Prozent</string>
-    <string name="backspaceDesc">Rückstelltaste</string>
+    <string name="backspaceDesc">Rücktaste</string>
     <string name="invertDesc">invertieren</string>
     <string name="tangentDesc">Tangens</string>
     <string name="eDesc">e</string>
@@ -78,7 +78,7 @@
     <string name="cosineDesc">Cosinus</string>
     <string name="exponentDesc">Exponent</string>
     <string name="sineDesc">Sinus</string>
-    <string name="settings_auto_save_calculation_without_equal_button_desc">Berechnungen automatisch im Verlauf speichern, ohne die Gleichheitstaste drücken zu müssen</string>
+    <string name="settings_auto_save_calculation_without_equal_button_desc">Berechnungen automatisch im Verlauf speichern, ohne die Ist-gleich-Taste drücken zu müssen</string>
     <string name="piDesc">Pi</string>
     <string name="about_dialog_donation_title">Unterstütze uns</string>
     <string name="menu_donate">Unterstütze uns</string>
@@ -86,4 +86,6 @@
     <string name="no_history_available">Kein Verlauf verfügbar</string>
     <string name="show_on_lock_screen">Auf Sperrbildschirm anzeigen</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Den Taschenrechner auf dem Sperrbildschirm sichtbar lassen, um schnell und einfach darauf zugreifen zu können. Diese Option deaktivieren, um ihn bei gesperrtem Bildschirm auszublenden.</string>
+    <string name="settings_general_backspace">Rücktaste nach links verschieben</string>
+    <string name="settings_general_backspace_desc">Die Rücktaste im Hochformat ganz nach links verschieben. Null und Dezimalpunkt nach rechts verschieben.</string>
 </resources>

@@ -84,4 +84,6 @@
     <string name="settings_general_scientific_mode_hide_desc">Wetenschappelijke modus verbergen</string>
     <string name="show_on_lock_screen">Weergeven op vergrendelingsscherm</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Laat de rekenmachine zichtbaar op het vergrendelingsscherm voor snelle en gemakkelijke toegang. Schakel deze optie uit om deze te verbergen wanneer het scherm is vergrendeld.</string>
+    <string name="settings_general_backspace_desc">Verplaats de backspace-knop naar uiterst links in de portretmodus. Nul en decimaal schuiven naar rechts.</string>
+    <string name="settings_general_backspace">Backspace naar links verplaatsen</string>
 </resources>
