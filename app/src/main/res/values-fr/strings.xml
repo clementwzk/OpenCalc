@@ -82,4 +82,6 @@
     <string name="about_dialog_donation_title">Nous soutenir</string>
     <string name="about_dialog_donation_close">Fermer</string>
     <string name="no_history_available">Pas d\'historique disponible</string>
+    <string name="settings_general_backspace_desc">En mode portrait, déplacez le bouton de retour arrière à l\'extrême gauche. Le zéro et la décimale glissent vers la droite.</string>
+    <string name="settings_general_backspace">Déplacer la touche Retour arrière vers la gauche</string>
 </resources>
