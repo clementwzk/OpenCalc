@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import com.darkempire78.opencalculator.history.History
+import com.darkempire78.opencalculator.bookmarks.Bookmark
 import com.google.gson.Gson
 
 class MyPreferences(context: Context) {
@@ -31,6 +32,8 @@ class MyPreferences(context: Context) {
         private const val KEY_MOVE_BACK_BUTTON_LEFT = "darkempire78.opencalculator.MOVE_BACK_BUTTON_LEFT"
         private const val KEY_NUMBERING_SYSTEM = "darkempire78.opencalculator.NUMBERING_SYSTEM"
         private const val KEY_SHOW_ON_LOCK_SCREEN = "darkempire78.opencalculator.KEY_SHOW_ON_LOCK_SCREEN"
+        private const val KEY_BOOKMARKS = "darkempire78.opencalculator.BOOKMARKS_ELEMENTS"
+        private const val KEY_BOOKMARKS_SIZE = "darkempire78.opencalculator.BOOKMARKS_SIZE"
     }
 
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -78,6 +81,12 @@ class MyPreferences(context: Context) {
     var showOnLockScreen = preferences.getBoolean(KEY_SHOW_ON_LOCK_SCREEN, true)
         set(value) = preferences.edit().putBoolean(KEY_SHOW_ON_LOCK_SCREEN, value).apply()
 
+    private var bookmarks = preferences.getString(KEY_BOOKMARKS, null)
+        set(value) = preferences.edit().putString(KEY_BOOKMARKS, value).apply()
+
+    var bookmarksSize = preferences.getString(KEY_BOOKMARKS_SIZE, "50")
+        set(value) = preferences.edit().putString(KEY_BOOKMARKS_SIZE, value).apply()
+
 
     fun getHistory(): MutableList<History> {
         val gson = Gson()
@@ -119,5 +128,73 @@ class MyPreferences(context: Context) {
             historyList[index] = history
             saveHistory(historyList)
         }
+    }
+
+    fun getBookmarks(): MutableList<Bookmark> {
+        val gson = Gson()
+
+        val bookmarkJson = preferences.getString(KEY_BOOKMARKS, null)
+
+        return if (bookmarkJson != null) {
+            try {
+                val list = gson.fromJson(bookmarkJson, Array<Bookmark>::class.java).asList().toMutableList()
+                list
+            } catch (e: Exception) {
+                mutableListOf()
+            }
+        } else {
+            mutableListOf()
+        }
+    }
+
+    fun saveBookmarks(bookmarks: List<Bookmark>){
+        val gson = Gson()
+        val bookmarks2 = bookmarks.toMutableList()
+
+        // Remove the oldest items from the bookmarks list until bookmarks list length <= limit
+        while (bookmarksSize!!.toInt() > 0 && bookmarks2.size > bookmarksSize!!.toInt()) {
+            bookmarks2.removeAt(0)
+        }
+        MyPreferences(ctx).bookmarks = gson.toJson(bookmarks2) // Convert to json
+    }
+
+    fun addBookmark(calculation: String, result: String): Bookmark {
+        val bookmarksList = getBookmarks()
+
+        // Prevent duplicate bookmarks by same (calculation, result)
+        val existing = bookmarksList.firstOrNull { it.calculation == calculation && it.result == result }
+        if (existing != null) {
+            // Bookmark already exists
+            return existing
+        }
+
+        // Create new bookmark and save it
+        val bookmark = Bookmark(calculation = calculation, result = result)
+        bookmarksList.add(bookmark)
+        saveBookmarks(bookmarksList)
+        return bookmark
+    }
+
+    fun getBookmarkById(id: String): Bookmark? {
+        val bookmarks = getBookmarks()
+        return bookmarks.find { it.id == id }
+    }
+
+    fun updateBookmarkById(id: String, bookmark: Bookmark) {
+        val bookmarksList = getBookmarks()
+        val index = bookmarksList.indexOfFirst { it.id == id }
+        if (index != -1) {
+            bookmarksList[index] = bookmark
+            saveBookmarks(bookmarksList)
+        }
+    }
+
+    fun removeBookmarkById(id: String) {
+        val list = getBookmarks().filterNot { it.id == id }
+        saveBookmarks(list)
+    }
+
+    fun isBookmarked(calculation: String, result: String): Boolean {
+        return getBookmarks().any { it.calculation == calculation && it.result == result }
     }
 }
