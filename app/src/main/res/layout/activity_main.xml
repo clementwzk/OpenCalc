@@ -631,6 +631,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bookmarksRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="?attr/history_background_color"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/sliding_layout_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:visibility="visible"
+                    tools:listitem="@layout/history_item" />
+
             <TextView
                 android:id="@+id/no_history_text"
                 android:layout_width="match_parent"

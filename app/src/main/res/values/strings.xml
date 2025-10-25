@@ -174,4 +174,8 @@
     <string name="no_history_available">No History Available</string>
     <string name="show_on_lock_screen">Show on Lock Screen</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Keep the calculator visible on your lock screen for quick and easy access. Disable to hide it when your screen is locked.</string>
+
+    <!-- Bookmarks -->
+    <string name="nothing_to_bookmark">Nothing to bookmark</string>
+    <string name="bookmarked">Bookmarked</string>
 </resources>
