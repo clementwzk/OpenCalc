@@ -209,29 +209,35 @@ class MainActivity : AppCompatActivity() {
         // --- END Bookmarks RecyclerView setup ---
 
         // --- History/Bookmarks tabs setup ---
-        binding.historyBookmarksTabs.addTab(binding.historyBookmarksTabs.newTab().setText(R.string.settings_category_history))
+        binding.historyBookmarksTabs.addTab(binding.historyBookmarksTabs.newTab().setText(R.string.history_tab_title))
         binding.historyBookmarksTabs.addTab(binding.historyBookmarksTabs.newTab().setText(R.string.bookmarks_tab_title))
 
         // Default to History tab
         showHistoryList()
         binding.slidingLayout.scrollableView = binding.historyRecylcleView
 
-        binding.historyBookmarksTabs.addOnTabSelectedListener(object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab) {
-                when (tab.position) {
-                    0 -> { // History
-                        showHistoryList()
-                        binding.slidingLayout.scrollableView = binding.historyRecylcleView
+        binding.historyBookmarksTabs.addOnTabSelectedListener(
+            object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab) {
+                    when (tab.position) {
+                        0 -> {
+                            showHistoryList()
+                            binding.slidingLayout.scrollableView = binding.historyRecylcleView
+                        }
+                        1 -> {
+                            showBookmarksList()
+                            binding.slidingLayout.scrollableView = binding.bookmarksRecyclerView
+                        }
                     }
-                    1 -> { // Bookmarks
-                        showBookmarksList()
-                        binding.slidingLayout.scrollableView = binding.bookmarksRecyclerView
-                    }
+                    // keep the grab handle above the list and refresh layout
+                    binding.slidingLayoutButton.bringToFront()
+                    binding.constraintLayout3.requestLayout()
+                    binding.slidingLayout.invalidate()
                 }
+                override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
+                override fun onTabReselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
             }
-            override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
-            override fun onTabReselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
-        })
+        )
         // --- END History/Bookmarks tabs setup ---
 
         // Set the sliding layout

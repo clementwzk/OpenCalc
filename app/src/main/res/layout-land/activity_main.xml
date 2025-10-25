@@ -17,6 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/resultDisplayHorizontalScrollView"
         app:umanoPanelHeight="31dp"
         app:umanoShadowHeight="0dp"
+        app:umanoOverlay="true"
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +33,7 @@
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="8dp">
+                android:paddingTop="48dp">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -446,6 +447,7 @@
                     android:id="@+id/bookmarksRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginBottom="15dp"
                     android:background="?attr/history_background_color"
                     android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/historyBookmarksTabs"

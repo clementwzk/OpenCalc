@@ -117,6 +117,7 @@
         app:umanoPanelHeight="41dp"
         app:umanoScrollableView="@id/history_recylcle_view"
         app:umanoShadowHeight="0dp"
+        app:umanoOverlay="true"
         tools:ignore="MissingConstraints">
 
 
@@ -131,7 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:paddingHorizontal="8dp"
-                android:paddingTop="12dp"
+                android:paddingTop="48dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -644,6 +645,7 @@
                     android:id="@+id/bookmarksRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginBottom="32dp"
                     android:background="?attr/history_background_color"
                     android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/historyBookmarksTabs"

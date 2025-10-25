@@ -175,8 +175,9 @@
     <string name="show_on_lock_screen">Show on Lock Screen</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Keep the calculator visible on your lock screen for quick and easy access. Disable to hide it when your screen is locked.</string>
 
-    <!-- Bookmarks -->
+    <!-- Bookmarks and History tabs -->
     <string name="nothing_to_bookmark">Nothing to bookmark</string>
     <string name="bookmarked">Bookmarked</string>
     <string name="bookmarks_tab_title">Bookmarks</string>
+    <string name="history_tab_title">History</string>
 </resources>
