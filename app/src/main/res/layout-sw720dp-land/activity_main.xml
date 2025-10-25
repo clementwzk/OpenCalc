@@ -19,6 +19,22 @@
         app:layout_constraintStart_toStartOf="@+id/menuButton"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/bookmarkButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="14dp"
+        android:background="?attr/foreground_color"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/bookmark_border_icon_desc"
+        app:tint="?attr/text_second_color"
+        app:srcCompat="@drawable/ic_bookmark_border_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/inputHorizontalScrollView"
+        app:layout_constraintBottom_toBottomOf="@+id/inputHorizontalScrollView" />
+
     <HorizontalScrollView
         android:id="@+id/inputHorizontalScrollView"
         android:layout_width="0dp"
@@ -26,10 +42,10 @@
         android:background="?attr/foreground_color"
         android:overScrollMode="never"
         android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/menuButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
-        app:layout_constraintEnd_toStartOf="@+id/menuButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/bookmarkButton"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
             android:id="@+id/input"
@@ -106,17 +122,6 @@
                 android:textColor="?attr/text_second_color"
                 android:textIsSelectable="true"
                 android:textSize="45sp" />
-
-            <ImageButton
-                android:id="@+id/bookmarkButton"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/bookmark_border_icon_desc"
-                app:tint="?attr/text_second_color"
-                app:srcCompat="@drawable/ic_bookmark_border_24" />
 
         </LinearLayout>
 
