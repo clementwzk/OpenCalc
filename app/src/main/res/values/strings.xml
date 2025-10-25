@@ -178,4 +178,5 @@
     <!-- Bookmarks -->
     <string name="nothing_to_bookmark">Nothing to bookmark</string>
     <string name="bookmarked">Bookmarked</string>
+    <string name="bookmarks_tab_title">Bookmarks</string>
 </resources>

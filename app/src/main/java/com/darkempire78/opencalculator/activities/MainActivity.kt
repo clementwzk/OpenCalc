@@ -208,6 +208,32 @@ class MainActivity : AppCompatActivity() {
         setSwipeTouchHelperForBookmarks()
         // --- END Bookmarks RecyclerView setup ---
 
+        // --- History/Bookmarks tabs setup ---
+        binding.historyBookmarksTabs.addTab(binding.historyBookmarksTabs.newTab().setText(R.string.settings_category_history))
+        binding.historyBookmarksTabs.addTab(binding.historyBookmarksTabs.newTab().setText(R.string.bookmarks_tab_title))
+
+        // Default to History tab
+        showHistoryList()
+        binding.slidingLayout.scrollableView = binding.historyRecylcleView
+
+        binding.historyBookmarksTabs.addOnTabSelectedListener(object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab) {
+                when (tab.position) {
+                    0 -> { // History
+                        showHistoryList()
+                        binding.slidingLayout.scrollableView = binding.historyRecylcleView
+                    }
+                    1 -> { // Bookmarks
+                        showBookmarksList()
+                        binding.slidingLayout.scrollableView = binding.bookmarksRecyclerView
+                    }
+                }
+            }
+            override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
+            override fun onTabReselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
+        })
+        // --- END History/Bookmarks tabs setup ---
+
         // Set the sliding layout
         binding.slidingLayout.addPanelSlideListener(object : PanelSlideListener {
             override fun onPanelSlide(panel: View, slideOffset: Float) {
@@ -483,6 +509,19 @@ class MainActivity : AppCompatActivity() {
             binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
         }
         Toast.makeText(this, R.string.bookmarked, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showHistoryList() {
+        binding.historyRecylcleView.visibility = View.VISIBLE
+        binding.noHistoryText.visibility =
+            if (historyAdapter.itemCount == 0) View.VISIBLE else View.GONE
+        binding.bookmarksRecyclerView.visibility = View.GONE
+    }
+
+    private fun showBookmarksList() {
+        binding.historyRecylcleView.visibility = View.GONE
+        binding.noHistoryText.visibility = View.GONE   // no “no bookmarks” label yet
+        binding.bookmarksRecyclerView.visibility = View.VISIBLE
     }
 
     fun openAppMenu(view: View) {
