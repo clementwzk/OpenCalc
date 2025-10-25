@@ -127,6 +127,15 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(view)
 
+        // --- Setup bookmark button ---
+        binding.bookmarkButton.setOnClickListener {
+            addBookmark()
+        }
+
+        // Show correct icon on first render
+        updateBookmarkIcon()
+        // --- END Setup bookmark button ---
+
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
 
@@ -496,7 +505,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Function to bookmark a calculation
-    fun addBookmark(menuItem: MenuItem) {
+    fun addBookmark() {
         val calculation = binding.input.text.toString()
         val shownResult = binding.resultDisplay.text.toString()
 
@@ -515,8 +524,10 @@ class MainActivity : AppCompatActivity() {
             binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
         }
         Toast.makeText(this, R.string.bookmarked, Toast.LENGTH_SHORT).show()
+        updateBookmarkIcon()
     }
 
+    // --- History/Bookmarks tabs helpers ---
     private fun showHistoryList() {
         binding.historyRecylcleView.visibility = View.VISIBLE
         binding.noHistoryText.visibility =
@@ -529,6 +540,25 @@ class MainActivity : AppCompatActivity() {
         binding.noHistoryText.visibility = View.GONE   // no “no bookmarks” label yet
         binding.bookmarksRecyclerView.visibility = View.VISIBLE
     }
+    // --- END History/Bookmarks tabs helpers ---
+
+    // --- Bookmark helpers ---
+    private fun currentCalcAndResult(): Pair<String, String>? {
+        val calculation = binding.input.text.toString()
+        val shownResult = binding.resultDisplay.text.toString()
+        if (calculation.isEmpty() && shownResult.isEmpty()) return null
+        val result = if (shownResult.isNotEmpty()) shownResult else calculation
+        return calculation to result
+    }
+
+    private fun updateBookmarkIcon() {
+        val pair = currentCalcAndResult()
+        val isBookmarked = pair?.let { (calc, res) -> MyPreferences(this).isBookmarked(calc, res) } ?: false
+        val icon = if (isBookmarked) R.drawable.ic_bookmark_24 else R.drawable.ic_bookmark_border_24
+        binding.bookmarkButton.setImageResource(icon)
+        binding.bookmarkButton.isEnabled = pair != null
+    }
+    // --- END Bookmark helpers ---
 
     fun openAppMenu(view: View) {
         val popup = PopupMenu(this, view)
@@ -786,6 +816,7 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             binding.resultDisplay.text = ""
                         }
+                        updateBookmarkIcon()
                     }
 
                     // Save to history if the option autoSaveCalculationWithoutEqualButton is enabled
@@ -864,12 +895,14 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         withContext(Dispatchers.Main) {
                             binding.resultDisplay.text = ""
+                            updateBookmarkIcon()
                         }
                     }
                 }
             } else {
                 withContext(Dispatchers.Main) {
                     binding.resultDisplay.text = ""
+                    updateBookmarkIcon()
                 }
             }
         }
@@ -1129,6 +1162,7 @@ class MainActivity : AppCompatActivity() {
         binding.input.setText("")
         binding.resultDisplay.text = ""
         isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption = false
+        updateBookmarkIcon()
     }
 
     @SuppressLint("SetTextI18n")
@@ -1272,6 +1306,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 withContext(Dispatchers.Main) { binding.resultDisplay.text = "" }
             }
+            updateBookmarkIcon()
         }
     }
 
