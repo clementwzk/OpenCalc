@@ -32,6 +32,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AlertDialog
 import com.darkempire78.opencalculator.MyPreferences
 import com.darkempire78.opencalculator.R
 import com.darkempire78.opencalculator.TextSizeAdjuster
@@ -50,7 +51,6 @@ import com.darkempire78.opencalculator.databinding.ActivityMainBinding
 import com.darkempire78.opencalculator.dialogs.DonationDialog
 import com.darkempire78.opencalculator.history.History
 import com.darkempire78.opencalculator.history.HistoryAdapter
-import com.darkempire78.opencalculator.bookmarks.Bookmark
 import com.darkempire78.opencalculator.bookmarks.BookmarksAdapter
 import com.darkempire78.opencalculator.util.ScientificMode
 import com.darkempire78.opencalculator.util.ScientificModeTypes
@@ -494,6 +494,8 @@ class MainActivity : AppCompatActivity() {
                     bookmarksAdapter.removeAt(position)
                     // Persist removal
                     prefs.removeBookmarkById(removed.id)
+                    // Update bookmark icon in case the currently shown calculation is the one that is being deleted
+                    updateBookmarkIcon()
                 } else {
                     // Fallback: refresh from prefs
                     bookmarksAdapter.updateList(prefs.getBookmarks())
@@ -601,6 +603,23 @@ class MainActivity : AppCompatActivity() {
         // Clear drawer
         historyAdapter.clearHistory()
         checkEmptyHistoryForNoHistoryLabel()
+    }
+
+    fun clearBookmarks(menuItem: MenuItem) {
+        // Build alert modal for action confirmation
+        AlertDialog.Builder(this)
+            .setTitle(R.string.confirm_clear_bookmarks_title)
+            .setPositiveButton(R.string.confirm_clear_bookmarks_button) { _, _ ->
+                // Clear stored bookmarks
+                MyPreferences(this).saveBookmarks(emptyList())
+                // Refresh the adapter/UI
+                bookmarksAdapter.updateList(MyPreferences(this).getBookmarks())
+                Toast.makeText(this, R.string.bookmarks_cleared, Toast.LENGTH_SHORT).show()
+                // Also update the bookmark icon state in case the current calculation was bookmarked
+                updateBookmarkIcon()
+            }
+            .setNegativeButton(R.string.cancel_clear_bookmarks_button, null)
+            .show()
     }
 
     private fun keyVibration(view: View) {

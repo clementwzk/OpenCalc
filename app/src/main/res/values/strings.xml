@@ -177,8 +177,14 @@
 
     <!-- Bookmarks and History tabs -->
     <string name="nothing_to_bookmark">Nothing to bookmark</string>
-    <string name="bookmarked">Bookmarked</string>
     <string name="bookmarks_tab_title">Bookmarks</string>
     <string name="history_tab_title">History</string>
     <string name="bookmark_border_icon_desc">Bookmark</string>
+
+    <!-- Clear bookmarks menu and alert modal -->
+    <string name="menu_clear_bookmarks">Clear bookmarks</string>
+    <string name="confirm_clear_bookmarks_title">Delete all saved bookmarks ?</string>
+    <string name="bookmarks_cleared">Bookmarks cleared</string>
+    <string name="confirm_clear_bookmarks_button">Yes</string>
+    <string name="cancel_clear_bookmarks_button">No</string>
 </resources>
