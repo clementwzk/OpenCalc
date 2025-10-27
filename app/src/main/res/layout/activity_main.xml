@@ -689,12 +689,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
+            <TextView
+                android:id="@+id/no_bookmarks_text"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/no_bookmarks_available"
+                android:textSize="18sp"
+                android:textColor="?attr/text_color"
+                android:gravity="center"
+                android:layout_marginBottom="32dp"
+                android:background="?attr/history_background_color"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/historyBookmarksTabs"
+                app:layout_constraintBottom_toTopOf="@+id/sliding_layout_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/list_bottom_barrier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
-                app:constraint_referenced_ids="history_recylcle_view,bookmarksRecyclerView,no_history_text" />
+                app:constraint_referenced_ids="history_recylcle_view,bookmarksRecyclerView,no_history_text,no_bookmarks_text" />
 
             <View
                 android:id="@+id/history_sliding_layout_button"

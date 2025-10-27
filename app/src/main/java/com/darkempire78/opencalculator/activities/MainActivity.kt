@@ -495,6 +495,8 @@ class MainActivity : AppCompatActivity() {
                     val removed = current[position]
                     // Update adapter first for snappy UI
                     bookmarksAdapter.removeAt(position)
+                    // Check if we removed the last bookmark to show the no bookmarks text
+                    checkEmptyBookmarksForNoBookmarksLabel()
                     // Persist removal
                     prefs.removeBookmarkById(removed.id)
                     // Update bookmark icon in case the currently shown calculation is the one that is being deleted
@@ -544,20 +546,22 @@ class MainActivity : AppCompatActivity() {
 
         // Update the icon to filled/outlined immediately to show if the calculation is bookmarked or not
         updateBookmarkIcon()
+        checkEmptyBookmarksForNoBookmarksLabel()
     }
 
     // --- History/Bookmarks tabs helpers ---
     private fun showHistoryList() {
         binding.historyRecylcleView.visibility = View.VISIBLE
-        binding.noHistoryText.visibility =
-            if (historyAdapter.itemCount == 0) View.VISIBLE else View.GONE
         binding.bookmarksRecyclerView.visibility = View.GONE
+        binding.noBookmarksText.visibility = View.GONE
+        checkEmptyHistoryForNoHistoryLabel()
     }
 
     private fun showBookmarksList() {
         binding.historyRecylcleView.visibility = View.GONE
-        binding.noHistoryText.visibility = View.GONE   // no “no bookmarks” label yet
+        binding.noHistoryText.visibility = View.GONE
         binding.bookmarksRecyclerView.visibility = View.VISIBLE
+        checkEmptyBookmarksForNoBookmarksLabel()
     }
     // --- END History/Bookmarks tabs helpers ---
 
@@ -620,6 +624,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.bookmarks_cleared, Toast.LENGTH_SHORT).show()
                 // Also update the bookmark icon state in case the current calculation was bookmarked
                 updateBookmarkIcon()
+                checkEmptyBookmarksForNoBookmarksLabel()
             }
             .setNegativeButton(R.string.cancel_clear_bookmarks_button, null)
             .show()
@@ -1588,12 +1593,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkEmptyHistoryForNoHistoryLabel() {
-        if (historyAdapter.itemCount==0) {
+        val isOnHistoryTab = binding.historyBookmarksTabs.selectedTabPosition == 0
+        if (isOnHistoryTab && historyAdapter.itemCount==0) {
             binding.historyRecylcleView.visibility = View.GONE
             binding.noHistoryText.visibility = View.VISIBLE
         }else {
             binding.noHistoryText.visibility = View.GONE
-            binding.historyRecylcleView.visibility = View.VISIBLE
+            if (isOnHistoryTab) binding.historyRecylcleView.visibility = View.VISIBLE
+        }
+    }
+
+    fun checkEmptyBookmarksForNoBookmarksLabel() {
+        val isOnBookmarksTab = binding.historyBookmarksTabs.selectedTabPosition == 1
+        if (isOnBookmarksTab && bookmarksAdapter.itemCount == 0) {
+            binding.bookmarksRecyclerView.visibility = View.GONE
+            binding.noBookmarksText.visibility = View.VISIBLE
+        } else {
+            binding.noBookmarksText.visibility = View.GONE
+            if (isOnBookmarksTab) binding.bookmarksRecyclerView.visibility = View.VISIBLE
         }
     }
 

@@ -180,6 +180,7 @@
     <string name="bookmarks_tab_title">Bookmarks</string>
     <string name="history_tab_title">History</string>
     <string name="bookmark_border_icon_desc">Bookmark</string>
+    <string name="no_bookmarks_available">No Bookmarks Available</string>
 
     <!-- Clear bookmarks menu and alert modal -->
     <string name="menu_clear_bookmarks">Clear bookmarks</string>
