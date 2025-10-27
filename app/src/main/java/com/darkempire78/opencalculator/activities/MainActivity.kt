@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
         // --- Setup bookmark button ---
         binding.bookmarkButton.setOnClickListener {
-            addBookmark()
+            toggleBookmark()
         }
 
         // Show correct icon on first render
@@ -504,8 +504,8 @@ class MainActivity : AppCompatActivity() {
         bookmarksTouchHelper.attachToRecyclerView(binding.bookmarksRecyclerView)
     }
 
-    // Function to bookmark a calculation
-    fun addBookmark() {
+    // Function to toggle the adding or removing of a bookmark for a calculation by clicking on the bookmark icon
+    fun toggleBookmark() {
         val calculation = binding.input.text.toString()
         val shownResult = binding.resultDisplay.text.toString()
 
@@ -515,15 +515,29 @@ class MainActivity : AppCompatActivity() {
         }
 
         val result = if (shownResult.isNotEmpty()) shownResult else calculation
-
         val prefs = MyPreferences(this)
-        val bookmark = prefs.addBookmark(calculation, result)
-        // Refresh from prefs to reflect dedupe/trim behavior
-        bookmarksAdapter.updateList(prefs.getBookmarks())
-        if (bookmarksAdapter.itemCount > 0) {
-            binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
+
+        // Toggle: if calculation is already bookmarked, remove it; otherwise add it to bookmarks
+        if (prefs.isBookmarked(calculation, result)) {
+            // Find the matching bookmark and remove it by id
+            val toRemove = prefs.getBookmarks()
+                .firstOrNull { it.calculation == calculation && it.result == result }
+            if (toRemove != null) {
+                prefs.removeBookmarkById(toRemove.id)
+            }
+            // Refresh list
+            bookmarksAdapter.updateList(prefs.getBookmarks())
+        } else {
+            // Bookmark the calculation
+            prefs.addBookmark(calculation, result)
+            // Refresh list (reflects dedupe/trim behavior)
+            bookmarksAdapter.updateList(prefs.getBookmarks())
+            if (bookmarksAdapter.itemCount > 0) {
+                binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
+            }
         }
-        Toast.makeText(this, R.string.bookmarked, Toast.LENGTH_SHORT).show()
+
+        // Update the icon to filled/outlined immediately to show if the calculation is bookmarked or not
         updateBookmarkIcon()
     }
 
