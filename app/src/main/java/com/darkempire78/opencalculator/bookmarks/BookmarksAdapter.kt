@@ -39,24 +39,9 @@ class BookmarksAdapter(
         notifyDataSetChanged()
     }
 
-    fun appendOne(b: Bookmark) {
-        items.add(b)
-        if (items.size > 1) {
-            notifyItemInserted(items.size - 1)
-            notifyItemRangeChanged(items.size - 2, 2)
-        } else {
-            notifyItemInserted(items.size - 1)
-        }
-    }
-
     fun removeAt(position: Int) {
         items.removeAt(position)
         notifyItemRemoved(position)
-    }
-
-    fun clear() {
-        items.clear()
-        notifyDataSetChanged()
     }
 
     inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {

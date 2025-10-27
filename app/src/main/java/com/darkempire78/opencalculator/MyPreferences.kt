@@ -175,20 +175,6 @@ class MyPreferences(context: Context) {
         return bookmark
     }
 
-    fun getBookmarkById(id: String): Bookmark? {
-        val bookmarks = getBookmarks()
-        return bookmarks.find { it.id == id }
-    }
-
-    fun updateBookmarkById(id: String, bookmark: Bookmark) {
-        val bookmarksList = getBookmarks()
-        val index = bookmarksList.indexOfFirst { it.id == id }
-        if (index != -1) {
-            bookmarksList[index] = bookmark
-            saveBookmarks(bookmarksList)
-        }
-    }
-
     fun removeBookmarkById(id: String) {
         val list = getBookmarks().filterNot { it.id == id }
         saveBookmarks(list)
