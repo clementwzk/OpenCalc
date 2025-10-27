@@ -253,7 +253,10 @@ class MainActivity : AppCompatActivity() {
         binding.slidingLayout.addPanelSlideListener(object : PanelSlideListener {
             override fun onPanelSlide(panel: View, slideOffset: Float) {
                 if (slideOffset == 0f) { // If the panel got collapsed
-                    binding.slidingLayout.scrollableView = binding.historyRecylcleView
+                    // Keep scrollableView in sync with the selected tab
+                    val isBookmarks = binding.historyBookmarksTabs.selectedTabPosition == 1
+                    binding.slidingLayout.scrollableView =
+                        if (isBookmarks) binding.bookmarksRecyclerView else binding.historyRecylcleView
                 }
             }
 

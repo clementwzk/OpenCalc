@@ -84,7 +84,26 @@ class BookmarksAdapter(
                     DateUtils.FORMAT_ABBREV_RELATIVE
                 )
                 time.text = rel
-                // Keep same grouping to look like history for now:
+
+                // Hide current time if previous element is same day
+                if (position > 0) {
+                    val prev = items[position - 1]
+                    val prevRel = DateUtils.getRelativeTimeSpanString(
+                        prev.time.toLong(),
+                        System.currentTimeMillis(),
+                        DateUtils.DAY_IN_MILLIS,
+                        DateUtils.FORMAT_ABBREV_RELATIVE
+                    )
+                    if (prevRel == rel) {
+                        time.visibility = View.GONE
+                    } else {
+                        time.visibility = View.VISIBLE
+                    }
+                } else {
+                    time.visibility = View.VISIBLE
+                }
+
+                // Hide main separator if next element is same day
                 if (position + 1 < items.size) {
                     val nextRel = DateUtils.getRelativeTimeSpanString(
                         items[position + 1].time.toLong(),

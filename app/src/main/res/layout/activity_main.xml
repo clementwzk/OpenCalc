@@ -689,6 +689,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/list_bottom_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="history_recylcle_view,bookmarksRecyclerView,no_history_text" />
+
             <View
                 android:id="@+id/history_sliding_layout_button"
                 android:layout_width="match_parent"
@@ -696,7 +703,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/history_recylcle_view"/>
+                app:layout_constraintTop_toBottomOf="@+id/list_bottom_barrier"/>
 
             <View
                 android:id="@+id/sliding_layout_button"
