@@ -5,7 +5,7 @@
     <string name="menu_about">Hakkında</string>
     <string name="infinity">Sonsuz</string>
     <string name="theme_light">Açık</string>
-    <string name="menu_clear_history">Geçmişi Temizle</string>
+    <string name="menu_clear_history">Geçmişi temizle</string>
     <string name="theme_amoled">Amoled</string>
     <string name="theme_dark">Koyu</string>
     <string name="theme_system">Sistem</string>
@@ -28,7 +28,7 @@
     <string name="settings_category_advanced">GELİŞMİŞ</string>
     <string name="settings_general_scientific_mode">Bilimsel mod</string>
     <string name="settings_advanced_prevent_sleep">Telefonun uykuya geçmesini önle</string>
-    <string name="settings_general_scientific_mode_desc">Bilimsel modu öntanımlı olarak etkinleştir</string>
+    <string name="settings_general_scientific_mode_desc">Bilimsel modu etkinleştir</string>
     <string name="about_category_social">SOSYAL MEDYA</string>
     <string name="settings_general_radians_desc">Öntanımlı olarak derece yerine radyan kullan</string>
     <string name="about_category_help">BİZE YARDIM EDİN</string>
@@ -76,4 +76,15 @@
     <string name="tangentDesc">tanjant</string>
     <string name="sineDesc">sinüs</string>
     <string name="cosineDesc">kosinüs</string>
+    <string name="log2Desc">taban 2 logaritma</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Bilimsel modu devre dışı bırak</string>
+    <string name="settings_general_scientific_mode_hide_desc">Bilimsel modu gizle</string>
+    <string name="about_dialog_donation_title">Bizi Destekleyin</string>
+    <string name="menu_donate">Bizi destekleyin</string>
+    <string name="about_dialog_donation_close">Kapat</string>
+    <string name="settings_general_backspace">Backspace Tuşunu Sola Taşı</string>
+    <string name="settings_general_backspace_desc">Dikey modda backspace tuşunu en sola taşıyın. Sıfır ve ondalık kaydırma sağa kaydırılır.</string>
+    <string name="no_history_available">Geçmiş Yok</string>
+    <string name="show_on_lock_screen">Kilit Ekranında Göster</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Hızlı ve kolay erişim için hesap makinesini kilit ekranında görünür tutun. Ekran kilitliyken gizlemek için devre dışı bırakın.</string>
 </resources>

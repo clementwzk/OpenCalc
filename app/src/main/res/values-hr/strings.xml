@@ -35,7 +35,7 @@
     <string name="settings_category_history">POVIJEST</string>
     <string name="settings_category_general">Opće</string>
     <string name="settings_advanced_prevent_sleep_desc">Spriječi isključivanje ekrana dok se aplikacija nalazi u prvom planu</string>
-    <string name="settings_general_scientific_mode_desc">Standardno aktiviraj znanstveni način rada</string>
+    <string name="settings_general_scientific_mode_desc">Aktiviraj znanstveni način rada</string>
     <string name="settings_general_scientific_mode_deactivate_desc">Deaktiviraj znanstveni način rada</string>
     <string name="settings_general_scientific_mode_hide_desc">Sakrij znanstveni način rada</string>
     <string name="settings_general_radians_desc">Koristi radijane umjesto stupnjeva prema zadanim postavkama</string>
@@ -81,4 +81,9 @@
     <string name="about_dialog_donation_close">Zatvori</string>
     <string name="menu_donate">Podrži nas</string>
     <string name="log2Desc">logaritam baze 2</string>
+    <string name="no_history_available">Nema dostupne povijesti</string>
+    <string name="show_on_lock_screen">Prikaži na zaključanom ekranu</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Ostavi kalkulator vidljivim na zaključanom ekranu za brz i jednostavan pristup. Deaktiviraj opciju za skrivanje kada je ekran zaključan.</string>
+    <string name="settings_general_backspace">Pomakni tipku backspace ulijevo</string>
+    <string name="settings_general_backspace_desc">Pomakni tipku backspace skroz na lijevo u uspravnom načinu rada. Pomakni nulu i decimalni znak na desno.</string>
 </resources>

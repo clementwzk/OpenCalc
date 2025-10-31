@@ -5,10 +5,10 @@ Neu:
 
 Fehlerbehebungen:
 - Verlaufsscroll (@MahmoudRH)
-- Ergebnis Genauigkeit
-- Backspace bei Tausendertrennzeichen
-- Querformat für 10-Zoll-Tablet
-- Backspace nach Ist-gleich-Taste
+- Genauigkeit der Ergebnisse
+- Rücktaste bei Tausendertrennzeichen
+- Querformat für 10-Zoll-Tablets
+- Rücktaste nach Ist-gleich-Taste
 - Absturz nach Auswahl eines Verlaufergebnisses
 - Einige Formatierungsprobleme
 - Weitere Fehlerbehebungen

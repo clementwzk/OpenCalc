@@ -34,7 +34,7 @@
     <string name="about_made_in_france">Creata con ❤️ in Francia</string>
     <string name="about_other_privacy_policy">Informativa sulla Privacy</string>
     <string name="settings_history_size">Numero di risultati salvati nella cronologia</string>
-    <string name="settings_general_scientific_mode_desc">Attiva la modalità scientifica per impostazione predefinita</string>
+    <string name="settings_general_scientific_mode_desc">Attiva la modalità scientifica</string>
     <string name="settings_advanced_prevent_sleep">Evita che lo schermo si spenga</string>
     <string name="settings_category_history">CRONOLOGIA</string>
     <string name="settings_advanced_prevent_sleep_desc">Evita che lo schermo si spenga mentre l\'app è in primo piano</string>
@@ -84,4 +84,6 @@
     <string name="settings_general_scientific_mode_hide_desc">Nascondi la modalità scientifica</string>
     <string name="show_on_lock_screen">Mostra nella schermata di blocco</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Mantieni la calcolatrice visibile sulla schermata di blocco per un accesso rapido e semplice. Disattivala per nasconderla quando lo schermo è bloccato.</string>
+    <string name="settings_general_backspace">Bottone \"Indietro\" a sinistra</string>
+    <string name="settings_general_backspace_desc">Sposta il bottone \"Indietro\" a sinistra, in modalità verticale. I bottoni \"Zero\" e \"Virgola\" si spostano a destra.</string>
 </resources>

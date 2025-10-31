@@ -84,4 +84,6 @@
     <string name="no_history_available">Historie není k dispozici</string>
     <string name="show_on_lock_screen">Zobrazit na uzamčené obrazovce</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Nechte kalkulačku viditelnou na uzamčené obrazovce, abyste k ní měli rychlý a snadný přístup. Deaktivujte tuto funkci, chcete-li ji skrýt, když je obrazovka uzamčena.</string>
+    <string name="settings_general_backspace">Přesunout klávesu Backspace doleva</string>
+    <string name="settings_general_backspace_desc">V režimu na výšku přesuňte klávesu Backspace zcela doleva. Nula a desetinná čárka se posunou doprava.</string>
 </resources>
