@@ -454,9 +454,40 @@ class MainActivity : AppCompatActivity() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
-                historyAdapter.removeHistoryElement(position)
-                checkEmptyHistoryForNoHistoryLabel()
-                deleteElementFromHistory(position)
+                val prefs = MyPreferences(this@MainActivity)
+
+                if (direction == ItemTouchHelper.RIGHT) {
+                    // Right swipe -> add history element to bookmarks (do NOT delete from history)
+                    val historyList = prefs.getHistory()
+                    if (position in 0 until historyList.size) {
+                        val h = historyList[position]
+                        // Add bookmark, deduplication safe in addBookmark
+                        prefs.addBookmark(h.calculation, h.result)
+
+                        // Refresh bookmarks UI and scroll to the bottom for feedback
+                        bookmarksAdapter.updateList(prefs.getBookmarks())
+                        if (bookmarksAdapter.itemCount > 0) {
+                            binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
+                        }
+
+                        // Update bookmark icon in case this calculation is currently shown
+                        updateBookmarkIcon()
+
+                        // Restore the swiped row since we don't delete it
+                        historyAdapter.notifyItemChanged(position)
+                    } else {
+                        // Out-of-bounds safety: just refresh the row
+                        historyAdapter.notifyItemChanged(position)
+                    }
+
+                    // User feedback
+                    Toast.makeText(this@MainActivity, R.string.bookmarked, Toast.LENGTH_SHORT).show()
+                } else {
+                    // LEFT swipe -> delete element from history
+                    historyAdapter.removeHistoryElement(position)
+                    checkEmptyHistoryForNoHistoryLabel()
+                    deleteElementFromHistory(position)
+                }
             }
         }
 
