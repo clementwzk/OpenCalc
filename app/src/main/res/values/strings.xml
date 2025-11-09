@@ -84,6 +84,7 @@
     <string name="settings_category_formatting">FORMATTING</string>
     <string name="settings_category_history">HISTORY</string>
     <string name="settings_category_advanced">ADVANCED</string>
+    <string name="settings_category_fractions">FRACTIONS</string>
 
     <string name="settings_general_language">Language</string>
 
@@ -121,6 +122,11 @@
 
     <string name="settings_advanced_prevent_sleep">Keep device awake</string>
     <string name="settings_advanced_prevent_sleep_desc">Prevent device from sleeping while the app is in the foreground</string>
+
+    <string name="settings_fractions_use">Show Fractions</string>
+    <string name="settings_fractions_use_desc">Display results as fractions as well as decimals</string>
+    <string name="settings_fractions_precision">Fraction precision</string>
+    <string name="settings_fractions_precision_desc">How many decimal places before rounding occurs. Anything over will result in fraction rounding</string>
 
     <!-- About page -->
     <string name="about_category_help">HELP US</string>

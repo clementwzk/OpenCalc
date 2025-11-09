@@ -112,6 +112,25 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        app:title="@string/settings_category_fractions">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:icon="@drawable/ftfrac"
+            app:key="darkempire78.opencalculator.SHOW_FRACTION"
+            app:summary="@string/settings_fractions_use_desc"
+            app:title="@string/settings_fractions_use"
+            app:widgetLayout="@drawable/material_switch" />
+        <ListPreference
+            app:defaultValue="1.0E-4"
+            app:entries="@array/fraction_precision_entries"
+            app:entryValues="@array/fraction_precision_values"
+            app:icon="@drawable/fracprec"
+            app:key="darkempire78.opencalculator.FRACTION_PRECISION"
+            app:summary="@string/settings_fractions_precision_desc"
+            app:title="@string/settings_fractions_precision" />
+    </PreferenceCategory>
+    <PreferenceCategory
         app:title="@string/settings_category_formatting"
         app:color="?attr/text_color">
 
