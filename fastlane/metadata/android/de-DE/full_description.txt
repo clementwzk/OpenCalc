@@ -1,11 +1,5 @@
-Ein unkomplizierter und schöner Taschenrechner für Android
+Dieser moderne und schöne wissenschaftliche Taschenrechner hilft bei allen Berechnungen. Er ist einfach, effektiv und enthält keine Werbung. Er verfügt über verschiedene Designs, die perfekt zu Ihrem Smartphone passen.
 
-📖 Features:
-	* Schlank (APK ~2MB)
-	* Keine unnötigen Berechtigungen
-	* Dunkles, Helles, AMOLED- und Material-You-Design
-	* Wissenschaftlicher Modus
-	* Verlauf
-	* Hoch- und Querformat
-	* Schnellzugriff-Kachel
-	* Und mehr...
+Mit der App lassen sich einfache und schnelle Berechnungen mit vielen Grundfunktionen durchführen, darunter Multiplikation, Division, Wurzeln, Potenzen, Fakultäten und sogar trigonometrische Funktionen. OpenCalc lässt sich an alle Ihre Bedürfnisse anpassen.
+
+Die App enthält keine unnötigen Werbeanzeigen oder Berechtigungen. Es handelt sich um eine vollständig quelloffene Software.
