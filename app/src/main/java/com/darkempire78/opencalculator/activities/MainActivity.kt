@@ -164,9 +164,9 @@ class MainActivity : AppCompatActivity() {
         historyAdapter.updateHistoryList()
         binding.historyRecylcleView.adapter = historyAdapter
 
-        // Scroll to the bottom of the recycle view
+        // Scroll to the top of the recycle view
         if (historyAdapter.itemCount > 0) {
-            binding.historyRecylcleView.scrollToPosition(historyAdapter.itemCount - 1)
+            binding.historyRecylcleView.scrollToPosition(0)
         }
 
         setSwipeTouchHelperForRecyclerView()
@@ -722,8 +722,8 @@ class MainActivity : AppCompatActivity() {
                                     }
                                     checkEmptyHistoryForNoHistoryLabel()
 
-                                    // Scroll to the bottom of the recycle view
-                                    binding.historyRecylcleView.scrollToPosition(historyAdapter.itemCount - 1)
+                                    // Scroll to the top of the recycle view
+                                    binding.historyRecylcleView.scrollToPosition(0)
                                 }
                             }
                         }
@@ -1107,8 +1107,8 @@ class MainActivity : AppCompatActivity() {
                                     historyAdapter.removeFirstHistoryElement()
                                 }
                                 checkEmptyHistoryForNoHistoryLabel()
-                                // Scroll to the bottom of the recycle view
-                                binding.historyRecylcleView.scrollToPosition(historyAdapter.itemCount - 1)
+                                // Scroll to the top of the recycle view
+                                binding.historyRecylcleView.scrollToPosition(0)
                             }
                         }
                     }
