@@ -1,11 +1,5 @@
-Áireamhán simplí agus álainn do Android íosluchtaigh
+Cabhróidh an t-áireamhán eolaíoch nua-aimseartha agus álainn seo leat do chuid ríomhanna go léir a réiteach. Tá sé simplí, éifeachtach agus níl aon fhógraíocht ann. Tá téamaí éagsúla ann a oireann go foirfe do do ghuthán.
 
-📖 Gnéithe
- * Meáchan Éadrom (APK ~2MB)
- * Gan cead gan ghá
- * Téama Dorcha, Solas, Amoled agus Ábhar Tú
- * Modh eolaíoch
- * Stair
-  * Portráid agus treoshuíomh tírdhreacha
-  * Tíleanna Mear-Socruithe
-  * Níos mó...
+Ligeann an aip duit ríomhanna simplí agus tapa a dhéanamh le go leor feidhmeanna bunúsacha, lena n-áirítear iolrú, roinnt, fréamh, cumhachtaí, fachtóirí agus fiú feidhmeanna triantánachta. Is féidir OpenCalc a shaincheapadh chun freastal ar do chuid riachtanas go léir.
+
+Níl aon fhógraí ná ceadanna neamhriachtanacha ann. Is foinse oscailte go hiomlán é.
