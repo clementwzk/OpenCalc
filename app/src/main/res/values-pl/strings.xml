@@ -18,7 +18,7 @@
     <string name="settings_general_vibration_desc">Odpowiadaj wibracjami na naciśnięcie klawisza</string>
     <string name="settings_history_size">Wyniki zapisane w historii</string>
     <string name="settings_advanced_prevent_sleep">Powstrzymaj telefon przed uśpieniem</string>
-    <string name="settings_general_scientific_mode_desc">Uruchamiaj domyślnie tryb naukowy</string>
+    <string name="settings_general_scientific_mode_desc">Włącz tryb naukowy</string>
     <string name="about_category_info">INNE</string>
     <string name="about_help_translate">Tłumacz</string>
     <string name="about_help_rate">Oceń tę aplikację</string>
@@ -77,4 +77,11 @@
     <string name="factorialDesc">silnia</string>
     <string name="degreeDesc">stopień</string>
     <string name="exponentDesc">wykładnik</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Wyłącz tryb naukowy</string>
+    <string name="settings_general_scientific_mode_hide_desc">Ukryj tryb naukowy</string>
+    <string name="settings_general_backspace">Przesuń klawisz Backspace w lewo</string>
+    <string name="settings_general_backspace_desc">W trybie pionowym przesuń przycisk Backspace maksymalnie w lewo. Zero i przecinek dziesiętny przesuń w prawo.</string>
+    <string name="no_history_available">Brak dostępnej historii</string>
+    <string name="show_on_lock_screen">Pokaż na ekranie blokady</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Utrzymuj kalkulator widoczny na ekranie blokady, aby mieć do niego szybki i łatwy dostęp. Wyłącz tę opcję, aby ukryć kalkulator, gdy ekran jest zablokowany.</string>
 </resources>
