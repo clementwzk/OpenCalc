@@ -71,7 +71,7 @@
     <string name="tangentDesc">tangens</string>
     <string name="piDesc">liczba pi</string>
     <string name="invertDesc">inwersja</string>
-    <string name="squareDesc">kwadratowy</string>
+    <string name="squareDesc">kwadrat</string>
     <string name="eDesc">e</string>
     <string name="parenthesesDesc">nawias</string>
     <string name="factorialDesc">silnia</string>
@@ -84,4 +84,5 @@
     <string name="no_history_available">Brak dostępnej historii</string>
     <string name="show_on_lock_screen">Pokaż na ekranie blokady</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Utrzymuj kalkulator widoczny na ekranie blokady, aby mieć do niego szybki i łatwy dostęp. Wyłącz tę opcję, aby ukryć kalkulator, gdy ekran jest zablokowany.</string>
+    <string name="pointDesc">kropka</string>
 </resources>
