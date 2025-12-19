@@ -1,0 +1,5 @@
+Canvis:
+- separadors per a nombres grans
+- traducció a l'italià
+- traducció a l'àrab
+- traducció al turc
