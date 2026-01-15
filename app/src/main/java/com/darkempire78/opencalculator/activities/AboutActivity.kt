@@ -16,12 +16,20 @@ import com.darkempire78.opencalculator.Themes
 import com.darkempire78.opencalculator.databinding.ActivityAboutBinding
 import com.darkempire78.opencalculator.dialogs.DonationDialog
 
+/**
+ * Activity displaying information about the app, including:
+ * - App version and build number
+ * - Links to external resources (translation, rating, GitHub, Discord)
+ * - Privacy policy and license information
+ * - Easter egg on version tap
+ */
 class AboutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Apply theme settings
         // Themes
         val themes = Themes(this)
         themes.applyDayNightOverride()
@@ -34,6 +42,7 @@ class AboutActivity : AppCompatActivity() {
             window.statusBarColor = ContextCompat.getColor(this, R.color.background_color)
         }
 
+        // Initialize view binding
         binding = ActivityAboutBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -42,6 +51,7 @@ class AboutActivity : AppCompatActivity() {
         val versionName =  this.getString(R.string.about_other_version) + " "+ BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")"
         binding.aboutAppVersion.text = versionName
 
+        // Back button handlers
         // back button
         binding.aboutBackButton.setOnClickListener {
             finish()
@@ -50,6 +60,7 @@ class AboutActivity : AppCompatActivity() {
             finish()
         }
 
+        // Open Weblate for translation contributions
         // Translate
         binding.aboutTranslate.setOnClickListener {
             val browserIntent = Intent(
@@ -59,6 +70,7 @@ class AboutActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
 
+        // Open Play Store for rating the app
         // Rate
         binding.aboutRate.setOnClickListener {
             val browserIntent = Intent(
@@ -68,11 +80,13 @@ class AboutActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
 
+        // Donation dialog (currently commented out)
         // Donation
         /*binding.aboutDonate.setOnClickListener {
             DonationDialog(this, layoutInflater).openDonationDialog()
         }*/
 
+        // Open GitHub repository
         // Github
         binding.aboutGithub.setOnClickListener {
             val browserIntent = Intent(
@@ -82,6 +96,7 @@ class AboutActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
 
+        // Open Discord server
         // Discord
         binding.aboutDiscord.setOnClickListener {
             val browserIntent = Intent(
@@ -91,6 +106,7 @@ class AboutActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
 
+        // Open privacy policy document
         // Privacy policy
         binding.aboutPrivacyPolicy.setOnClickListener {
             val browserIntent = Intent(
@@ -100,6 +116,7 @@ class AboutActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
 
+        // Open license on GitHub
         // License
         binding.aboutLicense.setOnClickListener {
             val browserIntent = Intent(
@@ -109,6 +126,7 @@ class AboutActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
 
+        // Easter egg: Show toast message after clicking version 4+ times
         // Easter egg
         var clickAppVersionCount = 0
         binding.aboutAppVersion.setOnClickListener {
