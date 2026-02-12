@@ -1,11 +1,5 @@
-Una calculadora simple y hermosa para Android
+Esta moderna y hermosa calculadora científica te ayudará a resolver todos tus cálculos. Es sencilla, eficaz y no contiene publicidad. Incluye varios temas para adaptarse perfectamente al estilo de tu dispositivo.
 
-📖 Características
-	* Ligera (APK ~2MB)
-	* Sin permisos innecesarios
-	* Tema oscuro, claro, Amoled y Material You
-	* Modo científico
-	* Historial
-	* Orientación vertical y horizontal
-	* Ajustes rápidos
-	* Más...
+La aplicación permite realizar cálculos simples y rápidos con muchas funciones básicas, como multiplicación, división, raíces, potencias, factoriales e incluso funciones trigonométricas. OpenCalc es personalizable para ajustarse a todas tus necesidades.
+
+No contiene anuncios ni permisos innecesarios. Es completamente de código abierto.
