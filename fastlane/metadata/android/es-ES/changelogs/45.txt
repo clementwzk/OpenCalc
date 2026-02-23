@@ -1,17 +1,17 @@
 Nuevo:
-- Utilizar BigDecimal en lugar de Double
+- Usar BigDecimal en lugar de Double
 - Ajuste para convertir los resultados a notación científica
 - Añadir una opción para utilizar modulo
 - Añadir una opción para seleccionar un valor en lugar de copiarlo
 - Añadir una opción para dividir el botón de paréntesis
 - Añadir una opción para desactivar el historial
-- Añadir licencia a la sección "Acerca de
+- Añadir licencia a la sección "Acerca de"
 
 Mejoras:
-- Optimizar la calculadora
+- Optimización de la calculadora
 - Reemplazar EditText no esencial por TextView
 - Habilitar símbolo antes de decimal 
-- Escalar el hitbox del botón de retroceso
+- Ajustar área de pulsación (hitbox) del botón de retroceso
 - Actualizar varias traducciones
 
 Correcciones:

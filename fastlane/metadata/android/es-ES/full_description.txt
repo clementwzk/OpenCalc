@@ -1,5 +1,5 @@
-Esta moderna y hermosa calculadora científica te ayudará a resolver todos tus cálculos. Es sencilla, eficaz y no contiene publicidad. Incluye varios temas para adaptarse perfectamente al estilo de tu dispositivo.
+Esta moderna y elegante calculadora científica te ayudará a resolver cualquier cálculo. Es sencilla, eficaz y no contiene publicidad. Cuenta con diferentes temas para adaptarse perfectamente a tu teléfono.
 
-La aplicación permite realizar cálculos simples y rápidos con muchas funciones básicas, como multiplicación, división, raíces, potencias, factoriales e incluso funciones trigonométricas. OpenCalc es personalizable para ajustarse a todas tus necesidades.
+La aplicación te permite realizar cálculos rápidos y sencillos con numerosas funciones básicas, incluyendo multiplicación, división, raíces, potencias, factoriales e incluso funciones trigonométricas. OpenCalc es personalizable para satisfacer todas tus necesidades.
 
 No contiene anuncios ni permisos innecesarios. Es completamente de código abierto.
