@@ -42,16 +42,14 @@ class HistoryAdapter(
             )
         }
 
-        fun appendOneHistoryElement(history: History) {
-            this.history.add(history)
-            // Update the last 2 elements to avoid to have the same date and bar separator
-            if (this.history.size > 1) {
-                notifyItemInserted(this.history.size - 1)
-                notifyItemRangeChanged(this.history.size - 2, 2)
-            } else {
-                notifyItemInserted(this.history.size - 1)
-            }
+    fun appendOneHistoryElement(history: History) {
+        this.history.add(0, history)
+        notifyItemInserted(0)
+        // Update the first 2 elements to avoid to have the same date and bar separator
+        if (this.history.size > 1) {
+            notifyItemRangeChanged(0, 2)
         }
+    }
 
         fun removeHistoryElement(position: Int){
             // No idea why, but time.isNotEmpty() is not working, only time.isNullOrEmpty() works
