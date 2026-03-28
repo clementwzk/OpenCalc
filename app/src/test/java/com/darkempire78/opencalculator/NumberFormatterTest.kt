@@ -6,6 +6,20 @@ import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
 
+/**
+ * Unit tests for NumberFormatter functionality.
+ *
+ * Tests number formatting with grouping separators in:
+ * - International numbering system (groups of 3: 1,234,567)
+ * - Indian numbering system (first group of 3, then groups of 2: 12,34,567)
+ *
+ * Covers edge cases like:
+ * - Negative numbers
+ * - Floating-point numbers
+ * - Leading zeros
+ * - Already formatted numbers
+ * - Empty/zero inputs
+ */
 class NumberFormatterTest {
 
     /** Issue #450: Four zeros after comma */
@@ -166,10 +180,15 @@ class NumberFormatterTest {
     }
 
     companion object {
+        // Shared test configuration for number formatting
         lateinit var decimalSeparator: String
         lateinit var groupingSeparator: String
         lateinit var formatter: NumberFormatter
 
+        /**
+         * Sets up test fixtures before any tests run.
+         * Uses standard US formatting: "." for decimal, "," for grouping.
+         */
         @JvmStatic
         @BeforeClass
         fun setup(): Unit {
@@ -178,6 +197,8 @@ class NumberFormatterTest {
             formatter = NumberFormatter
         }
     }
+
+    // Tests for Indian Numbering System formatting
 
     @Test
     fun `given a floating point number then formatting in Indian Numbering System`() {

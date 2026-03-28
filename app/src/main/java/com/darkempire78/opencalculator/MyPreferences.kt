@@ -6,31 +6,46 @@ import androidx.preference.PreferenceManager
 import com.darkempire78.opencalculator.history.History
 import com.google.gson.Gson
 
+/**
+ * Centralized preferences manager for app settings and user data.
+ * Provides type-safe access to SharedPreferences with automatic persistence.
+ * All preferences are stored using unique package-prefixed keys.
+ */
 class MyPreferences(context: Context) {
 
     var ctx = context
 
+    /**
+     * Preference key constants.
+     * See: https://proandroiddev.com/dark-mode-on-android-app-with-kotlin-dc759fc5f0e1
+     */
     // https://proandroiddev.com/dark-mode-on-android-app-with-kotlin-dc759fc5f0e1
     companion object {
+        // Theme preferences
         private const val THEME = "darkempire78.opencalculator.THEME"
         private const val FORCE_DAY_NIGHT = "darkempire78.opencalculator.FORCE_DAY_NIGHT"
 
+        // UI behavior preferences
         private const val KEY_VIBRATION_STATUS = "darkempire78.opencalculator.KEY_VIBRATION_STATUS"
-        private const val KEY_HISTORY = "darkempire78.opencalculator.HISTORY_ELEMENTS"
         private const val KEY_PREVENT_PHONE_FROM_SLEEPING = "darkempire78.opencalculator.PREVENT_PHONE_FROM_SLEEPING"
-        private const val KEY_HISTORY_SIZE = "darkempire78.opencalculator.HISTORY_SIZE"
+        private const val KEY_LONG_CLICK_TO_COPY_VALUE = "darkempire78.opencalculator.LONG_CLICK_TO_COPY_VALUE"
+        private const val KEY_MOVE_BACK_BUTTON_LEFT = "darkempire78.opencalculator.MOVE_BACK_BUTTON_LEFT"
+        private const val KEY_SPLIT_PARENTHESIS_BUTTON = "darkempire78.opencalculator.SPLIT_PARENTHESIS_BUTTON"
+        private const val KEY_ADD_MODULO_BUTTON = "darkempire78.opencalculator.ADD_MODULO_BUTTON"
+        private const val KEY_SHOW_ON_LOCK_SCREEN = "darkempire78.opencalculator.KEY_SHOW_ON_LOCK_SCREEN"
+        
+        // Calculator behavior preferences
         private const val KEY_SCIENTIFIC_MODE_ENABLED_BY_DEFAULT = "darkempire78.opencalculator.SCIENTIFIC_MODE_ENABLED_BY_DEFAULT"
         private const val KEY_RADIANS_INSTEAD_OF_DEGREES_BY_DEFAULT = "darkempire78.opencalculator.RADIANS_INSTEAD_OF_DEGREES_BY_DEFAULT"
         private const val KEY_NUMBER_PRECISION = "darkempire78.opencalculator.NUMBER_PRECISION"
         private const val KEY_WRITE_NUMBER_INTO_SCIENTIC_NOTATION = "darkempire78.opencalculator.WRITE_NUMBER_INTO_SCIENTIC_NOTATION"
-        private const val KEY_LONG_CLICK_TO_COPY_VALUE = "darkempire78.opencalculator.LONG_CLICK_TO_COPY_VALUE"
-        private const val KEY_ADD_MODULO_BUTTON = "darkempire78.opencalculator.ADD_MODULO_BUTTON"
-        private const val KEY_SPLIT_PARENTHESIS_BUTTON = "darkempire78.opencalculator.SPLIT_PARENTHESIS_BUTTON"
+        private const val KEY_NUMBERING_SYSTEM = "darkempire78.opencalculator.NUMBERING_SYSTEM"
+        
+        // History preferences
+        private const val KEY_HISTORY = "darkempire78.opencalculator.HISTORY_ELEMENTS"
+        private const val KEY_HISTORY_SIZE = "darkempire78.opencalculator.HISTORY_SIZE"
         private const val KEY_DELETE_HISTORY_ON_SWIPE = "darkempire78.opencalculator.DELETE_HISTORY_ELEMENT_ON_SWIPE"
         private const val KEY_AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON = "darkempire78.opencalculator.AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON"
-        private const val KEY_MOVE_BACK_BUTTON_LEFT = "darkempire78.opencalculator.MOVE_BACK_BUTTON_LEFT"
-        private const val KEY_NUMBERING_SYSTEM = "darkempire78.opencalculator.NUMBERING_SYSTEM"
-        private const val KEY_SHOW_ON_LOCK_SCREEN = "darkempire78.opencalculator.KEY_SHOW_ON_LOCK_SCREEN"
     }
 
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -78,7 +93,10 @@ class MyPreferences(context: Context) {
     var showOnLockScreen = preferences.getBoolean(KEY_SHOW_ON_LOCK_SCREEN, true)
         set(value) = preferences.edit().putBoolean(KEY_SHOW_ON_LOCK_SCREEN, value).apply()
 
-
+    /**
+     * Retrieves the calculation history from SharedPreferences.
+     * @return Mutable list of history entries, empty list if none exists or on parse error
+     */
     fun getHistory(): MutableList<History> {
         val gson = Gson()
 
@@ -96,22 +114,36 @@ class MyPreferences(context: Context) {
         }
     }
 
-
-
+    /**
+     * Saves calculation history to SharedPreferences.
+     * Automatically trims history to the configured size limit.
+     * @param history List of history entries to save
+     */
     fun saveHistory(history: List<History>){
         val gson = Gson()
         val history2 = history.toMutableList()
+        // Enforce history size limit by removing oldest entries
         while (historySize!!.toInt() > 0 && history2.size > historySize!!.toInt()) {
             history2.removeAt(0)
         }
         MyPreferences(ctx).history = gson.toJson(history2) // Convert to json
     }
 
+    /**
+     * Finds a history entry by its unique ID.
+     * @param id The unique identifier of the history entry
+     * @return The history entry if found, null otherwise
+     */
     fun getHistoryElementById(id: String): History? {
         val history = getHistory()
         return history.find { it.id == id }
     }
 
+    /**
+     * Updates an existing history entry by ID.
+     * @param id The unique identifier of the history entry to update
+     * @param history The updated history entry
+     */
     fun updateHistoryElementById(id: String, history: History) {
         val historyList = getHistory()
         val index = historyList.indexOfFirst { it.id == id }

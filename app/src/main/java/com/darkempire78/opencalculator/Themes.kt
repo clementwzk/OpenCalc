@@ -8,15 +8,21 @@ import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
+/**
+ * Manages app theming including Material You support and day/night mode.
+ * Provides theme selection dialog and applies user preferences.
+ */
 class Themes(private val context: Context) {
 
     companion object {
 
+        // Theme indices for internal theme representation
         // Themes
         private const val DEFAULT_THEME_INDEX = 0
         private const val AMOLED_THEME_INDEX = 1
         private const val MATERIAL_YOU_THEME_INDEX = 2
 
+        // Maps preference int values to actual theme resource IDs
         // used to go from Preference int value to actual theme
         private val themeMap = mapOf(
             DEFAULT_THEME_INDEX to R.style.AppTheme,
@@ -24,12 +30,17 @@ class Themes(private val context: Context) {
             MATERIAL_YOU_THEME_INDEX to R.style.MaterialYouTheme
         )
 
+        // Style indices for theme dialog options (combines theme + day/night mode)
         // Styles - Combinations of theme + day/night mode
         private const val SYSTEM_STYLE_INDEX = 0
         private const val LIGHT_STYLE_INDEX = 1
         private const val DARK_STYLE_INDEX = 2
         private const val AMOLED_STYLE_INDEX = 3
 
+        /**
+         * Displays a dialog for selecting app theme and day/night mode.
+         * Options include System (Material You if available), Light, Dark, and Amoled.
+         */
         fun openDialogThemeSelector(context: Context) {
 
             val preferences = MyPreferences(context)
@@ -37,6 +48,7 @@ class Themes(private val context: Context) {
             val builder = MaterialAlertDialogBuilder(context)
             builder.background = ContextCompat.getDrawable(context, R.drawable.rounded)
 
+            // Determine system theme name (includes Material You note if available)
             val systemName =
                 if (DynamicColors.isDynamicColorAvailable())
                     "${context.getString(R.string.theme_system)} (${context.getString(R.string.theme_material_you)})"
@@ -62,6 +74,7 @@ class Themes(private val context: Context) {
                 }
             }
 
+            // Apply selected theme and reload activity
             builder.setSingleChoiceItems(styles.values.toTypedArray(), checkedItem) { dialog, which ->
                 when (which) {
                     SYSTEM_STYLE_INDEX -> {
@@ -89,12 +102,19 @@ class Themes(private val context: Context) {
             dialog.show()
         }
 
+        /**
+         * Reloads the current activity to apply theme changes.
+         */
         private fun reloadActivity(context: Context) {
             (context as Activity).finish()
             startActivity(context, context.intent, null)
         }
     }
 
+    /**
+     * Applies the user's day/night mode preference to the app.
+     * Must be called before setting the activity theme.
+     */
     fun applyDayNightOverride() {
         val preferences = MyPreferences(context)
         if (preferences.forceDayNight != AppCompatDelegate.MODE_NIGHT_UNSPECIFIED) {
@@ -102,8 +122,14 @@ class Themes(private val context: Context) {
         }
     }
 
+    /**
+     * Gets the theme resource ID from user preferences.
+     * Defaults to Material You if available, otherwise uses default theme.
+     * @return Theme resource ID
+     */
     fun getTheme(): Int {
         var theme = MyPreferences(context).theme
+        // Initialize theme if not set (first launch)
         if (theme == -1) {
             theme = if (DynamicColors.isDynamicColorAvailable()) MATERIAL_YOU_THEME_INDEX else DEFAULT_THEME_INDEX
             MyPreferences(context).theme = theme
@@ -111,6 +137,11 @@ class Themes(private val context: Context) {
         return themeMap[theme] ?: DEFAULT_THEME_INDEX
     }
 
+    /**
+     * Converts a theme ID to its localized display name.
+     * @param themeID The theme index
+     * @return Localized theme name
+     */
     fun getThemeNameFromId(themeID: Int) : String {
         var theme = "THEME"
         when (themeID) {
