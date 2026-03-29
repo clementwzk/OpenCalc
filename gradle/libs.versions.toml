@@ -13,6 +13,7 @@ material = "1.12.0"
 preferenceKtx = "1.2.1"
 kotlin = "2.0.0"
 runtime = "1.6.8"
+datastore = "1.1.7"
 
 [libraries]
 androidslidinguppanel = { module = "com.github.hannesa2:AndroidSlidingUpPanel", version.ref = "androidslidinguppanel" }
@@ -27,6 +28,7 @@ androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = 
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { module = "junit:junit", version.ref = "junit" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
+androidx-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

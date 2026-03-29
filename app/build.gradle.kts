@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidslidinguppanel)
     implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.datastore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
