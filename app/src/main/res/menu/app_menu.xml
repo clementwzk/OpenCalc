@@ -6,6 +6,11 @@
         android:onClick="clearHistory" />
 
     <item
+        android:id="@+id/app_menu_clear_bookmarks_button"
+        android:title="@string/menu_clear_bookmarks"
+        android:onClick="clearBookmarks" />
+
+    <item
         android:id="@+id/app_menu_settings_button"
         android:title="@string/menu_settings"
         android:onClick="openSettings" />
