@@ -1,0 +1,3 @@
+Novetats:
+- Tema Amoled
+- Utilitza el tema del sistema

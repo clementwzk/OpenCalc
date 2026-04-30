@@ -1,0 +1,5 @@
+Novetats:
+- Pàgina de paràmetres
+
+Actualitzat:
+- Pàgina Sobre

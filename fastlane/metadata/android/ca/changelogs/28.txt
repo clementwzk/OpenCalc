@@ -1,0 +1,14 @@
+Novetats:
+- Sistema de càlcul intern
+- Factorials decimals
+- Evita la presència de dos separadors decimals en el mateix número
+
+Correccions:
+- Desplaçament de l'historial (@MahmoudRH)
+- Precisió dels resultats
+- Esborrar amb separadors d'agrupació
+- Mode apaïsat per tauletes de 10 polzades
+- Esborrar després del botó d'igual
+- Tancament inesperat en tocar un resultat de l'historial
+- Alguns problemes amb el format d'expressions
+- Altres correccions

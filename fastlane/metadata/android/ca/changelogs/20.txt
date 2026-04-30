@@ -1,0 +1,4 @@
+Arreglat:
+- Tanca automàticament els parèntesis
+- Multiplica factorials sense *
+- Afegeix un 0 automàticament quan el número comença amb un punt decimal

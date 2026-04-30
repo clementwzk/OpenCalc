@@ -1,0 +1,4 @@
+Arreglat:
+- Barra de desplaçament (entrada d'informació)
+- Desplaçament necessari per veure el resultat
+- Borra el contingut si el nombre és premut després de l'igual

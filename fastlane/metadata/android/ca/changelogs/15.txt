@@ -1,0 +1,6 @@
+Canvis:
+- La pantalla de benvinguda ara és fosca
+
+Arreglat:
+- Problema de teclat
+- El teclat continua desplaçant-se
