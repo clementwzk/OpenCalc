@@ -1,0 +1,2 @@
+Correccions:
+- Arregla tancament inesperat amb nombres grans

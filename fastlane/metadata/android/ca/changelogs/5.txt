@@ -1,0 +1,5 @@
+Canvis:
+- Disponible per a SDK 21+ (Android 5.0)
+
+Correccions:
+- Arreglar vibració
