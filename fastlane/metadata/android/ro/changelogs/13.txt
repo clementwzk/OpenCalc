@@ -1,0 +1,6 @@
+Nou:
+- Pictogramă tematică
+
+Schimbări:
+- Traduceri actualizate
+- Șterge intrarea dacă un număr este apăsat după egal

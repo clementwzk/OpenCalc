@@ -1,0 +1,2 @@
+Corecții:
+- Corecție blocaj la numere mari

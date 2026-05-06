@@ -1,0 +1,8 @@
+Îmbunătățiri:
+* Actualizări traducere
+* Implementează Broadcastreceiver pentru a începe activitatea din TileService
+
+Corecții:
+* probleme de formatare cu zerourile după virgulă
+* Corecții blocaj de jurnal când x<0
+* Blocaj când se apasă rădăcina pătrată după Eroare de sintaxă

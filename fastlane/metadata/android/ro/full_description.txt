@@ -1,11 +1,5 @@
-Un calculator simplă și elegantă pentru Android
+Acest calculator modern și simplu vă va ajuta să rezolvați toate calculele dumneavoastră. Este simplu, eficace, și nu conține reclame. Conține tematici diferite pentru a vi se potrivi telefonului dumneavoastră perfect. 
 
-📖 Caracteristici
-	* Lightweight (APK ~2MB)
-	* Fără permisiuni inutile
-	* Temă de Întuneric, Lumină, Amoled și Material You
-	* Modul științific
-	* Istoric
-	* Orientare portret și orizontală
-	* Tilă pentru setări rapide
-	* Mai multe...
+Acest program vă permite să efectuați calcule simple și rapide cu multe funcții de bază, incluzând înmulțirea, împărțirea, rădăcina, factoriale și chiar funcții trigonometrice. OpenCalc este personalizabil spre a îndeplini nevoile dumneavoastră.
+
+Nu conține reclame sau permisiuni inutile. Este open source în întregime.

@@ -1,0 +1,5 @@
+Corecții:
+- tg() nu funcționează corect
+- Ștergerea unui separator de mii cauzează cursorul să sară
+- Plasarea unei paranteze înăuntrul calculelor existente
+- Probleme de grafică în mod peisaj la tablete de peste 10 inch

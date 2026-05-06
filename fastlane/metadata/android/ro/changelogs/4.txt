@@ -1,0 +1,2 @@
+Corecții:
+- Adaugă vibrații la butoanele care nu le aveau

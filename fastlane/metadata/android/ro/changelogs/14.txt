@@ -1,0 +1,6 @@
+Nou:
+- Buton de sfaturi de folosire
+
+Schimbări:
+- Îmbunătățire format istoric
+- Actualizează caracterul pentru minus

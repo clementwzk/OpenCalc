@@ -1,0 +1,6 @@
+Schimbări
+- Imagine de așteptare este de culoare închisă acum
+
+Corecții:
+- probleme cu tastatura
+- tastatura încă defilează
