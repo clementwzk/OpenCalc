@@ -193,6 +193,21 @@ class ExpressionUnitTest {
     }
 
     @Test
+    fun factorial_with_nested_function_isCorrect(){
+        var result = calculate("log₂(8)!", false).toDouble()
+        assertEquals(6.0, result, 0.0)
+
+        result = calculate("2sin(1.5!)!", false).toDouble()
+        assertEquals(1.976160058508777, result, 0.0)
+
+        result = calculate("etan(1.2!)!", false).toDouble()
+        assertEquals(5.306218585566812, result, 0.0)
+
+        result = calculate("e(1.2!)!", false).toDouble()
+        assertEquals(2.8471358887880265, result, 0.0)
+    }
+
+    @Test
     fun factorial_percent_isCorrect() {
         var result = calculate("5!%", false).toDouble()
         assertEquals(1.2, result, 0.0)

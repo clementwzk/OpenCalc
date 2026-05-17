@@ -326,30 +326,27 @@ class Expression {
                 // If the current character is "!"
                 if (cleanCalculation[i] == '!') {
                     // If the previous character is a parenthesis
-                    if (cleanCalculation[i-1] == ')') {
-                        // Remove the "!"
-                        cleanCalculation = cleanCalculation.substring(0, i) + cleanCalculation.substring(i+1)
+                    if (cleanCalculation[i - 1] == ')') {
+                        // Replace the "!" by ")"
+                        cleanCalculation = cleanCalculation.substring(0, i) + ')' + cleanCalculation.substring(i + 1)
 
-                        var j = i
-                        while (j > 0) {
-                            if (cleanCalculation[j-1] in "*/+^" && parenthesisOpened == 0) {
-                                break
-                            }
-                            if (cleanCalculation[j-1] == ')') parenthesisOpened += 1
-                            // If the previous character isn't a parenthesis
-                            if (cleanCalculation[j-1] != ')') {
-                                // Count open parentheses
-                                if (cleanCalculation[j-1] == '(') parenthesisOpened -= 1
+                        for (j in i downTo 1) {
+                            if (cleanCalculation[j - 1] == ')') parenthesisOpened += 1
+                            else if (cleanCalculation[j - 1] == '(') {
+                                parenthesisOpened -= 1
 
                                 // If there are no open parentheses, add an F in front of the 1st parenthesis
                                 if (parenthesisOpened == 0) {
-                                    cleanCalculation = cleanCalculation.addCharAtIndex('F', j-1)
+                                    // Check if there is a function name before the parenthesis
+                                    var k = j - 2
+                                    while (k >= 0 && cleanCalculation[k].isLetter()) k--
+
+                                    cleanCalculation = cleanCalculation.addCharAtIndex('(', k+1)
+                                    cleanCalculation = cleanCalculation.addCharAtIndex('F', k+1)
+                                    i += 2
                                     break
                                 }
                             }
-
-                            // Decrement i on each run
-                            j--
                         }
                     } else {
                         // If the previous character is not a parenthesis, add one
