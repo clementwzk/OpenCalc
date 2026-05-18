@@ -76,7 +76,7 @@ class Calculator(
         val firstPart = sqrtTwoPi * t.pow(z + 0.5) * exp(-t)
         val result = firstPart * a
 
-        if (result.isInfinite()) {
+        if (!result.isFinite()) {
             is_infinity = true
             return BigDecimal.ZERO
         }
