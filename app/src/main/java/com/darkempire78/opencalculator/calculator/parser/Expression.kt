@@ -329,8 +329,8 @@ class Expression {
                     if (cleanCalculation[i - 1] == ')') {
                         // Replace the "!" by ")"
                         cleanCalculation = cleanCalculation.substring(0, i) + ')' + cleanCalculation.substring(i + 1)
-
-                        for (j in i downTo 1) {
+                        var j = i
+                        while(j>0){
                             if (cleanCalculation[j - 1] == ')') parenthesisOpened += 1
                             else if (cleanCalculation[j - 1] == '(') {
                                 parenthesisOpened -= 1
@@ -338,15 +338,15 @@ class Expression {
                                 // If there are no open parentheses, add an F in front of the 1st parenthesis
                                 if (parenthesisOpened == 0) {
                                     // Check if there is a function name before the parenthesis
-                                    var k = j - 2
-                                    while (k >= 0 && cleanCalculation[k].isLetter()) k--
+                                    while (j-2 >= 0 && cleanCalculation[j-2].isLetter()) j--
 
-                                    cleanCalculation = cleanCalculation.addCharAtIndex('(', k+1)
-                                    cleanCalculation = cleanCalculation.addCharAtIndex('F', k+1)
+                                    cleanCalculation = cleanCalculation.addCharAtIndex('(', j-1)
+                                    cleanCalculation = cleanCalculation.addCharAtIndex('F', j-1)
                                     i += 2
                                     break
                                 }
                             }
+                            j--
                         }
                     } else {
                         // If the previous character is not a parenthesis, add one
