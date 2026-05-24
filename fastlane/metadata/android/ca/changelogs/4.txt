@@ -1,0 +1,2 @@
+Correccions:
+- Afegeix vibracions a botons que no en tenen

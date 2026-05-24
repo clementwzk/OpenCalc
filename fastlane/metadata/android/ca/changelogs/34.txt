@@ -1,0 +1,7 @@
+Actualitzat:
+- Mostra "valor massa gran" enlloc de "Infinit"
+
+Correccions:
+- Divisió per números negatius
+- Problema amb la funció factorial
+- sin(x!) i cos(x!) donen resultats erronis

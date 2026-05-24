@@ -1,0 +1,7 @@
+Schimbări:
+- Pagină nouă despre 
+- Adaugă separator pentru tematica Amoled
+
+Corecții:
+- Culoare căsuță de bifare
+- numele de app (tradus în EN și FR)

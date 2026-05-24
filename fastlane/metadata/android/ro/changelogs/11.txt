@@ -1,0 +1,9 @@
+Schimbări:
+- adaugă traducerea în Germană
+- adaugă traducerea în Rusă
+- adaugă traducerea în Greacă
+- adaugă traducerea în Hindi
+- adaugă traducerea în Azerbaijană
+
+Corecții:
+- Procente nematematice

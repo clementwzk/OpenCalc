@@ -1,0 +1,8 @@
+Nou:
+- Erori explicite
+- Reproiectat câmpul istoric
+- Adăugat indici de timp la rezultatele din istoric
+- Nu permite duplicarea simbolelor matematice la intrare
+
+Actualizat:
+- arccos, arcsin, arctg sunt acum afișate ca cos⁻¹, sin⁻¹ and tan⁻¹

@@ -1,0 +1,5 @@
+Novetats:
+- Mosaic d'ajustaments ràpids
+
+Correccions:
+- Avisos molestos

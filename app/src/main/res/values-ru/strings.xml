@@ -36,7 +36,7 @@
     <string name="about_other_privacy_policy">Политика конфиденциальности</string>
     <string name="settings_general_vibration_desc">Вибрация при нажатии кнопок</string>
     <string name="settings_history_size">Количество результатов, сохраняемых в истории</string>
-    <string name="settings_general_scientific_mode_desc">Активировать научный режим по умолчанию</string>
+    <string name="settings_general_scientific_mode_desc">Активировать научный режим</string>
     <string name="settings_general_language">Язык</string>
     <string name="settings_formatting_precision">Количество десятичных разрядов</string>
     <string name="settings_category_history">ИСТОРИЯ</string>
@@ -82,4 +82,7 @@
     <string name="about_dialog_donation_close">Закрыть</string>
     <string name="log2Desc">логарифм по основанию 2</string>
     <string name="no_history_available">История отсутствует</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Деактивировать научный режим</string>
+    <string name="settings_general_scientific_mode_hide_desc">Скрыть научный режим</string>
+    <string name="show_on_lock_screen">Показать на экране блокировки</string>
 </resources>

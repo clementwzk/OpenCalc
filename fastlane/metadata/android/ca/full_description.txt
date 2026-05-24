@@ -1,11 +1,5 @@
-Una calculadora simple i bonica per a Android
+Aquesta calculadora científica, moderna i bonica us ajudarà anresoldre tots els vostres càlculs. És senzilla, eficaç i no conté anuncis ni permisos innecessaris. Té diferents temes per adaptar-se perfectament al vostre telèfon.
 
-📖 Característiques
-	* Lleugera (APK ~2 MB)
-	* Sense permisos innecessaris
-	* Tema fosc, clar, Amoled i Material You
-	* Mode científic
-	* Historial
-	* Orientació vertical i horitzontal
-	* Fitxa de configuració ràpida
-	* Més...
+L'aplicaciò us permet fer càlculs senzills ràpidament amb moltes funcions bàsiques com ara multiplicació, divisió, arrel quadrada, potències, factorials i fins i tot funcions trigonomètriques. L'OpenCalc es pot personalitzar per ajustar-se a les vostres necessitats.
+
+No cioté anuncis ni permisos innecessaris. És totalment de codi obert.

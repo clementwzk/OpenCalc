@@ -1,0 +1,9 @@
+Nou:
+- Schimbă culoarea textului la eroare
+- Redu dimensiunea pachetului
+- Nu salva un rezultat în istoric dacă e egal cu calculul
+- Nu salva calculul în istoric dacă este la fel ca ultima
+
+Corecții
+- Factorial 0 returnează 1
+- Adaugă simboluri matematice după ce tasta egal a fost apăsată

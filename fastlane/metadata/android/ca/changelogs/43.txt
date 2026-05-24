@@ -1,0 +1,13 @@
+Novetats:
+- Afegir la llicència a la secció de Sobre de
+
+Millores
+- Actualitzar vàries traduccions
+- Habilitar símbol abans del decimal
+
+Correccions:
+- Ubicació del cursor
+- Tancament inesperat en fer l'arrel quadrada d'una base negativa
+- Tancament inesperat en fer log o ln d'un nombre negatiu
+- Tancament inesperat en recrear l'activitat principal
+- Tot el que va després de ')' s'ignora

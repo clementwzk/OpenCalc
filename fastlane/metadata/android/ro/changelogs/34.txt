@@ -1,0 +1,7 @@
+Actualizat:
+- Afișează „valoarea prea mare” în loc de „infinit”
+
+Corecții
+- Împărțirea cu numere negative
+- Probleme de funcție factorial
+- sin(x!) și cos(x!) dau rezultate greșite

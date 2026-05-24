@@ -1,0 +1,13 @@
+Nou:
+- Adaugă licență la secțiunea despre
+
+Îmbunătățiri
+- Actualizare traduceri multiple
+- Permite simbol înainte de decimală
+
+Corecții:
+- Locație cursor
+- Blocaj la rădăcină de bază negativă
+- Blocaj la log sau ln de număr negativ
+- Blocaj la recrearea ăn mod portret a activității principale
+- Orice după ').' în calcul este ignorat

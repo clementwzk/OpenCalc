@@ -29,7 +29,7 @@
     <string name="settings_general_radians_desc">默认使用弧度而不是角度</string>
     <string name="about_category_info">应用信息</string>
     <string name="about_help_translate">翻译</string>
-    <string name="about_help_rate">为APP打分</string>
+    <string name="about_help_rate">评价本应用</string>
     <string name="about_other_version">版本</string>
     <string name="about_easter_egg">感谢使用OpenCalc ❤️</string>
     <string name="about_made_in_france">在法国用 ❤️制造</string>

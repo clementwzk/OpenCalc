@@ -1,0 +1,8 @@
+Novetats:
+- historial
+
+Canvis:
+- optimització
+
+Correccions:
+- problemes en la pantalla de resultats

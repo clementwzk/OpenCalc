@@ -1,0 +1,8 @@
+Novetat:
+- Traducció al castellà
+
+Arreglat:
+- El teclat deixa de respondre en interactuar amb factorials grans
+- Càrrega incorrecta de valors des de l'historial
+- Carregar resultats amb punt decimal des de l'historial treu els símbols o tanca inesperadament l'aplicació
+- Precisió

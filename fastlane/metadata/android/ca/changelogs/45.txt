@@ -1,0 +1,24 @@
+Novetats:
+- Utilitza BigDecimal enlloc de Double
+- Ajustament per convertir els resultats a anotació científica
+- Afegeix una opció per fer servir modulo
+- Afegeix una opció per seleccionar un valor en lloc de copiar-lo
+- afegeix una opció per separar el botó de parèntesis
+- Afegeix una opció per desactivar l'historial
+- Afegeix la llicència a la secció "Sobre"
+
+Millores:
+- Optimitzar la calculadora
+- Canviar EditText (no essencial) per TextView
+- Habilita símbol abans de decimal
+- Engrandir l'àrea tocable del botó de retorn/esborrar
+- Actualitza diverses traduccions
+
+Correccions:
+- Ubicació del cursor
+- Problema en aplicar el tema amb el mode amoled
+- Resultat decimal de factorials
+- El mode apaïsat amaga alguns botons
+- Rectangle gris al costat de "Paràmetres"
+- Problemes de format
+- Altres correccions...

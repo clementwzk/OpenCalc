@@ -1,0 +1,24 @@
+Novità:
+- Utilizzo di BigDecimal al posto di Double
+- Impostazione per convertire i risultati in notazione scientifica
+- Aggiunta un'opzione per utilizzare  "modulo"
+- Aggiunta un'opzione per selezionare un valore invece di copiarlo
+- Aggiunta un'opzione per dividere il pulsante delle parentesi
+- Aggiunta un'opzione per disabilitare la cronologia
+- Aggiunta la licenza alla sezione “Informazioni”
+
+Miglioramenti:
+- Ottimizzazione della calcolatrice
+- Sostituzione di EditText non essenziale con TextView
+- Abilitare il simbolo prima della virgola decimale
+- Ingrandire l'area di interazione del pulsante Indietro
+- Aggiornare diverse traduzioni
+
+Correzioni:
+- Posizione del cursore
+- Problema di applicazione del tema in modalità AMOLED
+- Risultato del fattoriale decimale
+- La modalità orizzontale nasconde alcune icone dei pulsanti
+- Rettangolo grigio accanto a Impostazioni
+- Problemi di formattazione
+- Molte altre correzioni...

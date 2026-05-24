@@ -1,0 +1,8 @@
+Ulepszenia:
+* Aktualizacje tłumaczeń
+* Wdrożenie BroadcastReceiver w celu uruchamiania aktywności z TileService
+
+Poprawki:
+* Problem z formatowaniem zer po przecinku
+* Poprawka awarii dziennika, gdy x < 0
+* Awaria po naciśnięciu przycisku pierwiastka kwadratowego po błędzie składniowym

@@ -51,7 +51,7 @@
     <string name="require_real_number">דרוש מספר אמיתי</string>
     <string name="settings_auto_save_calculation_without_equal_button">שמור חישובים אוטומטית</string>
     <string name="settings_auto_save_calculation_without_equal_button_desc">שמור חישובים אוטומטית בהיסטוריה ללא צורך ללחוץ על מקש שווה</string>
-    <string name="settings_general_scientific_mode_desc">הפעל מצב מדעי כברירת מחדל</string>
+    <string name="settings_general_scientific_mode_desc">הפעל מצב מדעי</string>
     <string name="app_name_display">מחשבון</string>
     <string name="settings_general_split_parenthesis_button">הפרד את מקש הסוגריים לשני מקשים</string>
     <string name="settings_general_add_modulo">הוסף מקש מודולוס</string>
@@ -80,4 +80,10 @@
     <string name="pointDesc">נקודה</string>
     <string name="menu_donate">תמכו בנו</string>
     <string name="no_history_available">היסטוריה לא זמינה</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">בטל מצב מדעי</string>
+    <string name="settings_general_scientific_mode_hide_desc">הסתר מצב מדעי</string>
+    <string name="settings_general_backspace">העבר מקש Backspace (אחורה) לצד שמאל</string>
+    <string name="settings_general_backspace_desc">מעביר את מקש Backspace (אחורה) לשמאל במצב מאונך (portrait). אפס ונקודה עשרונית גולשים ימינה.</string>
+    <string name="show_on_lock_screen">הצג במסך נעילה</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">הצג את המחשבון במסך הנעילה לגישה מהירה ונוחה. בטל על מנת להסתיר כשהמסך נעול.</string>
 </resources>

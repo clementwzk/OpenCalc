@@ -1,11 +1,5 @@
-Android için basit ve güzel bir hesap makinesi
+Bu modern ve güzel bilimsel hesap makinesi, tüm hesaplamalarınızı çözmenize yardımcı olacaktır. Basit, etkili ve reklam içermez. Telefonunuza mükemmel uyum sağlayan farklı temalara sahiptir.
 
-📖 Özellikler
-	* Hafif (APK ~2MB)
-	* Gereksiz izinler yok
-	* Koyu, Açık, Amoled ve Material You tema
-	* Bilimsel mod
-	* Geçmiş
-	* Dikey ve yatay yönlendirme
-	* Hızlı ayarlar kutucuğu
-	* Ve daha fazlası...
+Uygulama çarpma, bölme, kök alma, üs alma, faktöriyel ve hatta trigonometri işlevleri dahil olmak üzere birçok temel işlevle basit ve hızlı hesaplamalar yapmanızı sağlar. OpenCalc, tüm ihtiyaçlarınızı karşılamak için özelleştirilebilir.
+
+Gereksiz reklamlar veya izinler içermez. Tamamen açık kaynaklıdır.

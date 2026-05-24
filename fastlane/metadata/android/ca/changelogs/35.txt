@@ -1,0 +1,5 @@
+Correccions:
+- tan() no funciona correctament
+- Esborrar el separador de miler a causa un salt en el cursor
+- Posicionament de parèntesis dins de càlculs existents
+- Problema gràfic en mode apaïsat en tauletes de més de 10 polzades
