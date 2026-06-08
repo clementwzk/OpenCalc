@@ -134,6 +134,17 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
+            // Icon Color button
+            val appIconColorPreference = findPreference<Preference>("darkempire78.opencalculator.APP_ICON_COLOR")
+            
+            val currentIconColor = MyPreferences(this.requireContext()).appIconColor ?: "default"
+            appIconColorPreference?.summary = getIconColorDisplayName(this.requireContext(), currentIconColor)
+            
+            appIconColorPreference?.setOnPreferenceClickListener {
+                openDialogIconColorSelector(this.requireContext())
+                true
+            }
+
         }
 
         private fun openDialogNumberingSystemSelector(context: Context) {
@@ -219,6 +230,87 @@ class SettingsActivity : AppCompatActivity() {
             }
             val dialog = builder.create()
             dialog.show()
+        }
+
+        private fun openDialogIconColorSelector(context: Context) {
+            val preferences = MyPreferences(context)
+            val builder = MaterialAlertDialogBuilder(context)
+            builder.background = ContextCompat.getDrawable(context, R.drawable.rounded)
+
+            val iconColors = hashMapOf(
+                "default" to context.getString(R.string.icon_color_default),
+                "blue" to context.getString(R.string.icon_color_blue),
+                "green" to context.getString(R.string.icon_color_green),
+                "red" to context.getString(R.string.icon_color_red),
+                "yellow" to context.getString(R.string.icon_color_yellow)
+            )
+
+            val currentIcon = preferences.appIconColor ?: "default"
+            val checkedItem = iconColors.keys.indexOf(currentIcon)
+
+            builder.setSingleChoiceItems(
+                iconColors.values.toTypedArray(),
+                checkedItem
+            ) { dialog, which ->
+                val selectedColor = iconColors.keys.elementAt(which)
+                preferences.appIconColor = selectedColor
+                changeAppIcon(context, selectedColor)
+                dialog.dismiss()
+                
+                // Update the preference summary
+                findPreference<Preference>("darkempire78.opencalculator.APP_ICON_COLOR")?.summary = 
+                    getIconColorDisplayName(context, selectedColor)
+            }
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+        private fun changeAppIcon(context: Context, color: String) {
+            val packageManager = context.packageManager
+            // Use the manifest package name, not the application ID (which may have .debug suffix)
+            val manifestPackage = "com.darkempire78.opencalculator"
+
+            // Map color names to activity alias names
+            val aliasMap = mapOf(
+                "default" to ".activities.MainActivity",
+                "blue" to ".activities.MainActivityBlue",
+                "green" to ".activities.MainActivityGreen",
+                "red" to ".activities.MainActivityRed",
+                "yellow" to ".activities.MainActivityYellow"
+            )
+
+            // Disable all aliases first
+            aliasMap.forEach { (_, alias) ->
+                val componentName = android.content.ComponentName(context, "$manifestPackage$alias")
+                try {
+                    packageManager.setComponentEnabledSetting(
+                        componentName,
+                        android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                        android.content.pm.PackageManager.DONT_KILL_APP
+                    )
+                } catch (e: Exception) {
+                    // Ignore if component doesn't exist
+                }
+            }
+
+            // Enable the selected alias
+            val selectedAlias = aliasMap[color] ?: ".activities.MainActivity"
+            val selectedComponentName = android.content.ComponentName(context, "$manifestPackage$selectedAlias")
+            packageManager.setComponentEnabledSetting(
+                selectedComponentName,
+                android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                android.content.pm.PackageManager.DONT_KILL_APP
+            )
+        }
+
+        private fun getIconColorDisplayName(context: Context, color: String): String {
+            return when (color) {
+                "blue" -> context.getString(R.string.icon_color_blue)
+                "green" -> context.getString(R.string.icon_color_green)
+                "red" -> context.getString(R.string.icon_color_red)
+                "yellow" -> context.getString(R.string.icon_color_yellow)
+                else -> context.getString(R.string.icon_color_default)
+            }
         }
     }
 }

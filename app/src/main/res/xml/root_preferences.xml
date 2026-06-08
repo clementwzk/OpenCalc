@@ -26,6 +26,15 @@
             app:icon="@drawable/theme" />
 
         <Preference
+            android:id="@+id/settings_select_app_icon_color"
+            app:key="darkempire78.opencalculator.APP_ICON_COLOR"
+            app:selectable="true"
+            app:enabled="true"
+            app:title="@string/settings_general_icon_color"
+            app:summary="@string/icon_color_default"
+            app:icon="@drawable/ic_launcher_foreground" />
+
+        <Preference
             android:id="@+id/settings_select_numbering_system"
             app:key="darkempire78.opencalculator.NUMBERING_SYSTEM"
             app:selectable="true"
