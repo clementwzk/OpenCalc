@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="ic_launcher_background">@color/app_icon_background_color</color>
+    <color name="ic_launcher_background_blue">#E3F2FD</color>
+    <color name="ic_launcher_background_green">#E8F5E9</color>
+    <color name="ic_launcher_background_red">#FFEBEE</color>
+    <color name="ic_launcher_background_yellow">#FFFDE7</color>
 </resources>

@@ -1,5 +1,5 @@
 [versions]
-agp = "8.8.0"
+agp = "8.5.2"
 androidslidinguppanel = "4.6.1"
 appcompat = "1.7.0"
 constraintlayout = "2.1.4"

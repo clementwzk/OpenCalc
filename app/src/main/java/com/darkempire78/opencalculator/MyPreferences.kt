@@ -31,6 +31,7 @@ class MyPreferences(context: Context) {
         private const val KEY_MOVE_BACK_BUTTON_LEFT = "darkempire78.opencalculator.MOVE_BACK_BUTTON_LEFT"
         private const val KEY_NUMBERING_SYSTEM = "darkempire78.opencalculator.NUMBERING_SYSTEM"
         private const val KEY_SHOW_ON_LOCK_SCREEN = "darkempire78.opencalculator.KEY_SHOW_ON_LOCK_SCREEN"
+        private const val KEY_APP_ICON_COLOR = "darkempire78.opencalculator.APP_ICON_COLOR"
     }
 
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -77,6 +78,9 @@ class MyPreferences(context: Context) {
 
     var showOnLockScreen = preferences.getBoolean(KEY_SHOW_ON_LOCK_SCREEN, true)
         set(value) = preferences.edit().putBoolean(KEY_SHOW_ON_LOCK_SCREEN, value).apply()
+
+    var appIconColor = preferences.getString(KEY_APP_ICON_COLOR, "default")
+        set(value) = preferences.edit().putString(KEY_APP_ICON_COLOR, value).apply()
 
 
     fun getHistory(): MutableList<History> {
