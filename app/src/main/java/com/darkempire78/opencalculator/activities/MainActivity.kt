@@ -32,6 +32,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AlertDialog
 import com.darkempire78.opencalculator.MyPreferences
 import com.darkempire78.opencalculator.R
 import com.darkempire78.opencalculator.TextSizeAdjuster
@@ -50,6 +51,7 @@ import com.darkempire78.opencalculator.databinding.ActivityMainBinding
 import com.darkempire78.opencalculator.dialogs.DonationDialog
 import com.darkempire78.opencalculator.history.History
 import com.darkempire78.opencalculator.history.HistoryAdapter
+import com.darkempire78.opencalculator.bookmarks.BookmarksAdapter
 import com.darkempire78.opencalculator.util.ScientificMode
 import com.darkempire78.opencalculator.util.ScientificModeTypes
 import com.sothree.slidinguppanel.PanelSlideListener
@@ -94,6 +96,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var historyAdapter: HistoryAdapter
     private lateinit var historyLayoutMgr: LinearLayoutManager
 
+    private lateinit var bookmarksAdapter: BookmarksAdapter
+    private lateinit var bookmarksLayoutMgr: LinearLayoutManager
+    private lateinit var bookmarksTouchHelper: ItemTouchHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -120,6 +126,15 @@ class MainActivity : AppCompatActivity() {
         fixView()
 
         setContentView(view)
+
+        // --- Setup bookmark button ---
+        binding.bookmarkButton.setOnClickListener {
+            toggleBookmark()
+        }
+
+        // Show correct icon on first render
+        updateBookmarkIcon()
+        // --- END Setup bookmark button ---
 
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
@@ -183,12 +198,65 @@ class MainActivity : AppCompatActivity() {
             checkEmptyHistoryForNoHistoryLabel()
         }
 
+        // --- Bookmarks RecyclerView setup ---
+        bookmarksLayoutMgr = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.bookmarksRecyclerView.layoutManager = bookmarksLayoutMgr
+
+        bookmarksAdapter = BookmarksAdapter(
+            items = MyPreferences(this).getBookmarks(),
+            onElementClick = { value -> updateDisplay(window.decorView, value) },
+            context = this
+        )
+        binding.bookmarksRecyclerView.adapter = bookmarksAdapter
+
+        // Scroll to the bottom of the recycle view
+        if (bookmarksAdapter.itemCount > 0) {
+            binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
+        }
+
+        setSwipeTouchHelperForBookmarks()
+        // --- END Bookmarks RecyclerView setup ---
+
+        // --- History/Bookmarks tabs setup ---
+        binding.historyBookmarksTabs.addTab(binding.historyBookmarksTabs.newTab().setText(R.string.history_tab_title))
+        binding.historyBookmarksTabs.addTab(binding.historyBookmarksTabs.newTab().setText(R.string.bookmarks_tab_title))
+
+        // Default to History tab
+        showHistoryList()
+        binding.slidingLayout.scrollableView = binding.historyRecylcleView
+
+        binding.historyBookmarksTabs.addOnTabSelectedListener(
+            object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab) {
+                    when (tab.position) {
+                        0 -> {
+                            showHistoryList()
+                            binding.slidingLayout.scrollableView = binding.historyRecylcleView
+                        }
+                        1 -> {
+                            showBookmarksList()
+                            binding.slidingLayout.scrollableView = binding.bookmarksRecyclerView
+                        }
+                    }
+                    // keep the grab handle above the list and refresh layout
+                    binding.slidingLayoutButton.bringToFront()
+                    binding.constraintLayout3.requestLayout()
+                    binding.slidingLayout.invalidate()
+                }
+                override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
+                override fun onTabReselected(tab: com.google.android.material.tabs.TabLayout.Tab) {}
+            }
+        )
+        // --- END History/Bookmarks tabs setup ---
 
         // Set the sliding layout
         binding.slidingLayout.addPanelSlideListener(object : PanelSlideListener {
             override fun onPanelSlide(panel: View, slideOffset: Float) {
                 if (slideOffset == 0f) { // If the panel got collapsed
-                    binding.slidingLayout.scrollableView = binding.historyRecylcleView
+                    // Keep scrollableView in sync with the selected tab
+                    val isBookmarks = binding.historyBookmarksTabs.selectedTabPosition == 1
+                    binding.slidingLayout.scrollableView =
+                        if (isBookmarks) binding.bookmarksRecyclerView else binding.historyRecylcleView
                 }
             }
 
@@ -386,9 +454,40 @@ class MainActivity : AppCompatActivity() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
-                historyAdapter.removeHistoryElement(position)
-                checkEmptyHistoryForNoHistoryLabel()
-                deleteElementFromHistory(position)
+                val prefs = MyPreferences(this@MainActivity)
+
+                if (direction == ItemTouchHelper.RIGHT) {
+                    // Right swipe -> add history element to bookmarks (do NOT delete from history)
+                    val historyList = prefs.getHistory()
+                    if (position in 0 until historyList.size) {
+                        val h = historyList[position]
+                        // Add bookmark, deduplication safe in addBookmark
+                        prefs.addBookmark(h.calculation, h.result)
+
+                        // Refresh bookmarks UI and scroll to the bottom for feedback
+                        bookmarksAdapter.updateList(prefs.getBookmarks())
+                        if (bookmarksAdapter.itemCount > 0) {
+                            binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
+                        }
+
+                        // Update bookmark icon in case this calculation is currently shown
+                        updateBookmarkIcon()
+
+                        // Restore the swiped row since we don't delete it
+                        historyAdapter.notifyItemChanged(position)
+                    } else {
+                        // Out-of-bounds safety: just refresh the row
+                        historyAdapter.notifyItemChanged(position)
+                    }
+
+                    // User feedback
+                    Toast.makeText(this@MainActivity, R.string.bookmarked, Toast.LENGTH_SHORT).show()
+                } else {
+                    // LEFT swipe -> delete element from history
+                    historyAdapter.removeHistoryElement(position)
+                    checkEmptyHistoryForNoHistoryLabel()
+                    deleteElementFromHistory(position)
+                }
             }
         }
 
@@ -403,6 +502,117 @@ class MainActivity : AppCompatActivity() {
             MyPreferences(this@MainActivity).saveHistory(history)
         }
     }
+
+    // Touch swipe deletion of a bookmark same as history
+    private fun setSwipeTouchHelperForBookmarks() {
+        val callBack = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean = false
+
+            override fun isItemViewSwipeEnabled(): Boolean {
+                // Share the same setting as history for now
+                return MyPreferences(this@MainActivity).deleteHistoryOnSwipe
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+
+                val prefs = MyPreferences(this@MainActivity)
+                val current = prefs.getBookmarks()
+                if (position in 0 until current.size) {
+                    val removed = current[position]
+                    // Update adapter first for snappy UI
+                    bookmarksAdapter.removeAt(position)
+                    // Check if we removed the last bookmark to show the no bookmarks text
+                    checkEmptyBookmarksForNoBookmarksLabel()
+                    // Persist removal
+                    prefs.removeBookmarkById(removed.id)
+                    // Update bookmark icon in case the currently shown calculation is the one that is being deleted
+                    updateBookmarkIcon()
+                } else {
+                    // Fallback: refresh from prefs
+                    bookmarksAdapter.updateList(prefs.getBookmarks())
+                }
+            }
+        }
+        bookmarksTouchHelper = ItemTouchHelper(callBack)
+        bookmarksTouchHelper.attachToRecyclerView(binding.bookmarksRecyclerView)
+    }
+
+    // Function to toggle the adding or removing of a bookmark for a calculation by clicking on the bookmark icon
+    fun toggleBookmark() {
+        val calculation = binding.input.text.toString()
+        val shownResult = binding.resultDisplay.text.toString()
+
+        if (calculation.isEmpty() && shownResult.isEmpty()) {
+            Toast.makeText(this, R.string.nothing_to_bookmark, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val result = if (shownResult.isNotEmpty()) shownResult else calculation
+        val prefs = MyPreferences(this)
+
+        // Toggle: if calculation is already bookmarked, remove it; otherwise add it to bookmarks
+        if (prefs.isBookmarked(calculation, result)) {
+            // Find the matching bookmark and remove it by id
+            val toRemove = prefs.getBookmarks()
+                .firstOrNull { it.calculation == calculation && it.result == result }
+            if (toRemove != null) {
+                prefs.removeBookmarkById(toRemove.id)
+            }
+            // Refresh list
+            bookmarksAdapter.updateList(prefs.getBookmarks())
+        } else {
+            // Bookmark the calculation
+            prefs.addBookmark(calculation, result)
+            // Refresh list (reflects dedupe/trim behavior)
+            bookmarksAdapter.updateList(prefs.getBookmarks())
+            if (bookmarksAdapter.itemCount > 0) {
+                binding.bookmarksRecyclerView.scrollToPosition(bookmarksAdapter.itemCount - 1)
+            }
+        }
+
+        // Update the icon to filled/outlined immediately to show if the calculation is bookmarked or not
+        updateBookmarkIcon()
+        checkEmptyBookmarksForNoBookmarksLabel()
+    }
+
+    // --- History/Bookmarks tabs helpers ---
+    private fun showHistoryList() {
+        binding.historyRecylcleView.visibility = View.VISIBLE
+        binding.bookmarksRecyclerView.visibility = View.GONE
+        binding.noBookmarksText.visibility = View.GONE
+        checkEmptyHistoryForNoHistoryLabel()
+    }
+
+    private fun showBookmarksList() {
+        binding.historyRecylcleView.visibility = View.GONE
+        binding.noHistoryText.visibility = View.GONE
+        binding.bookmarksRecyclerView.visibility = View.VISIBLE
+        checkEmptyBookmarksForNoBookmarksLabel()
+    }
+    // --- END History/Bookmarks tabs helpers ---
+
+    // --- Bookmark helpers ---
+    private fun currentCalcAndResult(): Pair<String, String>? {
+        val calculation = binding.input.text.toString()
+        val shownResult = binding.resultDisplay.text.toString()
+        if (calculation.isEmpty() && shownResult.isEmpty()) return null
+        val result = if (shownResult.isNotEmpty()) shownResult else calculation
+        return calculation to result
+    }
+
+    private fun updateBookmarkIcon() {
+        val pair = currentCalcAndResult()
+        val isBookmarked = pair?.let { (calc, res) -> MyPreferences(this).isBookmarked(calc, res) } ?: false
+        val icon = if (isBookmarked) R.drawable.ic_bookmark_24 else R.drawable.ic_bookmark_border_24
+        binding.bookmarkButton.setImageResource(icon)
+        binding.bookmarkButton.isEnabled = pair != null
+    }
+    // --- END Bookmark helpers ---
 
     fun openAppMenu(view: View) {
         val popup = PopupMenu(this, view)
@@ -431,6 +641,24 @@ class MainActivity : AppCompatActivity() {
         // Clear drawer
         historyAdapter.clearHistory()
         checkEmptyHistoryForNoHistoryLabel()
+    }
+
+    fun clearBookmarks(menuItem: MenuItem) {
+        // Build alert modal for action confirmation
+        AlertDialog.Builder(this)
+            .setTitle(R.string.confirm_clear_bookmarks_title)
+            .setPositiveButton(R.string.confirm_clear_bookmarks_button) { _, _ ->
+                // Clear stored bookmarks
+                MyPreferences(this).saveBookmarks(emptyList())
+                // Refresh the adapter/UI
+                bookmarksAdapter.updateList(MyPreferences(this).getBookmarks())
+                Toast.makeText(this, R.string.bookmarks_cleared, Toast.LENGTH_SHORT).show()
+                // Also update the bookmark icon state in case the current calculation was bookmarked
+                updateBookmarkIcon()
+                checkEmptyBookmarksForNoBookmarksLabel()
+            }
+            .setNegativeButton(R.string.cancel_clear_bookmarks_button, null)
+            .show()
     }
 
     private fun keyVibration(view: View) {
@@ -660,6 +888,7 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             binding.resultDisplay.text = ""
                         }
+                        updateBookmarkIcon()
                     }
 
                     // Save to history if the option autoSaveCalculationWithoutEqualButton is enabled
@@ -738,12 +967,14 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         withContext(Dispatchers.Main) {
                             binding.resultDisplay.text = ""
+                            updateBookmarkIcon()
                         }
                     }
                 }
             } else {
                 withContext(Dispatchers.Main) {
                     binding.resultDisplay.text = ""
+                    updateBookmarkIcon()
                 }
             }
         }
@@ -1003,6 +1234,7 @@ class MainActivity : AppCompatActivity() {
         binding.input.setText("")
         binding.resultDisplay.text = ""
         isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption = false
+        updateBookmarkIcon()
     }
 
     @SuppressLint("SetTextI18n")
@@ -1146,6 +1378,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 withContext(Dispatchers.Main) { binding.resultDisplay.text = "" }
             }
+            updateBookmarkIcon()
         }
     }
 
@@ -1383,15 +1616,32 @@ class MainActivity : AppCompatActivity() {
         // Enable the possibility to show the activity on the lock screen
         val canShowOnLockScreen = MyPreferences(this).showOnLockScreen
         handleOnLockScreenAppStatus(canShowOnLockScreen)
-}
+
+        // Refresh bookmarks if the view/adapter is available
+        runCatching {
+            bookmarksAdapter.updateList(MyPreferences(this).getBookmarks())
+        }
+    }
 
     fun checkEmptyHistoryForNoHistoryLabel() {
-        if (historyAdapter.itemCount==0) {
+        val isOnHistoryTab = binding.historyBookmarksTabs.selectedTabPosition == 0
+        if (isOnHistoryTab && historyAdapter.itemCount==0) {
             binding.historyRecylcleView.visibility = View.GONE
             binding.noHistoryText.visibility = View.VISIBLE
         }else {
             binding.noHistoryText.visibility = View.GONE
-            binding.historyRecylcleView.visibility = View.VISIBLE
+            if (isOnHistoryTab) binding.historyRecylcleView.visibility = View.VISIBLE
+        }
+    }
+
+    fun checkEmptyBookmarksForNoBookmarksLabel() {
+        val isOnBookmarksTab = binding.historyBookmarksTabs.selectedTabPosition == 1
+        if (isOnBookmarksTab && bookmarksAdapter.itemCount == 0) {
+            binding.bookmarksRecyclerView.visibility = View.GONE
+            binding.noBookmarksText.visibility = View.VISIBLE
+        } else {
+            binding.noBookmarksText.visibility = View.GONE
+            if (isOnBookmarksTab) binding.bookmarksRecyclerView.visibility = View.VISIBLE
         }
     }
 

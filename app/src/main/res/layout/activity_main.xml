@@ -18,15 +18,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/bookmarkButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="55dp"
+        android:layout_height="0dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:background="?attr/foreground_color"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/bookmark_border_icon_desc"
+        app:tint="?attr/text_second_color"
+        app:srcCompat="@drawable/ic_bookmark_border_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/inputHorizontalScrollView"
+        app:layout_constraintBottom_toBottomOf="@+id/inputHorizontalScrollView" />
+
     <HorizontalScrollView
         android:id="@+id/inputHorizontalScrollView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="?attr/foreground_color"
         android:overScrollMode="never"
         android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/menuButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/menuButton">
+        app:layout_constraintStart_toEndOf="@+id/bookmarkButton"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
             android:id="@+id/input"
@@ -117,6 +135,7 @@
         app:umanoPanelHeight="41dp"
         app:umanoScrollableView="@id/history_recylcle_view"
         app:umanoShadowHeight="0dp"
+        app:umanoOverlay="true"
         tools:ignore="MissingConstraints">
 
 
@@ -131,7 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:paddingHorizontal="8dp"
-                android:paddingTop="12dp"
+                android:paddingTop="48dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -619,6 +638,15 @@
             android:background="@drawable/display_background"
             tools:context=".activities.MainActivity">
 
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/historyBookmarksTabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabMode="fixed"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/history_recylcle_view"
@@ -626,10 +654,24 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="32dp"
                 android:background="?attr/history_background_color"
+                app:layout_constraintTop_toBottomOf="@+id/historyBookmarksTabs"
                 app:layout_constraintBottom_toTopOf="@+id/sliding_layout_button"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bookmarksRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="?attr/history_background_color"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/historyBookmarksTabs"
+                    app:layout_constraintBottom_toTopOf="@id/sliding_layout_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:visibility="visible"
+                    tools:listitem="@layout/history_item" />
 
             <TextView
                 android:id="@+id/no_history_text"
@@ -642,10 +684,33 @@
                 android:gravity="center"
                 android:layout_marginBottom="32dp"
                 android:background="?attr/history_background_color"
+                app:layout_constraintTop_toBottomOf="@+id/historyBookmarksTabs"
                 app:layout_constraintBottom_toTopOf="@+id/sliding_layout_button"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/no_bookmarks_text"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/no_bookmarks_available"
+                android:textSize="18sp"
+                android:textColor="?attr/text_color"
+                android:gravity="center"
+                android:layout_marginBottom="32dp"
+                android:background="?attr/history_background_color"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/historyBookmarksTabs"
+                app:layout_constraintBottom_toTopOf="@+id/sliding_layout_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/list_bottom_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="history_recylcle_view,bookmarksRecyclerView,no_history_text,no_bookmarks_text" />
 
             <View
                 android:id="@+id/history_sliding_layout_button"
@@ -654,7 +719,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/history_recylcle_view"/>
+                app:layout_constraintTop_toBottomOf="@+id/list_bottom_barrier"/>
 
             <View
                 android:id="@+id/sliding_layout_button"
