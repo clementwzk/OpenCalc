@@ -8,14 +8,28 @@ import org.junit.Test
 import java.text.DecimalFormatSymbols
 
 /**
- * Example local unit test, which will execute on the development machine (host).
+ * Unit tests for calculator expression evaluation and parsing.
  *
+ * Tests mathematical operations including:
+ * - Basic arithmetic (addition, subtraction, multiplication, division)
+ * - Advanced functions (factorial, power, square root, logarithms)
+ * - Trigonometric functions (sin, cos, tan) in both degree and radian modes
+ * - Percentage calculations with various operators
+ * - Nested operations and parentheses
+ *
+ * All tests run on the development machine (JVM) without requiring Android emulator.
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExpressionUnitTest {
 
+    // Locale-specific separators for number formatting (e.g., "." for decimal, "," for grouping in US locale)
     private val decimalSeparatorSymbol = DecimalFormatSymbols.getInstance().decimalSeparator.toString()
     private val groupingSeparatorSymbol = DecimalFormatSymbols.getInstance().groupingSeparator.toString()
+
+    /**
+     * Tests percentage operator behavior in various mathematical contexts.
+     * Covers edge cases like nested percentages, modulo vs percentage, and complex expressions.
+     */
     @Test
     fun percentage_isCorrect() {
         var result = calculate("100*95%", false).toDouble()
@@ -80,6 +94,9 @@ class ExpressionUnitTest {
         assertEquals(18.75176, result, 0.0)
     }
 
+    /**
+     * Tests basic addition operations including chained addition.
+     */
     @Test
     fun addition_isCorrect() {
         var result = calculate("1+1", false).toDouble()
@@ -90,6 +107,9 @@ class ExpressionUnitTest {
     }
 
 
+    /**
+     * Tests nested factorial calculations like (3!)! = 720.
+     */
     @Test
     fun nested_factorial_isCorrect() {
         var result = calculate("(3!)!", false).toDouble()
@@ -104,6 +124,9 @@ class ExpressionUnitTest {
 
 
 
+    /**
+     * Tests that integer factorials (e.g., 59!) produce the same result as decimal factorials (e.g., 59.0!).
+     */
     @Test
     fun number_factorial_equal_decimal_factorial() {
         val number1 = calculate("59!", false).toDouble()
@@ -119,6 +142,10 @@ class ExpressionUnitTest {
         assertEquals(number3,decimalNumber3,0.0)
     }
 
+    /**
+     * Tests factorials of decimal numbers using the Gamma function.
+     * For non-integers, factorial is computed as Γ(n+1).
+     */
     @Test
     fun decimal_factorial_shows_correct_result() {
         val factorial1 = calculate("5.003!", false).toDouble()
@@ -132,6 +159,9 @@ class ExpressionUnitTest {
     }
 
 
+    /**
+     * Tests exponentiation with positive, negative, and fractional exponents.
+     */
     @Test
     fun pow_isCorrect() {
         var result = calculate("4^3", false).toDouble()
@@ -153,6 +183,9 @@ class ExpressionUnitTest {
         assertEquals(8.0, result, 0.0)
     }
 
+    /**
+     * Tests basic subtraction operations including chained subtraction.
+     */
     @Test
     fun subtraction_isCorrect() {
         var result = calculate("1-1", false).toDouble()
@@ -162,6 +195,9 @@ class ExpressionUnitTest {
         assertEquals(-1.0, result, 0.0)
     }
 
+    /**
+     * Tests division operations including decimal division.
+     */
     @Test
     fun division_isCorrect() {
         var result = calculate("0.5/0.01", false).toDouble()
@@ -171,6 +207,9 @@ class ExpressionUnitTest {
         assertEquals(3.5, result, 0.0)
     }
 
+    /**
+     * Tests factorial operations including edge cases (0!) and combinations with other operators.
+     */
     @Test
     fun factorial_isCorrect() {
         var result = calculate("0!", false).toDouble()
@@ -192,6 +231,9 @@ class ExpressionUnitTest {
         assertEquals(1.0, result, 0.0)
     }
 
+    /**
+     * Tests combination of factorial and percentage operators.
+     */
     @Test
     fun factorial_percent_isCorrect() {
         var result = calculate("5!%", false).toDouble()
@@ -204,6 +246,9 @@ class ExpressionUnitTest {
         assertEquals(2.64, result, 0.0)
     }
 
+    /**
+     * Tests square root operations including edge cases like √0.
+     */
     @Test
     fun sqrt_isCorrect() {
         var result = calculate("√2^2", false).toDouble()
@@ -219,6 +264,10 @@ class ExpressionUnitTest {
         assertEquals(0.0, result, 0.0)
     }
 
+    /**
+     * Tests trigonometric functions (sin, cos, tan) in both radian and degree modes.
+     * Includes edge cases like tan(π/2) which is undefined.
+     */
     @Test
     fun trigonometric_functions_isCorrect() {
         // In radians
@@ -267,6 +316,9 @@ class ExpressionUnitTest {
         assertEquals(1.0, result, 0.0)
     }
 
+    /**
+     * Tests logarithm base 2 function and combinations with natural log.
+     */
     @Test
     fun log2_isCorrect() {
         var result = calculate("log₂(8)", false).toDouble()
@@ -276,6 +328,9 @@ class ExpressionUnitTest {
         assertEquals(5.816778116567456, result, 0.0)
     }
 
+    /**
+     * Tests combination of square root and factorial operations.
+     */
     @Test
     fun factorial_square_isCorrect() {
         var result = calculate("(√16)!", false).toDouble()
@@ -288,12 +343,24 @@ class ExpressionUnitTest {
         assertEquals(72.0, result, 0.0)
     }
 
+    /**
+     * Helper function to parse and evaluate mathematical expressions.
+     *
+     * @param input Raw mathematical expression string
+     * @param isDegreeModeActivated Whether trigonometric functions use degrees (true) or radians (false)
+     * @return Calculated result as a string
+     */
     private fun calculate(input: String, isDegreeModeActivated : Boolean) = calculator.evaluate(expression.getCleanExpression(input, decimalSeparatorSymbol, groupingSeparatorSymbol), isDegreeModeActivated)
 
     companion object {
+        // Shared instances for expression parsing and calculation across all tests
         private lateinit var expression: Expression
         private lateinit var calculator: Calculator
 
+        /**
+         * Sets up test fixtures before any tests run.
+         * Initializes calculator with precision of 10 decimal places.
+         */
         @BeforeClass
         @JvmStatic fun setup() {
             expression = Expression()

@@ -63,29 +63,39 @@ import java.text.DecimalFormatSymbols
 import java.util.Locale
 import java.util.UUID
 
+// Global state variables
+var appLanguage: Locale = Locale.getDefault() // Track current language for reload detection
+var currentTheme: Int = 0 // Track current theme for reload detection
 
-var appLanguage: Locale = Locale.getDefault()
-var currentTheme: Int = 0
-
+/**
+ * Main calculator activity.
+ * Handles all calculator operations, display updates, history management,
+ * and user input processing.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var view: View
 
+    // Locale-specific separators for number formatting
     private val decimalSeparatorSymbol =
         DecimalFormatSymbols.getInstance().decimalSeparator.toString()
     private val groupingSeparatorSymbol =
         DecimalFormatSymbols.getInstance().groupingSeparator.toString()
 
+    // Display and calculation settings
     private var numberingSystem = NumberingSystem.INTERNATIONAL
     private var scientificModeType = ScientificModeTypes.NOT_ACTIVE
 
-    private var isInvButtonClicked = false
-    private var isEqualLastAction = false
-    private var isDegreeModeActivated = true // Set degree by default
-    private var errorStatusOld = false
+    // UI state flags
+    private var isInvButtonClicked = false // Inverse function mode (sin vs sin⁻¹)
+    private var isEqualLastAction = false // Track if equal was the last button pressed
+    private var isDegreeModeActivated = true // Set degree by default (vs radians)
+    private var errorStatusOld = false // Previous error state for color change detection
 
+    // History tracking for auto-save feature
     private var isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption = false
     private var lastHistoryElementId = ""
 
+    // Current calculation result
     private var calculationResult = BigDecimal.ZERO
 
     private lateinit var itemTouchHelper: ItemTouchHelper
@@ -97,6 +107,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Keep screen on and allow displaying over lock screen
         //keeping screen on
         window.addFlags(
             WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
@@ -325,6 +336,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Configures whether the app can be displayed on the lock screen.
+     * @param canShow True to allow lock screen display, false to prevent it
+     */
     private fun handleOnLockScreenAppStatus(canShow: Boolean) {
         if (canShow) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
@@ -370,6 +385,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Sets up swipe-to-delete functionality for history items.
+     */
     private fun setSwipeTouchHelperForRecyclerView() {
         val callBack = object :
             ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
@@ -475,6 +493,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Updates the input display with a new value at the cursor position.
+     * Handles number formatting with grouping separators and cursor positioning.
+     * @param view The triggering view (for vibration feedback)
+     * @param value The value to insert (number, operator, or function)
+     */
     private fun updateDisplay(view: View, value: String) {
         val valueNoSeparators = value.replace(groupingSeparatorSymbol, "")
         val isValueInt = valueNoSeparators.toIntOrNull() != null
@@ -530,6 +554,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Rounds a calculation result according to user-defined precision.
+     * Optionally converts to scientific notation for very large/small numbers.
+     * @param result The raw calculation result
+     * @return The rounded/formatted result
+     */
     private fun roundResult(result: BigDecimal): BigDecimal {
         val numberPrecision = MyPreferences(this).numberPrecision!!.toInt()
         var newResult = result.setScale(numberPrecision, RoundingMode.HALF_EVEN)
@@ -592,6 +622,11 @@ class MainActivity : AppCompatActivity() {
         //isDegreeModeActivated = !isDegreeModeActivated
     }
 
+    /**
+     * Evaluates the current input expression and displays the result in real-time.
+     * Handles error detection, formatting, and auto-save to history.
+     * Runs on background thread to avoid UI blocking.
+     */
     @SuppressLint("SetTextI18n")
     private fun updateResultDisplay() {
         lifecycleScope.launch(Dispatchers.Default) {
@@ -753,6 +788,12 @@ class MainActivity : AppCompatActivity() {
         updateDisplay(view, (view as Button).text as String)
     }
 
+    /**
+     * Intelligently adds an operator symbol to the expression.
+     * Handles symbol replacement, validates placement, and manages special cases like minus signs.
+     * @param view The triggering view (for vibration feedback)
+     * @param currentSymbol The operator symbol to add (+, -, ×, ÷, ^, etc.)
+     */
     @SuppressLint("SetTextI18n")
     private fun addSymbol(view: View, currentSymbol: String) {
         // Get input text length
@@ -1005,6 +1046,11 @@ class MainActivity : AppCompatActivity() {
         isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption = false
     }
 
+    /**
+     * Processes the equals button press.
+     * Evaluates the expression, displays the result, saves to history,
+     * and handles all error conditions.
+     */
     @SuppressLint("SetTextI18n")
     fun equalsButton(view: View) {
         lifecycleScope.launch(Dispatchers.Default) {
@@ -1385,6 +1431,9 @@ class MainActivity : AppCompatActivity() {
         handleOnLockScreenAppStatus(canShowOnLockScreen)
 }
 
+    /**
+     * Shows/hides the "No History" label based on whether history is empty.
+     */
     fun checkEmptyHistoryForNoHistoryLabel() {
         if (historyAdapter.itemCount==0) {
             binding.historyRecylcleView.visibility = View.GONE
@@ -1395,6 +1444,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Manages the visibility and state of scientific mode buttons.
+     * @param scientificModeTypes The mode to apply (OFF, ACTIVE, NOT_ACTIVE)
+     */
     private fun manageScientificMode(scientificModeTypes: ScientificModeTypes) {
         when (scientificModeTypes) {
             ScientificModeTypes.OFF -> hideScientificMode()
@@ -1429,6 +1482,10 @@ class MainActivity : AppCompatActivity() {
         binding.degreeTextView.visibility = View.GONE
     }
 
+    /**
+     * Adjusts view padding to accommodate system bars (status bar, navigation bar).
+     * Required for edge-to-edge display on SDK 35+.
+     */
     // Method to add padding to app window to accommodate system bars
     fun fixView() {
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->

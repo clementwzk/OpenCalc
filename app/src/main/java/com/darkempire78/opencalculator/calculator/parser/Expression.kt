@@ -2,48 +2,95 @@ package com.darkempire78.opencalculator.calculator.parser
 
 import com.darkempire78.opencalculator.calculator.syntax_error
 
+/**
+ * Expression parser that transforms user-entered mathematical expressions into
+ * a format suitable for evaluation by the calculator engine.
+ */
 class Expression {
 
+    /**
+     * Transforms a user-entered expression into a clean, evaluable format.
+     * Handles symbol replacements, implicit multiplication, percentage conversion, etc.
+     * @param calculation The raw user input expression
+     * @param decimalSeparatorSymbol The decimal separator used in the current locale
+     * @param groupingSeparatorSymbol The digit grouping separator (e.g., comma or space)
+     * @return A cleaned expression ready for evaluation
+     */
     fun getCleanExpression(calculation: String, decimalSeparatorSymbol: String, groupingSeparatorSymbol: String): String {
+        // Step 1: Replace user-friendly symbols with calculator-internal representations
         var cleanCalculation = replaceSymbolsFromCalculation(calculation, decimalSeparatorSymbol, groupingSeparatorSymbol)
+        
+        // Step 2: Add implicit multiplication operators where they're omitted (e.g., 2π -> 2*π)
         cleanCalculation = addMultiply(cleanCalculation)
+        
+        // Step 3: Convert square root symbol to function notation (√5 -> sqrt(5))
         if (cleanCalculation.contains('√')) {
             cleanCalculation = formatSquare(cleanCalculation)
         }
+        
+        // Step 4: Process percentage operations with context-aware transformations
         if (cleanCalculation.contains('%')) {
             cleanCalculation = getPercentString(cleanCalculation)
             cleanCalculation = cleanCalculation.replace("%", "/100")
         }
+        
+        // Step 5: Convert factorial notation to function form (5! -> factorial(5))
         if (cleanCalculation.contains('!')) {
             cleanCalculation = formatFactorial(cleanCalculation)
         }
+        
+        // Step 6: Auto-close any unclosed parentheses
         cleanCalculation = addParenthesis(cleanCalculation)
         return cleanCalculation
     }
 
+    /**
+     * Replaces user-friendly mathematical symbols with calculator-internal representations.
+     * @param calculation The expression string to process
+     * @param decimalSeparatorSymbol Locale-specific decimal separator
+     * @param groupingSeparatorSymbol Locale-specific grouping separator (removed from calculation)
+     * @return Expression with standardized symbols
+     */
     private fun replaceSymbolsFromCalculation(calculation: String, decimalSeparatorSymbol: String, groupingSeparatorSymbol: String): String {
+        // Replace visual multiplication and division symbols with standard operators
         var calculation2 = calculation.replace('×', '*')
         calculation2 = calculation2.replace('÷', '/')
+        // Replace logarithm variants with internal function names
         calculation2 = calculation2.replace("log₂(", "logtwo(")
         // Need open parenthesis to prevent alteration of log₂
         calculation2 = calculation2.replace("log(", "logten(")
+        
+        // Convert scientific notation (e.g., 1.5E3 -> 1.5*10^3)
         calculation2 = calculation2.replace("E", "*10^")
+        
         // To avoid that "exp" is interpreted as "e", exp -> xp
         calculation2 = calculation2.replace("exp", "xp")
+        
         // To avoid mismatch with cos, sin, tan -> arcco, arcsi, arcta
         calculation2 = calculation2.replace("cos⁻¹", "arcco")
         calculation2 = calculation2.replace("sin⁻¹", "arcsi")
         calculation2 = calculation2.replace("tan⁻¹", "arcta")
+        
+        // Remove grouping separators and standardize decimal separator to period
         calculation2 = calculation2.replace(groupingSeparatorSymbol, "")
         calculation2 = calculation2.replace(decimalSeparatorSymbol, ".")
         return calculation2
     }
 
+    /**
+     * Processes percentage operators with context-aware transformations.
+     * Handles three cases:
+     * - Standalone: 50% -> 50/100
+     * - With * or /: 100*50% -> 100*(50/100)
+     * - With + or -: 100+50% -> 100+100*(50/100) (percentage of base)
+     * @param calculation Expression containing percentage operators
+     * @return Expression with percentages converted to proper mathematical form
+     */
     private fun getPercentString(calculation: String): String {
         var result = calculation
         var i = 0
-        var parenthesisLevel = 0
-        var subexpressionStart = -1
+        var parenthesisLevel = 0 // Track nesting level for parentheses
+        var subexpressionStart = -1 // Start position of current parenthesized subexpression
         // Track processed % indices to prevent repeated loops
         val processedIndices = mutableSetOf<Int>()
         /*
@@ -181,6 +228,11 @@ class Expression {
         return result
     }
 
+    /**
+     * Auto-closes unclosed parentheses and validates parenthesis balance.
+     * @param calculation Expression to process
+     * @return Expression with balanced parentheses (if possible)
+     */
     fun addParenthesis(calculation: String): String {
         // Add ")" which lack
         var cleanCalculation = calculation
@@ -208,37 +260,49 @@ class Expression {
         return cleanCalculation
     }
 
+    /**
+     * Inserts implicit multiplication operators where they're omitted.
+     * Examples: 2π -> 2*π, 3(4) -> 3*(4), 5! -> 5*!, etc.
+     * @param calculation Expression to process
+     * @return Expression with explicit multiplication operators
+     */
     private fun addMultiply(calculation: String): String {
         // Add "*" which lack
         var cleanCalculation = calculation
         var cleanCalculationLength = cleanCalculation.length
         var i = 0
         while (i < cleanCalculationLength) {
+            // Case: number/closing paren followed by opening paren (e.g., 2( or )( )
             if (cleanCalculation[i] == '(') {
                 if (i != 0 && (cleanCalculation[i-1] in ".e0123456789)")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i)
                     cleanCalculationLength++
                 }
+            // Case: closing paren followed by number/paren (e.g., )2 or )( )
             } else if (cleanCalculation[i] == ')') {
                 if (i + 1 < cleanCalculation.length && cleanCalculation[i + 1] in "0123456789(.") {
                         cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
                         cleanCalculationLength++
                     }
+            // Case: factorial followed by number/constant/paren (e.g., 5!2 or 5!π)
             } else if (cleanCalculation[i] == '!') {
                 if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "0123456789π(")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
                     cleanCalculationLength++
                 }
+            // Case: percentage followed by number/constant/paren (e.g., 50%2)
             } else if (cleanCalculation[i] == '%') {
                 if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "0123456789π(")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
                     cleanCalculationLength++
                 }
+            // Case: number/symbol before sqrt (e.g., 2√ -> 2*√)
             } else if (i - 1 >= 0 && cleanCalculation[i] == '√') {
                 if (cleanCalculation[i - 1] !in "+-/*(") {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i)
                     cleanCalculationLength++
                 }
+            // Case: pi constant adjacent to other values (e.g., 2π or π3)
             } else if (cleanCalculation[i] == 'π') {
                 if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "0123456789(")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
@@ -248,6 +312,7 @@ class Expression {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i)
                     cleanCalculationLength++
                 }
+            // Case: e constant (Euler's number) adjacent to other values (e.g., 2e or e3)
             } else if (cleanCalculation[i] == 'e') {
                 if (i + 1 < cleanCalculation.length && (cleanCalculation[i + 1] in "π0123456789(")) {
                     cleanCalculation = cleanCalculation.addCharAtIndex('*', i + 1)
@@ -258,6 +323,7 @@ class Expression {
                     cleanCalculationLength++
                 }
             } else {
+                // Case: function names preceded by value (e.g., 2sin -> 2*sin)
                 if (i + 1 < cleanCalculation.length) {
                     val functionsList = listOf("arcco", "arcsi", "arcta", "cos", "sin", "tan", "ln", "log", "xp")
                     for (function in functionsList) {
@@ -278,6 +344,13 @@ class Expression {
         return cleanCalculation
     }
 
+    /**
+     * Converts square root symbol notation to function notation.
+     * Example: √5 -> sqrt(5), 2+√16 -> 2+sqrt(16)
+     * Automatically adds parentheses around the radicand.
+     * @param calculation Expression containing square root symbols
+     * @return Expression with sqrt() function notation
+     */
     private fun formatSquare(calculation: String): String {
         // Replace √5 by sqrt(5)
         var cleanCalculation = calculation
@@ -310,6 +383,13 @@ class Expression {
         return cleanCalculation
     }
 
+    /**
+     * Converts factorial notation to function notation.
+     * Example: 5! -> factorial(5), (3+2)! -> factorial((3+2))
+     * Processes from right to left to handle nested factorials correctly.
+     * @param calculation Expression containing factorial operators
+     * @return Expression with factorial() function notation
+     */
     private fun formatFactorial(calculation: String): String {
         var i = calculation.length - 1
 
@@ -391,6 +471,12 @@ class Expression {
         }
     }
 
+    /**
+     * Extension function to insert a character at a specific index in a string.
+     * @param char The character to insert
+     * @param index The position to insert at
+     * @return New string with character inserted
+     */
     private fun String.addCharAtIndex(char: Char, index: Int) =
         StringBuilder(this).apply { insert(index, char) }.toString()
 

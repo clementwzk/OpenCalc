@@ -24,17 +24,22 @@ import com.darkempire78.opencalculator.util.ScientificMode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.Locale
 
+/**
+ * Activity for managing app settings and preferences.
+ * Hosts a PreferenceFragment that displays and manages user preferences.
+ */
 class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Apply theme settings
         // Themes
         val themes = Themes(this)
         themes.applyDayNightOverride()
         setTheme(themes.getTheme())
 
-        // Fix view for SDK 35
+        // Fix view for SDK 35 - handle system bars insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
@@ -51,6 +56,7 @@ class SettingsActivity : AppCompatActivity() {
 
         setContentView(R.layout.settings_activity)
 
+        // Load settings fragment if this is the first creation (not a rotation/recreation)
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
@@ -59,7 +65,7 @@ class SettingsActivity : AppCompatActivity() {
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // Change the status bar color
+        // Change the status bar color based on theme
         if (MyPreferences(this).theme == 1) { // Amoled theme
             window.statusBarColor = ContextCompat.getColor(this, R.color.amoled_background_color)
         } else {
@@ -73,10 +79,15 @@ class SettingsActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Fragment displaying the app's preference UI.
+     * Handles preference interactions including theme, language, numbering system, and scientific mode.
+     */
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
+            // Language preference (Android 13+)
             val appLanguagePreference = findPreference<Preference>("darkempire78.opencalculator.APP_LANGUAGE")
 
             // remove the app language button if you are using an Android version lower than v33 (Android 13)
@@ -95,9 +106,11 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
+            // Theme selection preference
             // Theme button
             val appThemePreference = findPreference<Preference>("darkempire78.opencalculator.APP_THEME_SELECTOR")
 
+            // Display current theme in summary
             appThemePreference?.summary = Themes(this.requireContext()).getThemeNameFromId(
                 MyPreferences(this.requireContext()).theme)
 
@@ -107,10 +120,12 @@ class SettingsActivity : AppCompatActivity() {
             }
 
 
+            // Numbering system preference (International vs Indian)
             // Numbering System button
             val appNumberingSystemPreference =
                 findPreference<Preference>("darkempire78.opencalculator.NUMBERING_SYSTEM")
 
+            // Display current numbering system in summary
             appNumberingSystemPreference?.summary =
                 NumberingSystem.getDescription(MyPreferences(this.requireContext()).numberingSystem)
 
@@ -120,10 +135,12 @@ class SettingsActivity : AppCompatActivity() {
             }
 
 
+            // Scientific mode preference (off/on/hidden)
             // Numbering System button  settings_select_scientificMode_system
             val scientificModeTypesSystemPreference =
                 findPreference<Preference>("darkempire78.opencalculator.SCIENTIFIC_MODE_ENABLED_BY_DEFAULT")
 
+            // Get and display current scientific mode setting
             val storedType = MyPreferences(requireContext()).scientificMode
            val scientificModeType = ScientificMode.getScientificModeType(storedType)
             val typeDescription=ScientificMode.getScientificModeTypeDescription(requireContext(),scientificModeType)
@@ -135,6 +152,10 @@ class SettingsActivity : AppCompatActivity() {
 
         }
 
+        /**
+         * Displays a dialog for selecting the numbering system.
+         * Options: International (groups of 3) or Indian (groups of 2 after first 3)
+         */
         private fun openDialogNumberingSystemSelector(context: Context) {
 
             val preferences = MyPreferences(context)
@@ -169,11 +190,18 @@ class SettingsActivity : AppCompatActivity() {
             dialog.show()
         }
 
+        /**
+         * Reloads the activity to apply preference changes.
+         */
         private fun reloadActivity(context: Context) {
             (context as Activity).finish()
             ContextCompat.startActivity(context, context.intent, null)
         }
 
+        /**
+         * Launches the system language settings screen (Android 13+).
+         * Falls back to app details if language settings are unavailable.
+         */
         @RequiresApi(Build.VERSION_CODES.TIRAMISU)
         fun launchChangeAppLanguageIntent() {
             try {
@@ -192,6 +220,11 @@ class SettingsActivity : AppCompatActivity() {
                 }
             }
         }
+        
+        /**
+         * Displays a dialog for selecting the scientific mode behavior.
+         * Options: Deactivated, Active by default, or Hidden
+         */
         private fun openDialogScientificModeSelector(context: Context) {
 
             val preferences = MyPreferences(context)

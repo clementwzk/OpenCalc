@@ -6,13 +6,27 @@ import android.graphics.Rect
 import android.util.TypedValue
 import android.widget.TextView
 
+/**
+ * Utility class for dynamically adjusting text size to fit within screen width.
+ * Scales text between min/max sizes based on screen orientation and size category.
+ */
 class TextSizeAdjuster(private val context: Context) {
 
+    /**
+     * Enum specifying which text field is being adjusted.
+     * Different min/max sizes are used for input vs output displays.
+     */
     enum class AdjustableTextType {
-        Input,
-        Output,
+        Input,  // Main input/calculation field
+        Output, // Result display field
     }
 
+    /**
+     * Dynamically adjusts the text size of a TextView to fit within screen width.
+     * Iteratively reduces size from max to min until text fits.
+     * @param textView The TextView to adjust
+     * @param adjustableTextType Whether this is Input or Output text
+     */
     fun adjustTextSize(textView: TextView, adjustableTextType: AdjustableTextType) {
         val screenWidth = context.resources.displayMetrics.widthPixels
 
@@ -40,6 +54,12 @@ class TextSizeAdjuster(private val context: Context) {
         }
     }
 
+    /**
+     * Determines min and max text sizes based on device configuration.
+     * @param configuration Device configuration (orientation, screen size)
+     * @param adjustableTextType Whether this is Input or Output text
+     * @return Pair of (minSize, maxSize) in SP units
+     */
     private fun getTextSizeBounds(configuration: Configuration, adjustableTextType: AdjustableTextType): Pair<Float, Float> {
         val orientation = configuration.orientation
         val screenSize = configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK
@@ -53,6 +73,11 @@ class TextSizeAdjuster(private val context: Context) {
         return Pair(minTextSize, maxTextSize)
     }
 
+    /**
+     * Gets text size bounds specifically for the input field.
+     * Larger screens in landscape get bigger text sizes.
+     * @return Pair of (minSize, maxSize) in SP units
+     */
     private fun getInputTextSizeBounds(orientation: Int, screenSize: Int): Pair<Float, Float> {
         return when (orientation) {
             Configuration.ORIENTATION_PORTRAIT -> Pair(35f, 55f)
@@ -76,6 +101,11 @@ class TextSizeAdjuster(private val context: Context) {
         }
     }
 
+    /**
+     * Gets text size bounds specifically for the result/output field.
+     * Generally smaller than input field sizes.
+     * @return Pair of (minSize, maxSize) in SP units
+     */
     private fun getResultTextSizeBounds(orientation: Int, screenSize: Int): Pair<Float, Float> {
         return when (orientation) {
             Configuration.ORIENTATION_PORTRAIT -> Pair(25f, 40f)
@@ -99,6 +129,11 @@ class TextSizeAdjuster(private val context: Context) {
         }
     }
 
+    /**
+     * Converts density-independent pixels (DP) to actual pixels (PX).
+     * @param dp Value in DP units
+     * @return Equivalent value in PX units
+     */
     private fun dpToPx(dp: Float): Float {
         return dp * context.resources.displayMetrics.density
     }

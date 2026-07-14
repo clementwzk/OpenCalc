@@ -1,12 +1,19 @@
+<!--
+    Settings Preferences Screen
+    Defines all user-configurable settings for OpenCalc
+    Organized into categories: General, Formatting, History, and Advanced
+-->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- General Settings: Appearance, behavior, and basic calculator configuration -->
     <PreferenceCategory
         app:title="@string/settings_category_general"
         app:color="?attr/text_color">
         <!--app:iconSpaceReserved="false"-->
 
+        <!-- Language selection dialog -->
         <Preference
             android:id="@+id/settings_select_app_language"
             app:key="darkempire78.opencalculator.APP_LANGUAGE"
@@ -16,6 +23,7 @@
             app:summary="APP LANGUAGE"
             app:icon="@drawable/language" />
 
+        <!-- Theme selection (Light/Dark/System/Material You) -->
         <Preference
             android:id="@+id/settings_select_app_theme"
             app:key="darkempire78.opencalculator.APP_THEME_SELECTOR"
@@ -25,6 +33,7 @@
             app:summary="APP THEME"
             app:icon="@drawable/theme" />
 
+        <!-- Numbering system selection (International/Indian) -->
         <Preference
             android:id="@+id/settings_select_numbering_system"
             app:key="darkempire78.opencalculator.NUMBERING_SYSTEM"
@@ -34,6 +43,7 @@
             app:summary="APP THEME"
             app:icon="@drawable/numbering_system" />
 
+        <!-- Enable/disable haptic feedback on button press -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.KEY_VIBRATION_STATUS"
             app:title="@string/settings_general_vibration"
@@ -44,6 +54,7 @@
             app:defaultValue="true"
             app:widgetLayout="@drawable/material_switch" />
 
+        <!-- Default angle unit for trigonometric functions -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.RADIANS_INSTEAD_OF_DEGREES_BY_DEFAULT"
             app:title="@string/settings_general_radians"
@@ -54,6 +65,7 @@
             app:defaultValue="false"
             app:widgetLayout="@drawable/material_switch" />
 
+        <!-- Scientific mode visibility configuration (Always/Never/Device-based) -->
         <Preference
             android:id="@+id/settings_select_scientificMode_system"
             app:key="darkempire78.opencalculator.SCIENTIFIC_MODE_ENABLED_BY_DEFAULT"
@@ -64,6 +76,7 @@
             app:icon="@drawable/science" />
 
 
+        <!-- Split parenthesis button into separate ( and ) buttons -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.SPLIT_PARENTHESIS_BUTTON"
             app:title="@string/settings_general_split_parenthesis_button"
@@ -74,6 +87,7 @@
             app:defaultValue="false"
             app:widgetLayout="@drawable/material_switch" />
 
+        <!-- Show or hide modulo (%) button in calculator -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.ADD_MODULO_BUTTON"
             app:title="@string/settings_general_add_modulo"
@@ -84,6 +98,7 @@
             app:defaultValue="true"
             app:widgetLayout="@drawable/material_switch" />
 
+        <!-- Allow calculator to be visible on lock screen (requires FLAG_SHOW_WHEN_LOCKED) -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.KEY_SHOW_ON_LOCK_SCREEN"
             app:title="@string/show_on_lock_screen"
@@ -93,6 +108,7 @@
             app:singleLineTitle="false"
             app:defaultValue="true"
             app:widgetLayout="@drawable/material_switch" />
+        <!-- Move backspace button to left side of calculator -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.MOVE_BACK_BUTTON_LEFT"
             app:title="@string/settings_general_backspace"
@@ -111,10 +127,12 @@
 
     </PreferenceCategory>
 
+    <!-- Formatting Settings: Number display and precision configuration -->
     <PreferenceCategory
         app:title="@string/settings_category_formatting"
         app:color="?attr/text_color">
 
+        <!-- Number precision (decimal places) for calculation results -->
         <ListPreference
             app:key="darkempire78.opencalculator.NUMBER_PRECISION"
             app:title="@string/settings_formatting_precision"
@@ -125,6 +143,7 @@
             app:singleLineTitle="false"
             app:icon="@drawable/precision" />
 
+        <!-- Automatically convert large/small numbers to scientific notation (e.g., 1.23e+10) -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.WRITE_NUMBER_INTO_SCIENTIC_NOTATION"
             app:title="@string/settings_formatting_scientific_notation"
@@ -137,10 +156,12 @@
 
     </PreferenceCategory>
 
+    <!-- History Settings: Calculation history management and storage -->
     <PreferenceCategory
         app:title="@string/settings_category_history"
         app:color="?attr/text_color">
 
+        <!-- Maximum number of calculations to store in history -->
         <ListPreference
             app:key="darkempire78.opencalculator.HISTORY_SIZE"
             app:title="@string/settings_history_size"
@@ -151,6 +172,7 @@
             app:singleLineTitle="false"
             app:icon="@drawable/history" />
 
+        <!-- Enable swipe-to-delete gesture for history items -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.DELETE_HISTORY_ELEMENT_ON_SWIPE"
             app:title="@string/settings_delete_history_element_on_swipe"
@@ -161,6 +183,7 @@
             app:icon="@drawable/swipe_left"
             app:widgetLayout="@drawable/material_switch" />
 
+        <!-- Automatically save calculations to history without pressing equals button -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON"
             app:title="@string/settings_auto_save_calculation_without_equal_button"
@@ -173,10 +196,12 @@
 
     </PreferenceCategory>
 
+    <!-- Advanced Settings: Power user features and device behavior -->
     <PreferenceCategory
         app:title="@string/settings_category_advanced"
         app:color="?attr/text_color">
 
+        <!-- Enable long-press to copy result/display value to clipboard -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.LONG_CLICK_TO_COPY_VALUE"
             app:title="@string/settings_advanced_long_click_copy"
@@ -187,6 +212,7 @@
             app:icon="@drawable/click"
             app:widgetLayout="@drawable/material_switch" />
 
+        <!-- Keep screen awake while calculator is open (prevents auto-sleep) -->
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.PREVENT_PHONE_FROM_SLEEPING"
             app:title="@string/settings_advanced_prevent_sleep"

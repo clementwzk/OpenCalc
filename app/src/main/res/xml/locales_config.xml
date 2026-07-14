@@ -1,40 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Locale Configuration
+    Defines all supported languages for per-app language preferences (Android 13+)
+    Users can set the app language independently from the system language in Settings
+-->
 <locale-config xmlns:android="http://schemas.android.com/apk/res/android">
-    <locale android:name="ar"/>
-    <locale android:name="az"/>
-    <locale android:name="be"/>
-    <locale android:name="bn"/>
-    <locale android:name="bs"/>
-    <locale android:name="cs"/>
-    <locale android:name="de"/>
-    <locale android:name="el"/>
-    <locale android:name="es"/>
-    <locale android:name="fa"/>
-    <locale android:name="fr"/>
-    <locale android:name="hi"/>
-    <locale android:name="hr"/>
-    <locale android:name="hu"/>
-    <locale android:name="in"/>
-    <locale android:name="it"/>
-    <locale android:name="ja"/>
-    <locale android:name="kn"/>
-    <locale android:name="mk"/>
-    <locale android:name="ml"/>
-    <locale android:name="nb-rNO"/>
-    <locale android:name="nl"/>
-    <locale android:name="or"/>
-    <locale android:name="pl"/>
-    <locale android:name="pt-rBR"/>
-    <locale android:name="ro"/>
-    <locale android:name="ru"/>
-    <locale android:name="sat"/>
-    <locale android:name="sr"/>
-    <locale android:name="sv"/>
-    <locale android:name="ti"/>
-    <locale android:name="tr"/>
-    <locale android:name="uk"/>
-    <locale android:name="vi"/>
-    <locale android:name="zh-rCN"/>
-    <locale android:name="zh-rHK"/>
-    <locale android:name="zh-rTW"/>
+    <!-- Middle Eastern and South Asian Languages -->
+    <locale android:name="ar"/>       <!-- Arabic -->
+    <locale android:name="fa"/>       <!-- Persian/Farsi -->
+    <locale android:name="hi"/>       <!-- Hindi -->
+    <locale android:name="bn"/>       <!-- Bengali -->
+    <locale android:name="kn"/>       <!-- Kannada -->
+    <locale android:name="ml"/>       <!-- Malayalam -->
+    <locale android:name="or"/>       <!-- Odia -->
+    <locale android:name="sat"/>      <!-- Santali -->
+
+    <!-- European Languages -->
+    <locale android:name="be"/>       <!-- Belarusian -->
+    <locale android:name="bs"/>       <!-- Bosnian -->
+    <locale android:name="cs"/>       <!-- Czech -->
+    <locale android:name="de"/>       <!-- German -->
+    <locale android:name="el"/>       <!-- Greek -->
+    <locale android:name="es"/>       <!-- Spanish -->
+    <locale android:name="fr"/>       <!-- French -->
+    <locale android:name="hr"/>       <!-- Croatian -->
+    <locale android:name="hu"/>       <!-- Hungarian -->
+    <locale android:name="it"/>       <!-- Italian -->
+    <locale android:name="mk"/>       <!-- Macedonian -->
+    <locale android:name="nb-rNO"/>   <!-- Norwegian Bokmål -->
+    <locale android:name="nl"/>       <!-- Dutch -->
+    <locale android:name="pl"/>       <!-- Polish -->
+    <locale android:name="pt-rBR"/>   <!-- Portuguese (Brazil) -->
+    <locale android:name="ro"/>       <!-- Romanian -->
+    <locale android:name="ru"/>       <!-- Russian -->
+    <locale android:name="sr"/>       <!-- Serbian -->
+    <locale android:name="sv"/>       <!-- Swedish -->
+    <locale android:name="uk"/>       <!-- Ukrainian -->
+
+    <!-- East Asian Languages -->
+    <locale android:name="ja"/>       <!-- Japanese -->
+    <locale android:name="zh-rCN"/>   <!-- Chinese (Simplified) -->
+    <locale android:name="zh-rHK"/>   <!-- Chinese (Hong Kong) -->
+    <locale android:name="zh-rTW"/>   <!-- Chinese (Traditional) -->
+
+    <!-- Other Languages -->
+    <locale android:name="az"/>       <!-- Azerbaijani -->
+    <locale android:name="in"/>       <!-- Indonesian -->
+    <locale android:name="ti"/>       <!-- Tigrinya -->
+    <locale android:name="tr"/>       <!-- Turkish -->
+    <locale android:name="vi"/>       <!-- Vietnamese -->
 </locale-config>
