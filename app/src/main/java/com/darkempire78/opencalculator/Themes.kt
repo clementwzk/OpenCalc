@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import android.content.res.Configuration
 
 class Themes(private val context: Context) {
 
@@ -115,7 +116,10 @@ class Themes(private val context: Context) {
         var theme = "THEME"
         when (themeID) {
             DEFAULT_THEME_INDEX -> {
-                theme = if (MyPreferences(this.context).forceDayNight == AppCompatDelegate.MODE_NIGHT_YES) {
+                val currentUiMode = context.resources.configuration.uiMode
+                val isNightMode = currentUiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+
+                theme = if (MyPreferences(this.context).forceDayNight == AppCompatDelegate.MODE_NIGHT_YES || isNightMode) {
                     context.getString(R.string.theme_dark)
                 } else {
                     context.getString(R.string.theme_light)
