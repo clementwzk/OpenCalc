@@ -73,7 +73,7 @@ class ExpressionUnitTest {
         Samsung Calculator has a result of 22.76976 here and Google Calculator yields 16.732.
         OpenCalc yields 18.75176. 4Investigating the correct answer.
          We typically would not do something so ambiguous. Are we adding percentages or adding a
-         a percentage of the previous number? An answer of 7.21 is also possible. How far down
+         percentage of the previous number? An answer of 7.21 is also possible. How far down
          this rabbit hole do we want to go? Everyday calculations should be correct now.
          */
         result = calculate("164%+(265-20%)%+345%", isDegreeModeActivated = false).toDouble()
@@ -190,6 +190,9 @@ class ExpressionUnitTest {
 
         result = calculate("(3!)!/(3!)!", false).toDouble()
         assertEquals(1.0, result, 0.0)
+
+        result  =  calculate("(21.3*12.5)!",false).toDouble()
+        assertEquals(0.0, result, 0.0)
     }
 
     @Test
