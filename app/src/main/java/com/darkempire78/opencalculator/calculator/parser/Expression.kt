@@ -27,7 +27,6 @@ class Expression {
         calculation2 = calculation2.replace("log₂(", "logtwo(")
         // Need open parenthesis to prevent alteration of log₂
         calculation2 = calculation2.replace("log(", "logten(")
-        calculation2 = calculation2.replace("E", "*10^")
         // To avoid that "exp" is interpreted as "e", exp -> xp
         calculation2 = calculation2.replace("exp", "xp")
         // To avoid mismatch with cos, sin, tan -> arcco, arcsi, arcta
@@ -36,6 +35,13 @@ class Expression {
         calculation2 = calculation2.replace("tan⁻¹", "arcta")
         calculation2 = calculation2.replace(groupingSeparatorSymbol, "")
         calculation2 = calculation2.replace(decimalSeparatorSymbol, ".")
+
+        // Handle scientific notation: number followed by 'e' or 'E' and an integer exponent (optionally signed)
+        val scientificRegex = """(?<=^|[^a-zA-Z])(\d+(?:\.\d*)?|\.\d+)[eE]([+-]?\d+)(?!\.)""".toRegex()
+        calculation2 = calculation2.replace(scientificRegex) { match ->
+            "(${match.groupValues[1]}*10^(${match.groupValues[2]}))"
+        }
+
         return calculation2
     }
 
