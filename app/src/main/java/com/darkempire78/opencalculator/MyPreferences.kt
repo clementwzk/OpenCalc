@@ -101,7 +101,7 @@ class MyPreferences(context: Context) {
     fun saveHistory(history: List<History>){
         val gson = Gson()
         val history2 = history.toMutableList()
-        while (historySize!!.toInt() > 0 && history2.size > historySize!!.toInt()) {
+        while ((historySize?.toIntOrNull() ?: 0) > 0 && history2.size > (historySize?.toIntOrNull() ?: 0)) {
             history2.removeAt(0)
         }
         MyPreferences(ctx).history = gson.toJson(history2) // Convert to json
