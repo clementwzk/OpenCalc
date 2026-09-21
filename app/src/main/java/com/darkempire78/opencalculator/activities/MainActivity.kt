@@ -172,7 +172,7 @@ class MainActivity : AppCompatActivity() {
         setSwipeTouchHelperForRecyclerView()
 
         // Disable history if setting enabled
-        val historySize = MyPreferences(this).historySize!!.toInt()
+        val historySize = (MyPreferences(this).historySize?.toIntOrNull() ?: 100)
         if (historySize == 0) {
             binding.historyRecylcleView.visibility = View.GONE
             binding.slidingLayoutButton.visibility = View.GONE
@@ -531,7 +531,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun roundResult(result: BigDecimal): BigDecimal {
-        val numberPrecision = MyPreferences(this).numberPrecision!!.toInt()
+        val numberPrecision = (MyPreferences(this).numberPrecision?.toIntOrNull() ?: 10)
         var newResult = result.setScale(numberPrecision, RoundingMode.HALF_EVEN)
         if (MyPreferences(this).numberIntoScientificNotation && (newResult >= BigDecimal(9999) || newResult <= BigDecimal(
                 0.1
@@ -716,7 +716,7 @@ class MainActivity : AppCompatActivity() {
                                     )
 
                                     // Remove former results if > historySize preference
-                                    val historySize = MyPreferences(this@MainActivity).historySize!!.toInt()
+                                    val historySize = (MyPreferences(this@MainActivity).historySize?.toIntOrNull() ?: 100)
                                     while (historySize != -1 && historyAdapter.itemCount >= historySize && historyAdapter.itemCount > 0) {
                                         historyAdapter.removeFirstHistoryElement()
                                     }
@@ -1102,7 +1102,7 @@ class MainActivity : AppCompatActivity() {
                                 )
 
                                 // Remove former results if > historySize preference
-                                val historySize = MyPreferences(this@MainActivity).historySize!!.toInt()
+                                val historySize = (MyPreferences(this@MainActivity).historySize?.toIntOrNull() ?: 100)
                                 while (historySize != -1 && historyAdapter.itemCount >= historySize && historyAdapter.itemCount > 0) {
                                     historyAdapter.removeFirstHistoryElement()
                                 }
@@ -1352,7 +1352,7 @@ class MainActivity : AppCompatActivity() {
 
         // Remove former results if > historySize preference
         // Remove from the RecycleView
-        val historySize = MyPreferences(this@MainActivity).historySize!!.toInt()
+        val historySize = (MyPreferences(this@MainActivity).historySize?.toIntOrNull() ?: 100)
         while (historySize != -1 && historyAdapter.itemCount >= historySize && historyAdapter.itemCount > 0) {
             historyAdapter.removeFirstHistoryElement()
         }
