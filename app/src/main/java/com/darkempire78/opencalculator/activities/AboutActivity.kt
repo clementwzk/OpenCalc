@@ -9,6 +9,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.darkempire78.opencalculator.BuildConfig
 import com.darkempire78.opencalculator.MyPreferences
 import com.darkempire78.opencalculator.R
@@ -36,6 +40,24 @@ class AboutActivity : AppCompatActivity() {
 
         binding = ActivityAboutBinding.inflate(layoutInflater)
         val view = binding.root
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+
+            v.updatePadding(
+                left = systemBars.left,
+                top = systemBars.top,
+                right = systemBars.right,
+                bottom = systemBars.bottom
+            )
+
+            insets
+        }
+
         setContentView(view)
 
         // Set app version

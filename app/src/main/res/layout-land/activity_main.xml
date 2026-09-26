@@ -510,7 +510,7 @@
             android:text=""
             android:textAlignment="textEnd"
             android:textColor="?attr/text_color"
-            android:textSize="55sp"
+            android:textSize="24sp"
             tools:ignore="RtlCompat" />
 
     </HorizontalScrollView>

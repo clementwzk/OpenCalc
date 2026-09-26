@@ -58,11 +58,11 @@ class TextSizeAdjuster(private val context: Context) {
             Configuration.ORIENTATION_PORTRAIT -> Pair(35f, 55f)
             Configuration.ORIENTATION_LANDSCAPE -> {
                 when (screenSize) {
-                    Configuration.SCREENLAYOUT_SIZE_SMALL -> Pair(35f, 55f)
-                    Configuration.SCREENLAYOUT_SIZE_NORMAL -> Pair(35f, 55f)
-                    Configuration.SCREENLAYOUT_SIZE_LARGE -> Pair(55f, 95f)
-                    Configuration.SCREENLAYOUT_SIZE_XLARGE -> Pair(55f, 95f)
-                    else -> Pair(35f, 55f)
+                    Configuration.SCREENLAYOUT_SIZE_SMALL -> Pair(16f, 24f)
+                    Configuration.SCREENLAYOUT_SIZE_NORMAL -> Pair(16f, 24f)
+                    Configuration.SCREENLAYOUT_SIZE_LARGE -> Pair(20f, 32f)
+                    Configuration.SCREENLAYOUT_SIZE_XLARGE -> Pair(20f, 32f)
+                    else -> Pair(16f, 24f)
                 }
             }
             Configuration.ORIENTATION_UNDEFINED -> {

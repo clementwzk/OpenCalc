@@ -14,6 +14,7 @@ import android.text.TextWatcher
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup.MarginLayoutParams
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
@@ -25,8 +26,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -94,6 +97,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var historyAdapter: HistoryAdapter
     private lateinit var historyLayoutMgr: LinearLayoutManager
 
+    private var appliedInsetLeft = 0
+    private var appliedInsetTop = 0
+    private var appliedInsetRight = 0
+    private var appliedInsetBottom = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -117,6 +125,8 @@ class MainActivity : AppCompatActivity() {
         view = binding.root
 
         // Fix view for SDK 35
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         fixView()
 
         setContentView(view)
@@ -1431,14 +1441,43 @@ class MainActivity : AppCompatActivity() {
 
     // Method to add padding to app window to accommodate system bars
     fun fixView() {
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
 
-            v.updatePadding(
-                left = systemBars.left,
-                top = systemBars.top,
-                right = systemBars.right,
-                bottom = systemBars.bottom
+            val deltaLeft = systemBars.left - appliedInsetLeft
+            val deltaTop = systemBars.top - appliedInsetTop
+            val deltaRight = systemBars.right - appliedInsetRight
+            val deltaBottom = systemBars.bottom - appliedInsetBottom
+            appliedInsetLeft = systemBars.left
+            appliedInsetTop = systemBars.top
+            appliedInsetRight = systemBars.right
+            appliedInsetBottom = systemBars.bottom
+
+            binding.menuButton.updateLayoutParams<MarginLayoutParams> {
+                topMargin += deltaTop
+                marginEnd += deltaRight
+            }
+            binding.degreeTextView.updateLayoutParams<MarginLayoutParams> {
+                topMargin += deltaTop
+                marginStart += deltaLeft
+            }
+            binding.tableLayout.updatePadding(
+                left = binding.tableLayout.paddingLeft + deltaLeft,
+                right = binding.tableLayout.paddingRight + deltaRight,
+                bottom = binding.tableLayout.paddingBottom + deltaBottom
+            )
+            binding.input.updatePadding(
+                left = binding.input.paddingLeft + deltaLeft,
+                right = binding.input.paddingRight + deltaRight
+            )
+            binding.resultDisplay.updatePadding(
+                left = binding.resultDisplay.paddingLeft + deltaLeft,
+                right = binding.resultDisplay.paddingRight + deltaRight
+            )
+            binding.constraintLayout3.updatePadding(
+                bottom = binding.constraintLayout3.paddingBottom + deltaBottom
             )
 
             // Return the insets to allow other listeners to consume them
