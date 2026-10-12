@@ -1,0 +1,2 @@
+שינויים:
+- הוספת תמיכה ב־Material You (תודות ל@MahmoudRH)

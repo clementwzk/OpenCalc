@@ -1,0 +1,5 @@
+Schimbări:
+- Disponibil pentru SDK 21+ (Android 5.0)
+
+Corecții:
+- Corecție vibrare

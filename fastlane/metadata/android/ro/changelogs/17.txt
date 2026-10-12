@@ -1,0 +1,2 @@
+Nou:
+- Șterge istoric

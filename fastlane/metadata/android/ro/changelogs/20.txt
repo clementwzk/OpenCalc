@@ -1,0 +1,4 @@
+Corecții:
+- Închide parantezele automat
+- Multiplică factorialele fără *
+- Adaugă 0 automat când numărul începe fără separator decimal

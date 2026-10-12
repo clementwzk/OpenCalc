@@ -1,0 +1,13 @@
+Nowość:
+- Dodano licencję do sekcji „O programie”
+
+Ulepszenia:
+- Zaktualizowano kilka tłumaczeń
+- Włączono symbol przed miejscami dziesiętnymi
+
+Poprawki:
+- Położenie kursora
+- Awaria przy pierwiastku z ujemnej podstawy
+- Awaria podczas logowania lub ln liczby ujemnej
+- Awaria podczas ponownego tworzenia głównej aktywności w orientacji poziomej
+- Wszystko po znaku „).” w obliczeniach jest ignorowane

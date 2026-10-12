@@ -1,0 +1,2 @@
+Novetat:
+- Esborrar l'historial

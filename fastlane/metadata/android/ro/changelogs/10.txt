@@ -1,0 +1,5 @@
+Schimbări:
+- adaugă separatoare pentru numere mari
+- adaugă traducerea în Italiană
+- adaugă traducerea în Arabă
+- adaugă traducerea în Turcă

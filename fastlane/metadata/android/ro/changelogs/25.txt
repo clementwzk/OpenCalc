@@ -1,0 +1,8 @@
+Nou:
+- Traducere Spaniolă
+
+Corecții:
+- Tastatura devine neresponsivă când se interacționează cu factoriali mari
+- Încărcare incorectă a valorilor din istoric
+- Încărcarea rezultatelor din istoric cu punct decimal anulează operatorul sau blochează app
+- Precizie

@@ -1,0 +1,8 @@
+Nou:
+- Sistem vibrare
+
+Schimbări:
+- Îmbunătățire de cod
+
+CorecțiiȘ
+- Urmărește tematica sistemului la prima pornire

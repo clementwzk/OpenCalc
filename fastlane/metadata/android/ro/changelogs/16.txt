@@ -1,0 +1,4 @@
+Corecții
+- Bară de defilare
+- Necesar de a defila pentru a vedea rezultatul
+- Șterge intrarea dacă un număr este apăsat după egal

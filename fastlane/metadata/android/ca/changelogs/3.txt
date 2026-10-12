@@ -1,0 +1,8 @@
+Novetats:
+- Sistema de vibració
+
+Canvis:
+- Millora del codi
+
+Correccions:
+- Utilitza el tema del sistema en la primera encesa de l'aplicació

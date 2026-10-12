@@ -1,0 +1,2 @@
+Corecții:
+- Blocaj pe ecrane mici și tablete

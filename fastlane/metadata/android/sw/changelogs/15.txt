@@ -1,0 +1,6 @@
+Mabadiliko:
+- Skrini ya kuanzia (splash screen) sasa ni ya giza
+
+Marekebisho:
+- Tatizo la kibodi
+- Kibodi bado inasogeza (scrolling)

@@ -1,0 +1,8 @@
+Novetats:
+- Brindis en copiar un valor
+
+Correccions:
+- Utilitza el tema del sistema accepta Material You
+- Millora compatibilitat amb tauletes
+- Millora compatibilitat amb pantalles petites
+- No es mostrava la icona en sistemes amb menys d'Android 8

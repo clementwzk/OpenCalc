@@ -1,0 +1,8 @@
+Vipya:
+- Makosa yaliyowekwa wazi
+- Muundo mpya wa historia
+- Weka alama za muda kwenye matokeo ya historia
+- Kuzuia urudiaji wa alama za kihisabati kwenye ingizo
+
+Imeboreshwa:
+- arccos, arcsin na arctan sasa zinaonyeshwa kama cos⁻¹, sin⁻¹ na tan⁻¹

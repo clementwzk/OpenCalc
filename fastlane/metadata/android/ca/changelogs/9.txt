@@ -1,0 +1,7 @@
+Canvis:
+- Nova pàgina "Sobre"
+- Afegir separador pel tema amoled
+
+Correccions:
+- Color de la casella de tria
+- Nom de l'aplicació (traduït en EN i FR)

@@ -1,0 +1,7 @@
+Nou:
+- Click prelungit pentru a copia o valoare în memorie
+- Traducere Indoneziană
+
+Corecții
+- defilare în mod peisaj
+- problemă în mod focus

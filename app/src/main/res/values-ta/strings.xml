@@ -15,7 +15,7 @@
     <string name="settings_general_radians">ரேடியன்கள்</string>
     <string name="settings_general_radians_desc">முன்னிருப்பாக டிகிரிக்கு பதிலாக ரேடியன்களைப் பயன்படுத்தவும்</string>
     <string name="settings_general_scientific_mode">அறிவியல் முறை</string>
-    <string name="settings_general_scientific_mode_desc">இயல்பாக அறிவியல் பயன்முறையை இயக்கவும்</string>
+    <string name="settings_general_scientific_mode_desc">அறிவியல் பயன்முறையை செயல்படுத்தவும்</string>
     <string name="about_category_social">சமூக</string>
     <string name="about_category_info">பயன்பாட்டு செய்தி</string>
     <string name="about_help_donate">நன்கொடை</string>
@@ -80,4 +80,10 @@
     <string name="about_dialog_donation_close">மூடு</string>
     <string name="pointDesc">புள்ளியம்</string>
     <string name="no_history_available">வரலாறு எதுவும் கிடைக்கவில்லை</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">அறிவியல் பயன்முறையை செயலிழக்கச் செய்யவும்</string>
+    <string name="settings_general_scientific_mode_hide_desc">அறிவியல் பயன்முறையை மறை</string>
+    <string name="settings_general_backspace">Backspace ஐ இடது பக்கம் நகர்த்தவும்</string>
+    <string name="settings_general_backspace_desc">போர்ட்ரெய்ட் பயன்முறையில் பேக்ச்பேச் பட்டனை இடதுபுறமாக நகர்த்தவும். பூச்சியம் மற்றும் தசம ச்லைடு வலதுபுறம்.</string>
+    <string name="show_on_lock_screen">பூட்டுத் திரையில் காட்டு</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">விரைவாகவும் எளிதாகவும் அணுகுவதற்கு கால்குலேட்டரை உங்கள் பூட்டுத் திரையில் தெரியும்படி வைக்கவும். உங்கள் திரை பூட்டப்பட்டிருக்கும் போது அதை மறைக்க முடக்கவும்.</string>
 </resources>

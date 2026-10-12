@@ -1,0 +1,2 @@
+Korjaukset:
+- Korjattu suuri määrä kaatumisia

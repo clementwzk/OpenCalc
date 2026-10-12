@@ -1,11 +1,5 @@
-Een eenvoudige en mooie rekenmachine voor Android
+Deze moderne en mooie wetenschappelijke rekenmachine helpt je al je berekeningen op te lossen. Het is eenvoudig, effectief en bevat geen advertenties. Het heeft verschillende thema's die perfect bij je telefoon passen.
 
-📖 Eigenschappen
-	* Lichtgewicht (APK ~2MB)
-	* Geen onnodige toestemmingen
-	* Donker, Licht, Amoled and Material You thema
-	* Wetenschappelijke modus
-	* Geschiedenis
-	* Portret en landschap oriëntatie
-	* Snelle instellingen-tegel
-	* Meer...
+De app stelt je in staat om eenvoudige en snelle berekeningen te doen met veel basisfuncties, waaronder vermenigvuldigen, delen, wortels, machten, faculteiten en zelfs goniometrische functies. OpenCalc is aanpasbaar om aan al je behoeften te voldoen.
+
+Het bevat geen onnodige advertenties of toestemmingen en is volledig open source.

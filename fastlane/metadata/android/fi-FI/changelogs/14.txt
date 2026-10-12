@@ -1,0 +1,6 @@
+Uutta:
+- Vinkki nappi
+
+Muutokset:
+- Parannettu historia formaatti
+- Päivitetty miinus merkki

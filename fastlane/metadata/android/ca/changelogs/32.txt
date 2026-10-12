@@ -1,0 +1,2 @@
+Correccions:
+- Tancament inesperat en pantalles petites i tauletes

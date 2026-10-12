@@ -1,10 +1,5 @@
-Prosty i piękny kalkulator na androida
+Ten nowoczesny i piękny kalkulator naukowy pomoże Ci rozwiązać wszystkie obliczenia. Jest prosty, skuteczny i nie zawiera reklam. Posiada różne motywy, które idealnie pasują do Twojego telefonu.
 
-📖 Plusy
-	* Lekki (APK ~2MB)
-	* Bez niepotrzebnych uprawnień
-	* Tryb ciemny, jasny, AMOLED oraz Material You
-	* Tryb naukowy
-	* Historia
-	* Orientacja pionowa i pozioma
-	* I więcej...
+Aplikacja pozwala na wykonywanie prostych i szybkich obliczeń za pomocą wielu podstawowych funkcji, w tym mnożenia, dzielenia, pierwiastków, potęg, silni, a nawet funkcji trygonometrycznych. OpenCalc można dostosować do wszystkich Twoich potrzeb.
+
+Nie zawiera zbędnych reklam ani uprawnień. Jest w pełni open source.

@@ -28,7 +28,7 @@
     <string name="settings_general_vibration_desc">Vibra quan es prem un botó</string>
     <string name="settings_general_radians">Radians</string>
     <string name="settings_general_radians_desc">Usa radians en lloc de graus per defecte</string>
-    <string name="settings_general_scientific_mode_desc">Activa el mode científic per defecte</string>
+    <string name="settings_general_scientific_mode_desc">Activa el mode científic</string>
     <string name="settings_general_scientific_mode_deactivate_desc">Desactiva el mode científic</string>
     <string name="settings_general_scientific_mode_hide_desc">Amaga el mode científic</string>
     <string name="settings_formatting_scientific_notation">Número en notació científica</string>
@@ -59,7 +59,7 @@
     <string name="tangentDesc">tangent</string>
     <string name="naturalLogarithmDesc">logaritme natural</string>
     <string name="about_dialog_donation_title">Suporta\'ns</string>
-    <string name="menu_donate">Suporta nosaltres</string>
+    <string name="menu_donate">Suporta\'ns</string>
     <string name="about_dialog_donation_close">Tanca</string>
     <string name="squareDesc">quadrat</string>
     <string name="piDesc">pi</string>
@@ -81,4 +81,9 @@
     <string name="logarithmDesc">logaritme</string>
     <string name="clearDesc">netejar</string>
     <string name="parenthesesDesc">parèntesis</string>
+    <string name="settings_general_backspace">Moure el botó de retorn/esborrar a l\'esquerra</string>
+    <string name="settings_general_backspace_desc">Moure el botó de retorn/esborrar a l\'extrem esquerra en el mode vertical. El zero i el punt decimal es mouen a la dreta.</string>
+    <string name="no_history_available">No hi ha registres a l\'historial</string>
+    <string name="show_on_lock_screen">Mostra en la pantalla de bloqueig</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Manté la calculadora visible en la pantalla de bloqueig per accedir-hi fàcilment i ràpidament. Desactiva-ho per amagar-la quan la teva pantalla estigui bloquejada.</string>
 </resources>

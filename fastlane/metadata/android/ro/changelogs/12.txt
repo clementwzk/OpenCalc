@@ -1,0 +1,8 @@
+Nou:
+- Istoric
+
+Schimbări:
+- Optimizări
+
+Corecții:
+- Probleme de afișat rezultate

@@ -1,11 +1,5 @@
-Jednoduchá a krásná kalkulačka pro Android
+Tato moderní vědecká kalkulačka vám pomůže se všemi vašemi výpočty. Je jednoduchá, efektivní a bez reklam. Má několik motivů, díky kterým si ji přizpůsobíte podle svých představ.
 
-📖 Funkce
-	* Úsporná (APK ~2 MB)
-	* Žádná nepotřebná oprávnění
-	* Tmavý, Světlý, Amoled a Material You motiv
-	* Vědecký režim
-	* Historie
-	* Orientace na výšku i šířku
-	* Dlaždice rychlého nastavení
-	* A další...
+Aplikace vám umožňuje provádět jednoduché a rychlé výpočty se spoustou základních funkcí, včetně násobení, dělení, mocnin a odmocnin, faktoriálů i goniometrických funkcí. OpenCalc je přizpůsobitelná pro všechny vaše potřeby.
+
+Neobsahuje žádné reklamy nebo nepotřebná oprávnění. Je plně open-source.

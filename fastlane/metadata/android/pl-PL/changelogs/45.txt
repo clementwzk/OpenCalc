@@ -1,0 +1,24 @@
+Nowości:
+- Użycie BigDecimal zamiast Double
+- Ustawienie konwersji wyników do notacji naukowej
+- Dodanie opcji użycia modulo
+- Dodanie opcji wyboru wartości zamiast jej kopiowania
+- Dodanie opcji podziału przycisku nawiasów
+- Dodanie opcji wyłączenia historii
+- Dodanie licencji do sekcji „O programie”
+
+Ulepszenia:
+- Optymalizacja kalkulatora
+- Zastąpienie zbędnego EditText przez TextView
+- Włączenie symbolu przed przecinkiem dziesiętnym 
+- Zwiększenie rozmiaru pola klikalnego przycisku Wstecz
+- Aktualizacja kilku tłumaczeń
+
+Poprawki:
+- Położenie kursora
+- Problem z zastosowaniem motywu w trybie Amoled
+- Wynik silni dziesiętnej
+- Tryb poziomy ukrywa niektóre ikony przycisków
+- Szary prostokąt obok Ustawień
+- Problemy z formatowaniem
+- Wiele innych poprawek...

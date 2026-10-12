@@ -1,0 +1,8 @@
+Nou:
+- Toast când o valoare este copiată în memorie
+
+Corecții:
+- reglajele de sistem sunt urmărite în tematica Material You
+- suport îmbunătățit pentru tabletă
+- suport îmbunătățit pentru ecran mic
+- Pictograma nu se afișează pentru versiunea de Android mai jos de 8

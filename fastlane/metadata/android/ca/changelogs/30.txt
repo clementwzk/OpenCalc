@@ -1,0 +1,8 @@
+Novetats:
+- Errors explícits
+- Redisseny de l'historial
+- Afegir marques de temps als resultats de l'historial
+- No permetre símbols matemàtics duplicats pel que fa a entrada de dades
+
+Actualitzat:
+- arccos, arcsin i arctan ara es mostren com cos⁻¹, sin⁻¹ i tan⁻¹ respectivament

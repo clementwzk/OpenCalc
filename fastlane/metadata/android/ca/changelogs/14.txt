@@ -1,0 +1,6 @@
+Nou:
+- Botó d'ajuda
+
+Canvis:
+- Millora el format de l'historial
+- Actualitza el símbol de menys

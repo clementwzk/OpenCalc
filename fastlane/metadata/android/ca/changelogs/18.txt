@@ -1,0 +1,7 @@
+Novetat:
+- Clic llarg per copiar un valor
+- Traducció a l'indonesi
+
+Arreglat:
+- Desplaçament en mode horitzontal
+- Problema d'enfocament

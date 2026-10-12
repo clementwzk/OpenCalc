@@ -3,7 +3,7 @@
     <string name="app_name_display">Calculadora</string>
     <string name="infinity">Infinidade</string>
     <string name="settings_general_theme">Tema</string>
-    <string name="menu_clear_history">Limpar Histórico</string>
+    <string name="menu_clear_history">Limpar histórico</string>
     <string name="menu_about">Sobre</string>
     <string name="theme_dark">Escuro</string>
     <string name="theme_system">Sistema</string>
@@ -17,7 +17,7 @@
     <string name="settings_general_radians">Radianos</string>
     <string name="settings_general_radians_desc">Usar radianos em vez de graus por padrão</string>
     <string name="settings_general_scientific_mode">Modo científico</string>
-    <string name="settings_general_scientific_mode_desc">Ativar o modo científico por padrão</string>
+    <string name="settings_general_scientific_mode_desc">Ativar o modo científico</string>
     <string name="settings_general_split_parenthesis_button">Dividir o botão de parênteses em dois botões</string>
     <string name="settings_general_split_parenthesis_button_desc">Remover o botão \"AC\" para dividir o botão dos parênteses em dois botões</string>
     <string name="settings_formatting_scientific_notation_desc">Converter todos os resultados em notação científica</string>
@@ -79,4 +79,11 @@
     <string name="menu_donate">Apoie-nos</string>
     <string name="about_dialog_donation_close">Fechar</string>
     <string name="log2Desc">logaritmo de base 2</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Desativar modo científico</string>
+    <string name="settings_general_scientific_mode_hide_desc">Esconder modo científico</string>
+    <string name="settings_general_backspace">Mova a tecla Backspace para a esquerda</string>
+    <string name="settings_general_backspace_desc">No modo retrato, mova a tecla Backspace totalmente para a esquerda. Os zeros e as casas decimais deslizam para a direita.</string>
+    <string name="no_history_available">Sem histórico disponível</string>
+    <string name="show_on_lock_screen">Exibir a tela de bloqueio</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Mantenha a calculadora visível na tela de bloqueio para acesso rápido e fácil. Desative-a para ocultá-la quando a tela estiver bloqueada.</string>
 </resources>

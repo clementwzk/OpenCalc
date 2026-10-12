@@ -1,0 +1,13 @@
+Actualitzat:
+- L'àrea d'entrada de dades ocupa tota la pantalla
+- Sistema de parèntesis
+
+Correccions:
+- Doble avís en copiar un valor a Android 13 
+- Definició del domini de tangent
+- Mostra el resultat quan enganxes una operació
+- Divisió indirecta per 0 és indefinida
+- Divisió per funcions
+- Problemes amb els percentatges
+- Les funcions trigonomètriques retornen un resultat erroni si el resultat és negatiu
+- Altres correccions

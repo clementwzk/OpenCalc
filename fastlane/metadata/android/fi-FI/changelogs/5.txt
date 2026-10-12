@@ -1,0 +1,5 @@
+Muutokset:
+- Saatavilla SDK 21+:lle (Android 5.0)
+
+Korjaukset:
+- Korjattu värinä

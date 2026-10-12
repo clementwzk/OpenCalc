@@ -1,0 +1,7 @@
+Imeboreshwa:
+- Onyesha "thamani ni kubwa mno" badala ya "infinity"
+
+Marekebisho:
+- Mgawanyo kwa nambari hasi
+- Tatizo kwenye kitendaji cha faktoria
+- sin(x!) na cos(x!) zinatoa matokeo yasiyo sahihi

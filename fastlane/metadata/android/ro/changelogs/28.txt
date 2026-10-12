@@ -1,0 +1,14 @@
+Nou:
+- Sistem intern de calcule
+- Factoriale cu decimale
+- Previne prezența a două separatoare decimale în același număr
+
+Corecții:
+- Defilare istoric (@mahmoudRH)
+- Acuratețea rezultatelor
+- Backspace și gruparea separatoarelor
+- Mod peisaj pentru tabletă de 10 inch
+- Backspace după butonul egal
+- Blocaj când se apasă pe un rezultat din isoric
+- Probleme de formatare a expresiilor
+- Multe alte corecții

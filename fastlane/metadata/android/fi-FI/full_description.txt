@@ -1,11 +1,5 @@
-Yksinkertainen ja kaunis laskin Androidille
+Tämä moderni ja yksinkertainen tieteellinen laskin auttaa sinua ratkaisemaan kaikki laskut. Se on yksinkertainen, effektiivinen eikä sisällä mainoksia. Sillä on erilaisia teemoja passaakseen puhelimesi täydellisesti.
 
-📖 Ominaisuudet
-	* Kevyt (APK ~2MB)
-	* Ei tarpeettomia lupia
-	* Tumma, Vaalea, Amoled ja Material You teema
-	* Tieteellinen tila
-	* Historia
-	* Pysty- ja vaakasuunta
-	* Pika-asetuspainike
-	* Ja lisää...
+Sovellus sallii sinun tehdä yksinkertaisia ja nopeita laskuja monilla yksinkertaisilla funktioilla, muun muassa kerto, jako, juuri, potenssi, faktoriaali ja jopa trigonometriset funktiot. OpenCalc on muokattava ja vastaa kaikkiin tarpeiseesi.
+
+Ei sisällä tarpeettomia mainoksia tai käyttöoikeuksia. Se on täysin avoimen lähdekoodin.

@@ -1,0 +1,9 @@
+Actualitzat:
+- Canvia el color del text quan hi ha un error
+- Redueix la mida del programari
+- No es guarda el resultat en l'historial si el resultat és igual al càlcul
+- No es guarda el resultat en l'historial si el resultat és el mateix que l'últim
+
+Correccions:
+- Factorial 0 retorna 1
+- Afegeix el símbol matemàtic després de prémer l'igual

@@ -84,4 +84,6 @@
     <string name="no_history_available">Ingen historik tillgänglig</string>
     <string name="show_on_lock_screen">Visa på låsskärm</string>
     <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Håll kalkylatorn synlig på din låsskärm för snabb och enkel åtkomst. Inaktivera för att dölja den när din skärm är låst.</string>
+    <string name="settings_general_backspace">Flytta backsteg till vänster</string>
+    <string name="settings_general_backspace_desc">Flytta backstegsknappen längst till vänster i porträttläge. Noll och decimal flyttas åt höger.</string>
 </resources>

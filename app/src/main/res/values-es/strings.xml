@@ -35,7 +35,7 @@
     <string name="about_other_privacy_policy">Política de privacidad</string>
     <string name="settings_formatting_precision">Cantidad de decimales</string>
     <string name="settings_history_size">Resultados guardados en el historial</string>
-    <string name="settings_general_scientific_mode_desc">Activar el modo científico por defecto</string>
+    <string name="settings_general_scientific_mode_desc">Activar el modo científico</string>
     <string name="settings_general_scientific_mode_deactivate_desc">Desactivar el modo científico</string>
     <string name="settings_general_scientific_mode_hide_desc">Ocultar modo científico</string>
     <string name="about_help_donate">Donar</string>
@@ -77,4 +77,13 @@
     <string name="parenthesesDesc">paréntesis</string>
     <string name="clearDesc">limpiar</string>
     <string name="percentDesc">porcentaje</string>
+    <string name="log2Desc">logaritmo en base 2</string>
+    <string name="about_dialog_donation_title">Apóyanos</string>
+    <string name="menu_donate">Apóyanos</string>
+    <string name="about_dialog_donation_close">Cerrar</string>
+    <string name="settings_general_backspace">Mover el botón de retroceso a la izquierda</string>
+    <string name="settings_general_backspace_desc">Mueve el botón de retroceso al extremo izquierdo en modo vertical. El cero y el punto decimal se desplazan a la derecha.</string>
+    <string name="no_history_available">No hay historial disponible</string>
+    <string name="show_on_lock_screen">Mostrar en la pantalla de bloqueo</string>
+    <string name="keep_the_calculator_visible_on_your_lock_screen_for_quick_and_easy_access_disable_to_hide_it_when_your_screen_is_locked">Mantener la calculadora visible en la pantalla de bloqueo para un acceso rápido y sencillo. Desactiva esta opción para ocultarla cuando la pantalla esté bloqueada.</string>
 </resources>

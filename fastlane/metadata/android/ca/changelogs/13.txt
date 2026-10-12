@@ -1,0 +1,6 @@
+Novetats:
+- icona del tema
+
+Canvis:
+- actualització de les traduccions
+- neteja l'entrada si es prem un nombre després de l'igual

@@ -1,0 +1,13 @@
+Actualizat:
+- Zona de intrarea preia ecranul întreg
+- Sistem de paranteze
+
+Corecții
+- Dublu toast când o valoare este copiată în Android 13
+- Domeniul de definiție a tangentei
+- Afișează rezultat când se lipește un calcul
+- Împărțirea indirectă cu zero este nedefinită
+- Împărțirea funcțiilor
+- Probleme cu procentajele
+- Funcțiile trignometrice returnează rezultat greșit dacă funcția este negativă
+- Multe alte corecții

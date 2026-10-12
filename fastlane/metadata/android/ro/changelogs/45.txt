@@ -1,0 +1,24 @@
+Nou:
+- BigDecimal vs. Double
+- Rezultat notare științifică
+- Modulo
+- Selectează vs. copiere
+- Împărțirea parantezelelro
+- Închide istoric
+- Licență în despre
+
+Îmbunătățiri:
+- Optimizare calculator
+- Scos EditText de TextView
+- Simbol înainte de decimală
+- Mărăște zona butonului înapoi
+- Actualizare traduceri
+
+Corecții:
+- Locație cursor
+- Tematica Amoled
+- Rezultat factorial decimal
+- Mod peisaj și pictogramele butoanelor
+- Dreptunghi gri lângă Reglaje
+- Probleme de formatări
+- Altele...

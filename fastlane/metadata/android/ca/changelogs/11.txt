@@ -1,0 +1,9 @@
+Canvis:
+- traduccióna l'alemany
+- traducció al rus
+- traducció al grec
+- traducció a l'hindi
+- traducció a l'azerbadjà
+
+Correccions:
+- percentatge no matemàtic

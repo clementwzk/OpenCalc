@@ -1,11 +1,5 @@
-Egy egyszerű és szép számológép Androidhoz
+Ez a modern és szép tudományos számológép segít megoldani minden számítását. Egyszerű, hatékony és nem tartalmaz reklámokat. Különböző témákkal rendelkezik, hogy tökéletesen illeszkedjen a telefonjához.
 
-📖 Jellemzői
-	* Kis méret (APK ~2MB)
-	* Nincsenek felesleges engedélyek
-	* Sötét, világos, amoled és Material You témák
-	* Tudományos mód
-	* Előzmények
-	* Álló és fekvő nézet
-	* Gyorsbeállítás-csempe
-	* És még más...
+Az alkalmazás lehetővé teszi egyszerű és gyors számítások elvégzését számos alapvető funkcióval, beleértve a szorzást, osztást, gyököt, hatványokat, faktoriálisokat és még trigonometriai funkciókat is. Az OpenCalc testreszabható, hogy minden igényét kielégítse.
+
+Nem tartalmaz felesleges hirdetéseket vagy engedélyeket. Teljesen nyílt forráskódú.

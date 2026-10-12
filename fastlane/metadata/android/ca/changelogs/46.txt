@@ -1,0 +1,8 @@
+Millores:
+* Actualitzacions de traduccions
+*Implementar BroadcastResciever per començar l'activitat de TileService
+
+Correccions:
+* Problemes de format amb els zeros després de la coma
+* Corregir l'error de registre quan x < 0
+* Tancament inesperat en prémer arrel quadrada després d'un error de sintaxi
